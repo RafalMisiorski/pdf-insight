@@ -4,7 +4,7 @@
 
 // Abbreviations that stand BEFORE a name or a number, so the next word starts with a capital or a digit
 // although the sentence goes on ("ul. Kwiatowa", "dr Nowak", "ok. 120 osób", "m.in. Kowalski").
-// Company forms such as "sp.k.", "S.A." or "Ltd." are NOT listed: they often end a sentence.
+// Company forms such as "sp.k.", "sp. j.", "S.A." or "Ltd." are NOT listed: they often end a sentence.
 const PREFIX_ABBREVIATIONS = new Set([
   'ul',
   'al',
@@ -34,13 +34,15 @@ const PREFIX_ABBREVIATIONS = new Set([
 const ENDS_WITH_TERMINAL = /[.!?]["”')]?$/
 const STARTS_LIKE_SENTENCE = /^["„“'(]?[\p{Lu}\p{N}]/u
 
-function isPrefixAbbreviation(word: string): boolean {
+function isPrefixAbbreviation(word: string, previous: string | undefined): boolean {
   const core = word
     .replace(/^["„“'(]+/, '')
     .replace(/\.+$/, '')
     .toLowerCase()
-  // A single letter is an initial ("J. Kowalski"); "r." (roku) is left out because it usually ends a sentence.
-  const isInitial = /^\p{L}$/u.test(core) && core !== 'r'
+  // After "sp." a single letter closes a company form ("sp. j.", "sp. k."), which can end a sentence.
+  const closesCompanyForm = previous?.toLowerCase() === 'sp.'
+  // Otherwise a single letter is an initial ("J. Kowalski"); "r." (roku) usually ends a sentence.
+  const isInitial = /^\p{L}$/u.test(core) && core !== 'r' && !closesCompanyForm
   return PREFIX_ABBREVIATIONS.has(core) || isInitial
 }
 
@@ -57,7 +59,7 @@ export function countSentences(text: string): number {
       continue
     }
     if (!STARTS_LIKE_SENTENCE.test(next)) continue // "sp. z o.o. z siedzibą"
-    if (word.endsWith('.') && isPrefixAbbreviation(word)) continue // "ul. Kwiatowa"
+    if (word.endsWith('.') && isPrefixAbbreviation(word, words[i - 1])) continue // "ul. Kwiatowa"
     count++
   }
   // Text that does not end with punctuation still has one more sentence.

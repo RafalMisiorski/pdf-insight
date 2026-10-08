@@ -28,6 +28,13 @@ describe('countSentences', () => {
     ).toBe(3)
   })
 
+  it('lets a company form written with a space ("sp. j.", "sp. k.") end a sentence', () => {
+    const text =
+      'Nabywcą jest Hotel Nad Zalewem sp. j. Sprzedawcą jest Ogrody Lis sp. k. ' +
+      'Termin płatności to 20.10.2026 r.'
+    expect(countSentences(text)).toBe(3)
+  })
+
   it('counts English text and a last sentence without final punctuation', () => {
     expect(
       countSentences(
