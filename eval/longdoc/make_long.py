@@ -1,8 +1,9 @@
 """Synthetic long PDFs for ADR-0008: filler text without amounts, dates or names, plus three planted
-facts (amount, date, person) at 5%, 50% and 95% of the length. Usage: python eval/longdoc/make_long.py"""
+facts (amount, date, person) at 5%, 50% and 95% of the length. Usage: python eval/longdoc/make_long.py [sizes...]; LONGDOC_OUT sets the output folder."""
 import json
 import os
 import random
+import sys
 from pathlib import Path
 
 from reportlab.lib.pagesizes import A4
@@ -13,8 +14,8 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Paragraph, SimpleDocTemplate
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "pdf"
-OUT.mkdir(exist_ok=True)
+OUT = Path(os.environ.get("LONGDOC_OUT", HERE / "pdf"))  # output folder, default eval/longdoc/pdf
+OUT.mkdir(parents=True, exist_ok=True)
 FONTS = Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts"
 pdfmetrics.registerFont(TTFont("Body", str(FONTS / "arial.ttf")))
 P = ParagraphStyle("p", fontName="Body", fontSize=10, leading=14, spaceAfter=5)
@@ -40,7 +41,7 @@ FACTS = [
 
 def build(target_chars):
     random.seed(target_chars)
-    name = "L%03dk_dlugi_tekst.pdf" % (target_chars // 1000)
+    name = "L%dk_dlugi_tekst.pdf" % (target_chars // 1000)
     paragraphs, length = [], 0
     while length < target_chars:
         text = " ".join(random.choice(FILLER) for _ in range(8))
@@ -57,6 +58,7 @@ def build(target_chars):
 if __name__ == "__main__":
     facts = {"amounts": [f[1] for f in FACTS], "dates": [f[3] for f in FACTS], "people": [f[5] for f in FACTS]}
     (HERE / "facts.json").write_text(json.dumps(facts, ensure_ascii=False, indent=1), encoding="utf-8")
-    for size in (100_000, 200_000, 400_000):
+    # Sizes in characters from the command line (e.g. 800000 1200000), or the first measurement.
+    for size in [int(arg) for arg in sys.argv[1:]] or [100_000, 200_000, 400_000]:
         name, chars = build(size - 2_000)  # stay just under the 400k cap of the text path
         print(name, chars, "chars", round((OUT / name).stat().st_size / 1024), "KB")

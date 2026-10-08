@@ -33,3 +33,20 @@ Według reguły L = 398 tys. znaków, czyli cały obecny limit ścieżki tekstow
 
 - Do 400 tys. znaków: jedno wywołanie. Podział dodałby rundę scalania i ryzyko zgubienia faktów bez zysku na czasie.
 - Powyżej 400 tys. znaków (dziś komunikat 413): podział na fragmenty po co najwyżej 400 tys. znaków na granicach stron, równoległa analiza fragmentów i scalenie wyników.
+
+## Ścieżka z podziałem: kryterium akceptacji (zapisane przed implementacją i pomiarem, 2026-10-08)
+
+- Tekst dłuższy niż 400 tys. znaków dzielimy na granicach stron na fragmenty po co najwyżej 400 tys. znaków, maksymalnie 4 (około 1,6 mln znaków). Dłuższe dokumenty dostają komunikat.
+- Fragmenty idą równolegle przez tę samą ścieżkę co zwykły tekst. Podmioty, kwoty, daty i słowa kluczowe scala kod (usuwa tylko duplikaty), a model pisze jedynie wspólne podsumowanie i najważniejsze punkty (endpoint `/merge`).
+- Pomiar: syntetyczne PDF-y z około 800 tys. i 1,2 mln znaków tekstu z 9 wstawionymi faktami (5%, 50% i 95% długości), 2 przebiegi na produkcji przez interfejs.
+- Ścieżka zostaje, jeśli w obu przebiegach czas od wgrania do wyniku wynosi co najwyżej 30 s i trafione są wszystkie 9 faktów. Jeśli nie, limit zostaje na 400 tys. znaków (powyżej komunikat 413), a wynik pomiaru zapisujemy tutaj.
+
+## Implementacja (2026-10-08)
+
+- Podział: `src/lib/chunks.ts` (granice stron; jedna strona dłuższa niż limit jest cięta na ostatniej spacji). Dokument mieszczący się w limicie idzie dokładnie tak jak wcześniej.
+- Scalanie faktów kodem: `src/lib/merge.ts` (usuwa tylko dokładne duplikaty; dane dokumentu z pierwszego fragmentu). Podsumowanie i punkty: `mergeSummaries` w `worker/src/model.ts`, z osobnym promptem i tą samą walidacją z ponowieniem w budżecie 27 s.
+- Testy: jednostkowe dla podziału i scalania, test żądania do modelu (ścieżka tekstowa wysyła niezmieniony prompt i schemat), test E2E dokumentu z około 700 tys. znaków (2 fragmenty, jedno scalenie). Lokalny przebieg z prawdziwym modelem: 797 tys. znaków (185 stron) w 14,1 s, 9/9 wstawionych faktów. To sprawdzenie działania, a nie pomiar według kryterium powyżej.
+
+## Wynik pomiaru ścieżki z podziałem
+
+(po wdrożeniu: 2 przebiegi na produkcji)
