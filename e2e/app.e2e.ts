@@ -107,7 +107,9 @@ test('postęp: kroki, licznik czasu i zablokowana strefa do końca analizy', asy
   await expect(step('Analiza treści przez AI')).toHaveAttribute('aria-current', 'step')
   await expect(step('Odczyt tekstu z PDF')).toHaveClass(/done/)
   await expect(step('Sprawdzenie wyniku ze schematem')).toHaveClass(/pending/)
-  await expect(progress).toContainText(/\d+ s · zwykle trwa to 5–10 sekund/)
+  await expect(progress).toContainText(
+    /\d+ s · zwykle 5–15 s, przy wielu kwotach i datach do około 30 s/,
+  )
   await expect(fileInput(page)).toBeDisabled()
   const { violations } = await new AxeBuilder({ page }).analyze()
   expect(violations.map((v) => `${v.id}: ${v.help}`)).toEqual([])

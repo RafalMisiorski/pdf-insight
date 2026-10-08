@@ -27,7 +27,8 @@ function useElapsedSeconds(startedAt: number): number {
 // Its own component, so the one-second timer runs only while the analysis step is shown.
 function AnalysisDetail({ state }: { state: Extract<ProgressState, { phase: 'analyzing' }> }) {
   const seconds = useElapsedSeconds(state.startedAt)
-  if (state.parts === 1) return <>{seconds} s · zwykle trwa to 5–10 sekund</>
+  if (state.parts === 1)
+    return <>{seconds} s · zwykle 5–15 s, przy wielu kwotach i datach do około 30 s</>
   if (state.partsDone < state.parts) {
     return (
       <>
