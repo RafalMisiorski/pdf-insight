@@ -49,6 +49,11 @@ export type Analysis = z.infer<typeof AnalysisSchema>
 export const MAX_TEXT_CHARS = 400_000
 export const MAX_PARTS = 4
 
+// Scans go as page images: at most MAX_SCAN_PAGES pages, each image at most MAX_IMAGE_CHARS of base64
+// (about 1.1 MB of JPEG).
+export const MAX_SCAN_PAGES = 8
+export const MAX_IMAGE_CHARS = 1_500_000
+
 // What the app sends to the Worker.
 export const AnalyzeRequestSchema = z.object({
   fileName: z.string().min(1).max(255),
@@ -71,6 +76,22 @@ export const MergedSummarySchema = z.looseObject({
   keyPoints: z.array(z.string().min(1)).min(3).max(7),
 })
 export type MergedSummary = z.infer<typeof MergedSummarySchema>
+
+// What the app sends for a scan without a text layer: JPEG page images in base64, in page order
+// (docs/adr/0009-ocr-skanow.md).
+export const ScanRequestSchema = z.object({
+  fileName: z.string().min(1).max(255),
+  pages: z.number().int().min(1).max(5000),
+  images: z.array(z.string().min(1).max(MAX_IMAGE_CHARS)).min(1).max(MAX_SCAN_PAGES),
+})
+export type ScanRequest = z.infer<typeof ScanRequestSchema>
+
+// Added to a result read from page images, so the JSON itself says how it was obtained.
+export const ScanMetaSchema = z.object({
+  source: z.literal('ocr'),
+  pagesAnalyzed: z.number().int().positive(),
+})
+export type ScanMeta = z.infer<typeof ScanMetaSchema>
 
 // JSON Schema derived from the same Zod schema, so the model and the validator cannot drift apart.
 export const modelOutputJsonSchema = z.toJSONSchema(ModelOutputSchema)

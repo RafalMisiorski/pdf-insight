@@ -3,9 +3,11 @@ import {
   AnalyzeRequestSchema,
   MAX_TEXT_CHARS,
   MergeRequestSchema,
+  ScanRequestSchema,
   type Analysis,
+  type ScanMeta,
 } from '../../src/lib/schema'
-import { ModelError, analyze, mergeSummaries, type ModelErrorKind } from './model'
+import { ModelError, analyze, analyzeScan, mergeSummaries, type ModelErrorKind } from './model'
 import type { RateLimiter } from './rateLimiter'
 
 // The Durable Object class must be exported from the Worker's main module.
@@ -20,6 +22,8 @@ interface Env {
 }
 
 const MAX_BODY_BYTES = 2_000_000
+const MAX_SCAN_BODY_BYTES = 6_000_000 // page images of a scan (docs/adr/0009-ocr-skanow.md)
+const PATHS = new Set(['/analyze', '/merge', '/analyze-scan'])
 const PER_IP_PER_MINUTE = 10
 const MINUTE_MS = 60_000
 const DAY_MS = 86_400_000
@@ -94,7 +98,7 @@ export default {
       return new Response(null, { status: 204, headers: cors }) // browser preflight before the POST
     }
     const path = new URL(request.url).pathname
-    if (request.method !== 'POST' || (path !== '/analyze' && path !== '/merge')) {
+    if (request.method !== 'POST' || !PATHS.has(path)) {
       return json({ error: 'Nie znaleziono.' }, 404, cors)
     }
 
@@ -106,9 +110,10 @@ export default {
 
     // Size limits: refuse a large declared body before reading it, then check what arrived.
     const tooLong = json({ error: 'Dokument jest za długi do analizy.' }, 413, cors)
-    if (Number(request.headers.get('Content-Length') ?? '0') > MAX_BODY_BYTES) return tooLong
+    const maxBody = path === '/analyze-scan' ? MAX_SCAN_BODY_BYTES : MAX_BODY_BYTES
+    if (Number(request.headers.get('Content-Length') ?? '0') > maxBody) return tooLong
     const raw = await request.text()
-    if (raw.length > MAX_BODY_BYTES) return tooLong
+    if (raw.length > maxBody) return tooLong
 
     let body: unknown
     try {
@@ -121,6 +126,19 @@ export default {
       429,
       cors,
     )
+
+    if (path === '/analyze-scan') {
+      // A scan without a text layer: page images instead of text (docs/adr/0009-ocr-skanow.md).
+      const input = ScanRequestSchema.safeParse(body)
+      if (!input.success) return json({ error: 'Nieprawidłowe żądanie.' }, 400, cors)
+      if (!(await withinDailyLimit(env))) return dailyLimitReached
+      const { fileName, pages, images } = input.data
+      return respond(async () => {
+        const output = await analyzeScan(env.GEMINI_API_KEY, env.MODEL, images, pages)
+        const meta: ScanMeta = { source: 'ocr', pagesAnalyzed: images.length }
+        return { ...output, document: { ...output.document, fileName, pages }, meta }
+      }, cors)
+    }
 
     if (path === '/merge') {
       // A long document: the app sends its analysed fragments (docs/adr/0008-dlugie-dokumenty.md).

@@ -4,6 +4,7 @@ import {
   type Analysis,
   type AnalyzeRequest,
   type MergeRequest,
+  type ScanRequest,
 } from '../lib/schema'
 
 // `retryable` tells the UI whether "Spróbuj ponownie" can help: not for a document that is too long.
@@ -15,8 +16,11 @@ export class ApiError extends Error {
   }
 }
 
-// A document to analyse: its text in one part, or in fragments when it is longer than one request.
-export type AnalysisJob = { fileName: string; pages: number; parts: string[] }
+// A document to analyse: its text in one part (or in fragments when it is longer than one request),
+// or, for a scan without a text layer, its page images.
+export type AnalysisJob =
+  | { kind: 'text'; fileName: string; pages: number; parts: string[] }
+  | { kind: 'scan'; fileName: string; pages: number; images: string[] }
 
 const SuccessSchema = z.object({ result: AnalysisSchema })
 const FailureSchema = z.object({ error: z.string() })
@@ -75,10 +79,19 @@ export function mergeAnalyses(
 }
 
 // onPartDone reports how many fragments of a long document are done, for the progress steps.
+export function analyzeScan(
+  request: ScanRequest,
+  timeoutMs = CLIENT_TIMEOUT_MS,
+): Promise<Analysis> {
+  return post('/analyze-scan', request, timeoutMs)
+}
+
 export async function analyzeJob(
   job: AnalysisJob,
   onPartDone?: (done: number) => void,
 ): Promise<Analysis> {
+  if (job.kind === 'scan')
+    return analyzeScan({ fileName: job.fileName, pages: job.pages, images: job.images })
   const { fileName, pages, parts } = job
   if (parts.length === 1) return analyzeDocument({ fileName, pages, text: parts[0] })
   // Fragments are analysed in parallel, then the Worker merges their facts and writes one summary.

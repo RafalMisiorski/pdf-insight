@@ -1,4 +1,5 @@
 import { useState, type DragEvent } from 'react'
+import { MAX_SCAN_PAGES } from '../lib/schema'
 
 type Props = {
   disabled: boolean
@@ -46,11 +47,13 @@ export function DropZone({ disabled, onFile }: Props) {
         <span className="dropzone-title">
           Przeciągnij plik PDF tutaj albo kliknij, aby go wybrać
         </span>
-        <span className="dropzone-hint">Tylko PDF z warstwą tekstową, maksymalnie 10 MB</span>
+        <span className="dropzone-hint">
+          PDF do 10 MB. Skan bez warstwy tekstowej odczyta OCR (do {MAX_SCAN_PAGES} str.)
+        </span>
       </label>
       <p className="notice">
-        Tekst z pliku zostanie wysłany do zewnętrznego API AI (Google Gemini) w celu analizy. Nie
-        wgrywaj dokumentów z danymi poufnymi.
+        Treść pliku (tekst albo obrazy stron skanu) zostanie wysłana do zewnętrznego API AI (Google
+        Gemini) w celu analizy. Nie wgrywaj dokumentów z danymi poufnymi.
       </p>
     </section>
   )

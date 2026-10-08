@@ -47,3 +47,57 @@ export async function extractText(
     await task.destroy() // frees the worker's memory for this document (pdf.js 6: on the loading task)
   }
 }
+
+// Scans: pages rendered to JPEG for the model (docs/adr/0009-ocr-skanow.md). A fixed longer side keeps
+// every page image readable and its size predictable, whatever the scan resolution was.
+const LONG_SIDE_PX = 1600
+const JPEG_QUALITY = 0.7
+
+export async function renderPages(
+  file: File,
+  count: number,
+  onPage?: (done: number, total: number) => void,
+): Promise<string[]> {
+  const task = getDocument({ data: new Uint8Array(await file.arrayBuffer()) })
+  const pdf = await task.promise
+  try {
+    const total = Math.min(count, pdf.numPages)
+    const images: string[] = []
+    for (let pageNumber = 1; pageNumber <= total; pageNumber++) {
+      const page = await pdf.getPage(pageNumber)
+      const natural = page.getViewport({ scale: 1 })
+      const viewport = page.getViewport({
+        scale: LONG_SIDE_PX / Math.max(natural.width, natural.height),
+      })
+      const canvas = document.createElement('canvas')
+      canvas.width = Math.round(viewport.width)
+      canvas.height = Math.round(viewport.height)
+      await page.render({ canvas, viewport }).promise // pdf.js paints a white page background
+      images.push(await toJpegBase64(canvas))
+      onPage?.(pageNumber, total)
+    }
+    return images
+  } finally {
+    await task.destroy()
+  }
+}
+
+// canvas -> JPEG Blob -> data URL; the model needs only the base64 part after the comma.
+function toJpegBase64(canvas: HTMLCanvasElement): Promise<string> {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (!blob) {
+          reject(new Error('Canvas export failed'))
+          return
+        }
+        const reader = new FileReader()
+        reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '')
+        reader.onerror = () => reject(reader.error ?? new Error('Reading the image failed'))
+        reader.readAsDataURL(blob)
+      },
+      'image/jpeg',
+      JPEG_QUALITY,
+    )
+  })
+}

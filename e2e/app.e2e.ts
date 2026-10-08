@@ -2,12 +2,18 @@ import AxeBuilder from '@axe-core/playwright'
 import { expect, test, type Page, type Route } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
-import { AnalysisSchema, type AnalyzeRequest, type MergeRequest } from '../src/lib/schema'
+import {
+  AnalysisSchema,
+  type AnalyzeRequest,
+  type MergeRequest,
+  type ScanRequest,
+} from '../src/lib/schema'
 
 // The e2e build sends analyses to this fake address (playwright.config.ts). Every test answers it with
 // page.route, so no request reaches the real Worker or the model and each answer is under test control.
 const API = 'https://api.e2e.test/analyze'
 const MERGE_API = 'https://api.e2e.test/merge'
+const SCAN_API = 'https://api.e2e.test/analyze-scan'
 const CORS = { 'access-control-allow-origin': '*', 'access-control-allow-headers': 'content-type' }
 
 const fixture = (name: string) => path.join(import.meta.dirname, 'fixtures', name)
@@ -56,7 +62,7 @@ test.beforeEach(async ({ page }) => {
 test('stan pusty: zaproszenie do wgrania pliku i informacja o API AI', async ({ page }) => {
   await expect(page).toHaveTitle('PDF Insight')
   await expect(page.getByText('Nie wybrano jeszcze pliku.')).toBeVisible()
-  await expect(page.getByText(/wysłany do zewnętrznego API AI/)).toBeVisible()
+  await expect(page.getByText(/wysłana do zewnętrznego API AI/)).toBeVisible()
 })
 
 test('PDF z tekstem: wysyła wyciągnięty tekst, pokazuje wynik i pobiera ten sam JSON', async ({
@@ -145,11 +151,37 @@ test.describe('walidacja pliku przed odczytem, bez wysyłania czegokolwiek', () 
   }
 })
 
-test('skan bez warstwy tekstowej nie trafia do AI', async ({ page }) => {
-  const requests = await mockApi(page, success)
+test('skan bez warstwy tekstowej: obrazy stron idą do OCR, wynik mówi, że to skan', async ({
+  page,
+}) => {
+  const texts = await mockApi(page, success)
+  const scans: ScanRequest[] = []
+  await page.route(SCAN_API, async (route) => {
+    if (route.request().method() === 'OPTIONS') {
+      await route.fulfill({ status: 204, headers: CORS })
+      return
+    }
+    const request = route.request().postDataJSON() as ScanRequest
+    scans.push(request)
+    await route.fulfill({
+      headers: CORS,
+      json: {
+        result: {
+          ...analysis,
+          document: { ...analysis.document, fileName: request.fileName, pages: request.pages },
+          meta: { source: 'ocr', pagesAnalyzed: request.images.length },
+        },
+      },
+    })
+  })
   await fileInput(page).setInputFiles(fixture('skan.pdf'))
-  await expect(alert(page)).toContainText('nie ma warstwy tekstowej')
-  expect(requests).toHaveLength(0)
+
+  await expect(resultTitle(page)).toBeVisible()
+  expect(texts).toHaveLength(0) // a scan sends no text
+  expect(scans).toHaveLength(1)
+  expect(scans[0].images).toHaveLength(1)
+  expect(scans[0].images[0].startsWith('/9j/')).toBe(true) // base64 of a JPEG file starts with /9j/
+  await expect(page.getByText(/odczytano z obrazów stron \(OCR\)/)).toBeVisible()
 })
 
 test('błąd serwera: komunikat z Workera i ponowienie tego samego żądania', async ({ page }) => {
@@ -236,7 +268,11 @@ test('dostępność: axe bez naruszeń w stanie pustym, błędu i wyniku, w obu 
     await page.emulateMedia({ colorScheme })
     await page.goto('./')
     expect(await violations(), `pusty, ${colorScheme}`).toEqual([])
-    await fileInput(page).setInputFiles(fixture('skan.pdf'))
+    await fileInput(page).setInputFiles({
+      name: 'notatki.txt',
+      mimeType: 'text/plain',
+      buffer: Buffer.from('to nie PDF'),
+    })
     await expect(alert(page)).toBeVisible()
     expect(await violations(), `błąd, ${colorScheme}`).toEqual([])
     await fileInput(page).setInputFiles(fixture('faktura.pdf'))

@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { modelOutputJsonSchema, type ModelOutput } from '../../src/lib/schema'
-import { analyze, BUDGET_MS, mergeSummaries, ModelError } from './model'
-import { MERGE_PROMPT, SYSTEM_PROMPT, wrapDocument } from './prompt'
+import { analyze, analyzeScan, BUDGET_MS, mergeSummaries, ModelError } from './model'
+import { MERGE_PROMPT, SCAN_PROMPT, SYSTEM_PROMPT, wrapDocument } from './prompt'
 
 // A model answer that passes the schema and the 3-5 sentence rule.
 const VALID: ModelOutput = {
@@ -92,5 +92,24 @@ describe('the request sent to Gemini', () => {
     expect(fetch).toHaveBeenCalledTimes(2)
     const firstBody = JSON.parse(fetch.mock.calls[0][1].body)
     expect(firstBody.systemInstruction.parts[0].text).toBe(MERGE_PROMPT)
+  })
+})
+
+describe('scans', () => {
+  it('sends the scan prompt and one inline JPEG part per page', async () => {
+    const fetch = vi.fn().mockResolvedValue(geminiReply(JSON.stringify(VALID)))
+    vi.stubGlobal('fetch', fetch)
+    await analyzeScan('key', 'model', ['AAA', 'BBB'], 5)
+    const body = JSON.parse(fetch.mock.calls[0][1].body)
+    expect(body.systemInstruction.parts[0].text).toBe(SCAN_PROMPT)
+    expect(body.contents[0].parts[0].text).toContain('pages 1-2 of 5')
+    expect(body.contents[0].parts.slice(1)).toEqual([
+      { inline_data: { mime_type: 'image/jpeg', data: 'AAA' } },
+      { inline_data: { mime_type: 'image/jpeg', data: 'BBB' } },
+    ])
+  })
+
+  it('keeps the text-path rules inside the scan prompt', () => {
+    expect(SCAN_PROMPT.startsWith(SYSTEM_PROMPT)).toBe(true)
   })
 })

@@ -8,7 +8,7 @@ import { splitIntoParts } from './lib/chunks'
 import { checkPdfFile } from './lib/file'
 import { addToHistory, clearHistory, loadHistory, type HistoryEntry } from './lib/history'
 import type { ExtractedText } from './lib/pdf'
-import { MAX_PARTS, MAX_TEXT_CHARS, type Analysis } from './lib/schema'
+import { MAX_PARTS, MAX_SCAN_PAGES, MAX_TEXT_CHARS, type Analysis } from './lib/schema'
 import './App.css'
 
 // One state at a time, so the screen can never show a result and an error together.
@@ -27,7 +27,8 @@ export default function App() {
     setState({
       phase: 'analyzing',
       fileName: job.fileName,
-      parts: job.parts.length,
+      parts: job.kind === 'text' ? job.parts.length : 1,
+      ocr: job.kind === 'scan',
       partsDone: 0,
       startedAt: Date.now(),
     })
@@ -45,6 +46,27 @@ export default function App() {
       const retryable = !(error instanceof ApiError) || error.retryable
       setState({ phase: 'error', message, retry: retryable ? job : null })
     }
+  }
+
+  // A scan without a text layer: its first pages go to the model as images (OCR, docs/adr/0009).
+  async function analyzeScanFile(file: File, pages: number) {
+    const count = Math.min(pages, MAX_SCAN_PAGES)
+    setState({ phase: 'reading', fileName: file.name, page: 0, pages: count, ocr: true })
+    let images: string[]
+    try {
+      const { renderPages } = await import('./lib/pdf')
+      images = await renderPages(file, count, (page, total) =>
+        setState({ phase: 'reading', fileName: file.name, page, pages: total, ocr: true }),
+      )
+    } catch {
+      setState({
+        phase: 'error',
+        message: 'Nie udało się przygotować obrazów stron skanu.',
+        retry: null,
+      })
+      return
+    }
+    await analyze({ kind: 'scan', fileName: file.name, pages, images })
   }
 
   async function handleFile(file: File) {
@@ -70,12 +92,7 @@ export default function App() {
       return
     }
     if (!extracted.hasTextLayer) {
-      setState({
-        phase: 'error',
-        message:
-          'Ten PDF nie ma warstwy tekstowej (to prawdopodobnie skan), więc nie da się odczytać jego treści.',
-        retry: null,
-      })
+      await analyzeScanFile(file, extracted.pages)
       return
     }
     // Text that fits one request is sent as it is; a longer one goes in fragments (docs/adr/0008).
@@ -91,7 +108,7 @@ export default function App() {
       })
       return
     }
-    await analyze({ fileName: file.name, pages: extracted.pages, parts })
+    await analyze({ kind: 'text', fileName: file.name, pages: extracted.pages, parts })
   }
 
   return (

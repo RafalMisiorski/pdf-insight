@@ -1,4 +1,4 @@
-import type { Analysis } from '../lib/schema'
+import { ScanMetaSchema, type Analysis } from '../lib/schema'
 
 const TYPE_LABELS: Record<Analysis['document']['type'], string> = {
   faktura: 'Faktura',
@@ -88,10 +88,20 @@ function FactTable({
 
 export function Results({ result }: { result: Analysis }) {
   const doc = result.document
+  const scan = ScanMetaSchema.safeParse(result.meta) // present only for results read by OCR
   return (
     <section className="results" aria-labelledby="results-title">
       <h2 id="results-title">{doc.title ?? doc.fileName}</h2>
       <p className="subtitle">Plik: {doc.fileName}</p>
+      {scan.success && (
+        <p className="scan-notice">
+          Ten PDF to skan bez warstwy tekstowej, więc treść odczytano z obrazów stron (OCR)
+          {scan.data.pagesAnalyzed < doc.pages
+            ? `: z pierwszych ${scan.data.pagesAnalyzed} z ${doc.pages} stron`
+            : ''}
+          . Pojedyncze znaki mogą być odczytane błędnie.
+        </p>
+      )}
       <dl className="facts">
         <div>
           <dt>Typ</dt>

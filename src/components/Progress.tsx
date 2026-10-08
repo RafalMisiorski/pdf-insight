@@ -2,8 +2,16 @@ import { useEffect, useState, type ReactNode } from 'react'
 
 // The two phases in which the user waits; App keeps them in its state.
 export type ProgressState =
-  | { phase: 'reading'; fileName: string; page: number; pages: number } // pages = 0 until known
-  | { phase: 'analyzing'; fileName: string; parts: number; partsDone: number; startedAt: number }
+  // pages = 0 until known; ocr = a scan whose page images are being prepared for the model
+  | { phase: 'reading'; fileName: string; page: number; pages: number; ocr?: boolean }
+  | {
+      phase: 'analyzing'
+      fileName: string
+      parts: number
+      partsDone: number
+      startedAt: number
+      ocr?: boolean
+    }
 
 type Step = { label: string; status: 'done' | 'current' | 'pending'; detail?: ReactNode }
 
@@ -34,7 +42,7 @@ export function Progress({ state }: { state: ProgressState }) {
   const reading = state.phase === 'reading'
   const steps: Step[] = [
     {
-      label: 'Odczyt tekstu z PDF',
+      label: state.ocr ? 'Skan bez warstwy tekstowej: obrazy stron do OCR' : 'Odczyt tekstu z PDF',
       status: reading ? 'current' : 'done',
       detail: reading && state.pages > 0 ? `strona ${state.page} z ${state.pages}` : undefined,
     },

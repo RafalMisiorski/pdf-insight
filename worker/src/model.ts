@@ -8,7 +8,15 @@ import {
   type MergedSummary,
   type ModelOutput,
 } from '../../src/lib/schema'
-import { MERGE_PROMPT, SYSTEM_PROMPT, retryMessage, wrapDocument, wrapParts } from './prompt'
+import {
+  MERGE_PROMPT,
+  SCAN_PROMPT,
+  SYSTEM_PROMPT,
+  retryMessage,
+  scanMessage,
+  wrapDocument,
+  wrapParts,
+} from './prompt'
 
 // Failures the Worker maps to HTTP statuses and Polish messages.
 export type ModelErrorKind = 'rate_limited' | 'timeout' | 'upstream' | 'invalid_output'
@@ -23,13 +31,15 @@ export class ModelError extends Error {
   }
 }
 
-type Content = { role: 'user' | 'model'; parts: { text: string }[] }
+// A message part is text or, for scans, an inline JPEG page image in base64.
+type Part = { text: string } | { inline_data: { mime_type: string; data: string } }
+type Content = { role: 'user' | 'model'; parts: Part[] }
 
 // One kind of model call: its rules, the JSON schema the answer must follow, the message and the check.
 type Task<T> = {
   systemPrompt: string
   jsonSchema: unknown
-  userText: string
+  userParts: Part[]
   check: (raw: unknown) => Check<T>
 }
 
@@ -106,7 +116,7 @@ async function runValidated<T>(
   task: Task<T>,
   deadline: number,
 ): Promise<T> {
-  const contents: Content[] = [{ role: 'user', parts: [{ text: task.userText }] }]
+  const contents: Content[] = [{ role: 'user', parts: task.userParts }]
   let problems: string[] = []
   for (let attempt = 1; attempt <= 2; attempt++) {
     const remaining = deadline - Date.now()
@@ -144,7 +154,7 @@ export function analyze(
     {
       systemPrompt: SYSTEM_PROMPT,
       jsonSchema: modelOutputJsonSchema,
-      userText: wrapDocument(documentText),
+      userParts: [{ text: wrapDocument(documentText) }],
       check: checkModelOutput,
     },
     deadline,
@@ -164,8 +174,32 @@ export function mergeSummaries(
     {
       systemPrompt: MERGE_PROMPT,
       jsonSchema: mergedSummaryJsonSchema,
-      userText: wrapParts(parts),
+      userParts: [{ text: wrapParts(parts) }],
       check: checkMergedSummary,
+    },
+    deadline,
+  )
+}
+
+// Scans: a short instruction, then one inline JPEG part per page, with the same check and retry.
+export function analyzeScan(
+  apiKey: string,
+  model: string,
+  images: string[],
+  totalPages: number,
+  deadline = Date.now() + BUDGET_MS,
+): Promise<ModelOutput> {
+  return runValidated(
+    apiKey,
+    model,
+    {
+      systemPrompt: SCAN_PROMPT,
+      jsonSchema: modelOutputJsonSchema,
+      userParts: [
+        { text: scanMessage(images.length, totalPages) },
+        ...images.map((data) => ({ inline_data: { mime_type: 'image/jpeg', data } })),
+      ],
+      check: checkModelOutput,
     },
     deadline,
   )

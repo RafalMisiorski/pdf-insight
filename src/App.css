@@ -396,3 +396,12 @@ button:disabled {
   background: var(--bg);
   font-size: 0.9rem;
 }
+
+.scan-notice {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background: var(--surface);
+}
