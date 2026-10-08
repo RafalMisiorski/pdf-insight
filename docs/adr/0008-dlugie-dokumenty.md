@@ -49,4 +49,9 @@ Według reguły L = 398 tys. znaków, czyli cały obecny limit ścieżki tekstow
 
 ## Wynik pomiaru ścieżki z podziałem
 
-(po wdrożeniu: 2 przebiegi na produkcji)
+| długość tekstu   | stron | fragmentów | czas od wgrania do wyniku | wstawione fakty |
+| ---------------- | ----- | ---------- | ------------------------- | --------------- |
+| 797 tys. znaków  | 185   | 2          | 16,1 s i 23,2 s           | 9/9 i 9/9       |
+| 1,197 mln znaków | 279   | 3          | 14,1 s i 18,6 s           | 9/9 i 9/9       |
+
+Pomiar: 2026-10-08, produkcja, 2 przebiegi. Kryterium jest spełnione, więc ścieżka zostaje. Zapas jest mniejszy niż przy jednym wywołaniu (najgorszy przebieg 23,2 s wobec 30 s), bo dochodzi runda scalania, a czas zależy od najwolniejszego fragmentu. Dane: `eval/longdoc/pdf_split/`.

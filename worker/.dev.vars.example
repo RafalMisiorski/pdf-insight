@@ -1,0 +1,2 @@
+# Copy to worker/.dev.vars and fill in. The real file is git-ignored.
+GEMINI_API_KEY=

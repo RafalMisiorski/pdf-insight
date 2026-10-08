@@ -12,3 +12,4 @@ Każda decyzja ma kontekst, decyzję, odrzucone opcje, dowód i warunek powrotu.
 | [0006](0006-strategia-testow.md)          | Vitest i Playwright w trzech przeglądarkach z zamockowanym API              | 4 celowe usterki wykryte                                          |
 | [0007](0007-limity-zapytan.md)            | dokładne limity w Durable Object                                            | 429 od 11. żądania na produkcji                                   |
 | [0008](0008-dlugie-dokumenty.md)          | jedno wywołanie do 400 tys. znaków, dzielenie tylko powyżej                 | 98–398 tys. znaków: 7,5–9 s, 9/9 faktów                           |
+| [0009](0009-ocr-skanow.md)                | OCR skanów przez obrazy stron, limit stron z pomiaru                        | (po pomiarze)                                                     |
