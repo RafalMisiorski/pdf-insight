@@ -28,9 +28,18 @@ const GeminiResponseSchema = z.object({
     .optional(),
 })
 
-const TIMEOUT_MS = 25_000 // the brief wants results in under 30 seconds
+// The brief wants results in under 30 seconds, so one budget covers the whole analysis, retry included,
+// and leaves the rest for reading the PDF in the browser and the network.
+export const BUDGET_MS = 27_000
+// A retry with less time left than this would most likely end in a timeout, so it is skipped.
+export const MIN_RETRY_MS = 8_000
 
-async function generate(apiKey: string, model: string, contents: Content[]): Promise<string> {
+async function generate(
+  apiKey: string,
+  model: string,
+  contents: Content[],
+  timeoutMs: number,
+): Promise<string> {
   let res: Response
   try {
     res = await fetch(
@@ -49,7 +58,7 @@ async function generate(apiKey: string, model: string, contents: Content[]): Pro
             thinkingConfig: { thinkingLevel: 'low' }, // extraction needs little reasoning; keeps latency down
           },
         }),
-        signal: AbortSignal.timeout(TIMEOUT_MS),
+        signal: AbortSignal.timeout(timeoutMs),
       },
     )
   } catch {
@@ -71,16 +80,20 @@ function parseJson(text: string): unknown {
   }
 }
 
-// One call, then at most one retry when the answer is not valid JSON or fails the schema (rule from the brief).
+// One call, then at most one retry when the answer is not valid JSON or fails the schema (rule from the brief),
+// all within one deadline. `deadline` is a parameter so tests can start with little time left.
 export async function analyze(
   apiKey: string,
   model: string,
   documentText: string,
+  deadline = Date.now() + BUDGET_MS,
 ): Promise<ModelOutput> {
   const contents: Content[] = [{ role: 'user', parts: [{ text: wrapDocument(documentText) }] }]
   let problems: string[] = []
   for (let attempt = 1; attempt <= 2; attempt++) {
-    const answer = await generate(apiKey, model, contents)
+    const remaining = deadline - Date.now()
+    if (attempt > 1 && remaining < MIN_RETRY_MS) break // too little time left for a useful retry
+    const answer = await generate(apiKey, model, contents, remaining)
     const check = checkModelOutput(parseJson(answer))
     if (check.ok) return check.value
     problems = check.problems
