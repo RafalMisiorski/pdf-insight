@@ -23,3 +23,7 @@ Brief: wynik zgodny ze schematem i walidowany przed wyświetleniem, jedno ponowi
 ## Dowód
 
 Testy jednostkowe `worker/src/model.test.ts` (ponowienie, brak ponowienia przy małym zapasie, timeout równy budżetowi, 429), `src/api/analyze.test.ts` i `src/lib/sentences.test.ts`. Test E2E: odpowiedź niezgodna ze schematem nie jest wyświetlana.
+
+## Po teście na dokumencie firmy (2026-10-08)
+
+Dokument testowy (12 stron, 47 kwot, 28 dat) zajął 25 s od wgrania do wyniku: w budżecie, ale z małym zapasem. Odpowiedź miała około 7,8 tys. znaków JSON, 4–8 razy więcej niż na treningu, a czas rośnie z długością odpowiedzi. Po teście nie zmieniałem modelu wejścia (test hasha), tylko komunikat o oczekiwanym czasie. Warunek powrotu do decyzji: jeśli dokumenty gęstsze w dane mają przekraczać budżet, wyciągamy grupy pól równolegle.

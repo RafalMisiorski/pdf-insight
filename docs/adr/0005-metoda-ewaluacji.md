@@ -16,7 +16,7 @@ Jakość wyników AI to 20% oceny. Dokument od firmy jest jedynym dokumentem spo
 
 ## Dowód (2026-10-08)
 
-114/114 sprawdzeń na tekście z pypdf, 139/139 przez interfejs lokalnie i 138/138 przez interfejs na produkcji (bez pliku 11 MB, którego nie ma w repozytorium).
+114/114 sprawdzeń na tekście z pypdf, 139/139 przez interfejs lokalnie i 138/138 przez interfejs na produkcji (bez pliku 11 MB, którego nie ma w repozytorium). Po włączeniu OCR (ADR-0009) na produkcji: 156/156, łącznie ze skanem T08.
 
 ## Kiedy wrócić do decyzji
 

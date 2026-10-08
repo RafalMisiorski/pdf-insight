@@ -1,6 +1,6 @@
 # ADR-0009: OCR skanów przez obrazy stron
 
-Status: projekt i reguła decyzji zapisane przed implementacją i pomiarem (2026-10-08)
+Status: przyjęta (2026-10-08); reguła decyzji zapisana przed implementacją i pomiarem
 
 ## Kontekst
 
@@ -24,4 +24,12 @@ Brief (COULD F-10): skany bez warstwy tekstowej. Worker na planie darmowym ma 10
 
 ## Wynik
 
-(uzupełniane po pomiarze)
+| skan                | stron | przebieg 1 | przebieg 2 | wynik                                           |
+| ------------------- | ----- | ---------- | ---------- | ----------------------------------------------- |
+| T08 (faktura T01)   | 1     | 8,4 s      | 7,5 s      | 18/18 i 18/18 sprawdzeń etykiety T01            |
+| S04 (regulamin T06) | 4     | 8,5 s      | 5,9 s      | bez błędu; opłata 49 zł z § 17 odczytana        |
+| S08 (regulamin T06) | 8     | 8,0 s      | 8,5 s      | bez błędu; 49 zł i kara 500 zł z § 44 odczytane |
+
+Pomiar: 2026-10-08, produkcja, przez interfejs. Według reguły N = 8 (największa liczba stron z {1, 4, 8}, przy której oba przebiegi zmieściły się w 30 s bez błędu), a T08 przekroczył próg 16/18, więc OCR zostaje włączony z limitem 8 stron. Czas prawie nie zależy od liczby stron. Rozdzielczość obrazu dla modelu jest domyślna: przykład z dokumentacji dotyczył innego formatu API niż `generateContent`, więc nie ustawiałem pola, którego nie mogłem potwierdzić.
+
+Dodatkowo (poza regułą, lokalnie): 20 faktur z moich wcześniejszych trudnych skanów (zdjęcia, skany o złej jakości, uszkodzone), 15 z nich z pułapkami w wydrukowanych wartościach. Wynik: 160 ze 160 sprawdzeń (typ, numer, trzy daty, trzy sumy), 6,4–11,1 s na dokument. Skrypt oceny przeszedł kontrolę negatywną: dwa celowo zepsute fakty dały dokładnie 158/160.

@@ -62,13 +62,14 @@ python eval/score.py   # porównanie z etykietami
 
 Zbiór treningowy ([`eval/`](eval/README.md)) jest syntetyczny i zaprojektowany wyłącznie na podstawie briefu. Zawiera m.in. fakturę, ofertę w dwóch walutach, raport po angielsku, umowę najmu, notatkę bez dat i kwot, długi regulamin, pro formę ze wstrzykniętą instrukcją i fakturę, której wydrukowane sumy nie zgadzają się z pozycjami.
 
-| pomiar (2026-10-08)                                                            | wynik                                    |
-| ------------------------------------------------------------------------------ | ---------------------------------------- |
-| zbiór treningowy przez interfejs, wdrożona wersja                              | 138 ze 138 sprawdzeń, 4–10 s na dokument |
-| długie teksty, 98–398 tys. znaków (23–93 strony)                               | 7,5–9 s, 9 z 9 wstawionych faktów        |
-| bardzo długie teksty, 0,8–1,2 mln znaków (185–279 stron), fragmenty i scalenie | 14–23 s, 9 z 9 wstawionych faktów        |
-| skan bez warstwy tekstowej (T08, fakty jak w T01), OCR                         | (po pomiarze na produkcji)               |
-| dokument testowy od firmy, jedno uruchomienie                                  | (po końcowym uruchomieniu)               |
+| pomiar (2026-10-08)                                                                                | wynik                                                                               |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| zbiór treningowy przez interfejs, wdrożona wersja (z OCR skanu)                                    | 156 ze 156 sprawdzeń, 4–10 s na dokument                                            |
+| długie teksty, 98–398 tys. znaków (23–93 strony)                                                   | 7,5–9 s, 9 z 9 wstawionych faktów                                                   |
+| bardzo długie teksty, 0,8–1,2 mln znaków (185–279 stron), fragmenty i scalenie                     | 14–23 s, 9 z 9 wstawionych faktów                                                   |
+| skany przez OCR: T08 (fakty jak w T01) i skany 4 i 8 stron                                         | 6–9 s, T08: 18 z 18 sprawdzeń                                                       |
+| 20 trudnych skanów faktur (zdjęcia, uszkodzone skany) z mojego wcześniejszego benchmarku, lokalnie | 160 ze 160 sprawdzeń, 6–11 s                                                        |
+| dokument testowy od firmy (12 stron), jedno uruchomienie                                           | 9/10 w ręcznej ocenie, 25 s; wszystkie kwoty, daty i osoby z wyniku są w dokumencie |
 
 ## Bezpieczeństwo
 
@@ -83,6 +84,7 @@ Zbiór treningowy ([`eval/`](eval/README.md)) jest syntetyczny i zaprojektowany 
 - Tekst dokumentu trafia do zewnętrznego API (Google Gemini, plan płatny). Strona informuje o tym przy wyborze pliku.
 - Przy limicie dostawcy albo dziennym limicie demo aplikacja pokazuje komunikat, a ponowienie zostawia użytkownikowi.
 - Dokumenty dłuższe niż około 1,6 mln znaków tekstu są odrzucane. Powyżej 400 tys. znaków analiza to kilka wywołań modelu.
+- Czas analizy rośnie z liczbą wyciągniętych faktów, bo zależy głównie od długości odpowiedzi modelu. Dokument testowy (dziesiątki kwot i terminów) zajął 25 s, a jeszcze gęstszy może przekroczyć budżet 27 s i skończyć się komunikatem o przekroczeniu czasu. Następny krok: równoległe wyciąganie grup pól (kwoty, daty, reszta), tak żeby czas zależał od najdłuższej grupy, a nie od sumy.
 - Limit na IP nie zatrzyma kogoś, kto zmienia adresy. Ostatnią zaporą jest dzienny limit demo i przedpłata u dostawcy.
 
 ## Struktura
