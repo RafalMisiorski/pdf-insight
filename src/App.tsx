@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { analyzeDocument } from './api/analyze'
 import { DropZone } from './components/DropZone'
+import { History } from './components/History'
 import { Results } from './components/Results'
 import { checkPdfFile } from './lib/file'
+import { addToHistory, clearHistory, loadHistory, type HistoryEntry } from './lib/history'
 import type { ExtractedText } from './lib/pdf'
 import type { Analysis, AnalyzeRequest } from './lib/schema'
 import './App.css'
@@ -17,12 +19,15 @@ type State =
 
 export default function App() {
   const [state, setState] = useState<State>({ phase: 'idle' })
+  const [history, setHistory] = useState<HistoryEntry[]>(loadHistory) // read once, on the first render
   const busy = state.phase === 'reading' || state.phase === 'analyzing'
 
   async function analyze(request: AnalyzeRequest) {
     setState({ phase: 'analyzing', fileName: request.fileName })
     try {
-      setState({ phase: 'done', result: await analyzeDocument(request) })
+      const result = await analyzeDocument(request)
+      setState({ phase: 'done', result })
+      setHistory(addToHistory(result, history))
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Nieznany błąd.'
       setState({ phase: 'error', message, retry: request }) // a retry re-sends the same text
@@ -94,6 +99,13 @@ export default function App() {
       )}
 
       {state.phase === 'done' && <Results result={state.result} />}
+
+      <History
+        entries={history}
+        disabled={busy}
+        onOpen={(result) => setState({ phase: 'done', result })}
+        onClear={() => setHistory(clearHistory())}
+      />
     </main>
   )
 }

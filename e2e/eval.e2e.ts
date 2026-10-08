@@ -44,7 +44,7 @@ for (const file of files) {
     await page.goto('./')
     const started = Date.now()
     await page.getByLabel(/Przeciągnij plik PDF/).setInputFiles(path.join(inputDir, file))
-    const result = page.getByRole('heading', { level: 2 })
+    const result = page.locator('#results-title')
     const failure = page.getByRole('alert')
     await expect(result.or(failure)).toBeVisible({ timeout: 150_000 })
     const ms = Date.now() - started

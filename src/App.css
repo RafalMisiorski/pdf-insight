@@ -202,3 +202,50 @@ button {
   white-space: pre;
   overflow-wrap: normal;
 }
+
+.history {
+  margin-top: 32px;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.history h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.history ul {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history li {
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+
+button.link {
+  padding: 0;
+  background: none;
+  color: var(--accent);
+  text-align: left;
+  text-decoration: underline;
+}
+
+button.secondary {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

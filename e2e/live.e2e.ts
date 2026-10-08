@@ -12,7 +12,7 @@ test('wdrożona aplikacja analizuje fakturę od wgrania do pobrania JSON', async
     .getByLabel(/Przeciągnij plik PDF/)
     .setInputFiles(path.join(import.meta.dirname, 'fixtures', 'faktura.pdf'))
 
-  await expect(page.getByRole('heading', { level: 2 })).toBeVisible({ timeout: 90_000 })
+  await expect(page.locator('#results-title')).toBeVisible({ timeout: 90_000 })
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('button', { name: 'Pobierz JSON' }).click()
   const saved: unknown = JSON.parse(readFileSync(await (await downloadPromise).path(), 'utf8'))

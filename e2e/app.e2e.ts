@@ -45,7 +45,7 @@ const success: Reply = (route, request) =>
   })
 
 const fileInput = (page: Page) => page.getByLabel(/Przeciągnij plik PDF/)
-const resultTitle = (page: Page) => page.getByRole('heading', { level: 2 })
+const resultTitle = (page: Page) => page.locator('#results-title')
 const alert = (page: Page) => page.getByRole('alert')
 
 test.beforeEach(async ({ page }) => {
@@ -233,4 +233,59 @@ test('dostępność: axe bez naruszeń w stanie pustym, błędu i wyniku, w obu 
     await expect(resultTitle(page)).toBeVisible()
     expect(await violations(), `wynik, ${colorScheme}`).toEqual([])
   }
+})
+
+test.describe('historia w przeglądarce', () => {
+  const STORAGE_KEY = 'pdf-insight:history'
+
+  test('wynik wraca po odświeżeniu bez nowego żądania i znika po wyczyszczeniu', async ({
+    page,
+  }) => {
+    const requests = await mockApi(page, success)
+    await fileInput(page).setInputFiles(fixture('faktura.pdf'))
+    await expect(resultTitle(page)).toBeVisible()
+
+    await page.reload()
+    const history = page.getByRole('region', { name: 'Ostatnie analizy' })
+    await history.getByRole('button', { name: 'FAKTURA VAT nr FV/2026/09/0117' }).click()
+    await expect(resultTitle(page)).toHaveText('FAKTURA VAT nr FV/2026/09/0117')
+    expect(requests).toHaveLength(1) // opened from history, not analysed again
+
+    await history.getByRole('button', { name: 'Wyczyść historię' }).click()
+    await expect(history).toHaveCount(0)
+    await page.reload()
+    await expect(page.getByRole('region', { name: 'Ostatnie analizy' })).toHaveCount(0)
+  })
+
+  test('trzyma 5 ostatnich wyników, najnowszy na górze', async ({ page }) => {
+    const old = (n: number) => ({
+      savedAt: `2026-10-0${n}T10:00:00.000Z`,
+      result: { ...analysis, document: { ...analysis.document, title: `Starszy ${n}` } },
+    })
+    await page.addInitScript(([key, value]) => localStorage.setItem(key, value), [
+      STORAGE_KEY,
+      JSON.stringify([5, 4, 3, 2, 1].map(old)),
+    ] as const)
+    await page.goto('./')
+    await mockApi(page, success)
+    await fileInput(page).setInputFiles(fixture('faktura.pdf'))
+    await expect(resultTitle(page)).toBeVisible()
+
+    const items = page.getByRole('region', { name: 'Ostatnie analizy' }).getByRole('listitem')
+    await expect(items).toHaveCount(5)
+    await expect(items.first()).toContainText('FAKTURA VAT nr FV/2026/09/0117')
+    await expect(items.last()).toContainText('Starszy 2') // the oldest entry dropped out
+  })
+
+  test('uszkodzone dane w localStorage nie psują aplikacji', async ({ page }) => {
+    await page.addInitScript(([key]) => localStorage.setItem(key, '{to nie jest JSON'), [
+      STORAGE_KEY,
+    ] as const)
+    await page.goto('./')
+    await expect(page.getByText('Nie wybrano jeszcze pliku.')).toBeVisible()
+    await expect(page.getByRole('region', { name: 'Ostatnie analizy' })).toHaveCount(0)
+    await mockApi(page, success)
+    await fileInput(page).setInputFiles(fixture('faktura.pdf'))
+    await expect(resultTitle(page)).toBeVisible()
+  })
 })
