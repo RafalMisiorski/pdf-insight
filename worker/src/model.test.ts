@@ -1,8 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { analyze, BUDGET_MS, ModelError } from './model'
+import { modelOutputJsonSchema, type ModelOutput } from '../../src/lib/schema'
+import { analyze, BUDGET_MS, mergeSummaries, ModelError } from './model'
+import { MERGE_PROMPT, SYSTEM_PROMPT, wrapDocument } from './prompt'
 
 // A model answer that passes the schema and the 3-5 sentence rule.
-const VALID = {
+const VALID: ModelOutput = {
   document: { language: 'pl', type: 'inne', title: null, date: null },
   summary: 'Pierwsze zdanie. Drugie zdanie. Trzecie zdanie.',
   keyPoints: ['a', 'b', 'c'],
@@ -64,5 +66,31 @@ describe('analyze', () => {
   it('maps HTTP 429 from the provider to rate_limited', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(geminiReply('', 429)))
     await expect(analyze('key', 'model', 'tekst')).rejects.toMatchObject({ kind: 'rate_limited' })
+  })
+})
+
+describe('the request sent to Gemini', () => {
+  it('uses the frozen text-path prompt, wrapper and schema', async () => {
+    const fetch = vi.fn().mockResolvedValue(geminiReply(JSON.stringify(VALID)))
+    vi.stubGlobal('fetch', fetch)
+    await analyze('key', 'model', 'tekst')
+    const body = JSON.parse(fetch.mock.calls[0][1].body)
+    expect(body.systemInstruction.parts[0].text).toBe(SYSTEM_PROMPT)
+    expect(body.contents[0].parts[0].text).toBe(wrapDocument('tekst'))
+    expect(body.generationConfig.responseJsonSchema).toEqual(modelOutputJsonSchema)
+  })
+
+  it('merges summaries with the merge prompt and retries a summary that is too short', async () => {
+    const short = { summary: 'Za krótko.', keyPoints: ['a', 'b', 'c'] }
+    const good = { summary: 'Jedno. Dwa. Trzy.', keyPoints: ['a', 'b', 'c'] }
+    const fetch = vi
+      .fn()
+      .mockResolvedValueOnce(geminiReply(JSON.stringify(short)))
+      .mockResolvedValueOnce(geminiReply(JSON.stringify(good)))
+    vi.stubGlobal('fetch', fetch)
+    await expect(mergeSummaries('key', 'model', [VALID, VALID])).resolves.toMatchObject(good)
+    expect(fetch).toHaveBeenCalledTimes(2)
+    const firstBody = JSON.parse(fetch.mock.calls[0][1].body)
+    expect(firstBody.systemInstruction.parts[0].text).toBe(MERGE_PROMPT)
   })
 })

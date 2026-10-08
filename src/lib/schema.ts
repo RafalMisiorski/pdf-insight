@@ -44,6 +44,11 @@ export const AnalysisSchema = ModelOutputSchema.extend({
 export type ModelOutput = z.infer<typeof ModelOutputSchema>
 export type Analysis = z.infer<typeof AnalysisSchema>
 
+// Text limits shared by the app and the Worker. One request carries at most MAX_TEXT_CHARS characters;
+// a longer document is split into at most MAX_PARTS fragments (docs/adr/0008-dlugie-dokumenty.md).
+export const MAX_TEXT_CHARS = 400_000
+export const MAX_PARTS = 4
+
 // What the app sends to the Worker.
 export const AnalyzeRequestSchema = z.object({
   fileName: z.string().min(1).max(255),
@@ -52,14 +57,41 @@ export const AnalyzeRequestSchema = z.object({
 })
 export type AnalyzeRequest = z.infer<typeof AnalyzeRequestSchema>
 
+// What the app sends to merge the analysed fragments of one long document.
+export const MergeRequestSchema = z.object({
+  fileName: z.string().min(1).max(255),
+  pages: z.number().int().min(1).max(5000),
+  parts: z.array(ModelOutputSchema).min(2).max(MAX_PARTS),
+})
+export type MergeRequest = z.infer<typeof MergeRequestSchema>
+
+// What the model writes when merging: only the fields that need reading across all fragments.
+export const MergedSummarySchema = z.looseObject({
+  summary: z.string().min(1),
+  keyPoints: z.array(z.string().min(1)).min(3).max(7),
+})
+export type MergedSummary = z.infer<typeof MergedSummarySchema>
+
 // JSON Schema derived from the same Zod schema, so the model and the validator cannot drift apart.
 export const modelOutputJsonSchema = z.toJSONSchema(ModelOutputSchema)
+export const mergedSummaryJsonSchema = z.toJSONSchema(MergedSummarySchema)
 
-export type Check = { ok: true; value: ModelOutput } | { ok: false; problems: string[] }
+export type Check<T = ModelOutput> = { ok: true; value: T } | { ok: false; problems: string[] }
 
 // Zod checks the shape; the 3-5 sentence rule for the summary is checked separately.
 export function checkModelOutput(raw: unknown): Check {
-  const parsed = ModelOutputSchema.safeParse(raw)
+  return checkWithSummary(ModelOutputSchema, raw)
+}
+
+export function checkMergedSummary(raw: unknown): Check<MergedSummary> {
+  return checkWithSummary(MergedSummarySchema, raw)
+}
+
+function checkWithSummary<T extends { summary: string }>(
+  schema: z.ZodType<T>,
+  raw: unknown,
+): Check<T> {
+  const parsed = schema.safeParse(raw)
   if (!parsed.success) {
     return {
       ok: false,

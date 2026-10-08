@@ -10,7 +10,6 @@ workers_dev = true
 [vars]
 ALLOWED_ORIGIN = "https://rafalmisiorski.github.io"
 MODEL = "gemini-3.8-flash"
-MAX_TEXT_CHARS = "400000"
 # Analyses per UTC day for the whole demo: keeps the prepaid model budget for the review period.
 DAILY_LIMIT = "50"
 

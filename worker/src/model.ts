@@ -1,6 +1,14 @@
 import { z } from 'zod'
-import { checkModelOutput, modelOutputJsonSchema, type ModelOutput } from '../../src/lib/schema'
-import { SYSTEM_PROMPT, retryMessage, wrapDocument } from './prompt'
+import {
+  checkMergedSummary,
+  checkModelOutput,
+  mergedSummaryJsonSchema,
+  modelOutputJsonSchema,
+  type Check,
+  type MergedSummary,
+  type ModelOutput,
+} from '../../src/lib/schema'
+import { MERGE_PROMPT, SYSTEM_PROMPT, retryMessage, wrapDocument, wrapParts } from './prompt'
 
 // Failures the Worker maps to HTTP statuses and Polish messages.
 export type ModelErrorKind = 'rate_limited' | 'timeout' | 'upstream' | 'invalid_output'
@@ -16,6 +24,14 @@ export class ModelError extends Error {
 }
 
 type Content = { role: 'user' | 'model'; parts: { text: string }[] }
+
+// One kind of model call: its rules, the JSON schema the answer must follow, the message and the check.
+type Task<T> = {
+  systemPrompt: string
+  jsonSchema: unknown
+  userText: string
+  check: (raw: unknown) => Check<T>
+}
 
 // Only the fields we read from Gemini's answer; anything else in the response is ignored.
 const GeminiResponseSchema = z.object({
@@ -37,6 +53,8 @@ export const MIN_RETRY_MS = 8_000
 async function generate(
   apiKey: string,
   model: string,
+  systemPrompt: string,
+  jsonSchema: unknown,
   contents: Content[],
   timeoutMs: number,
 ): Promise<string> {
@@ -49,11 +67,11 @@ async function generate(
         // The key goes in a header, not in the URL, so it never lands in URL logs.
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
         body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          systemInstruction: { parts: [{ text: systemPrompt }] },
           contents,
           generationConfig: {
             responseMimeType: 'application/json',
-            responseJsonSchema: modelOutputJsonSchema, // constrained decoding to our schema
+            responseJsonSchema: jsonSchema, // constrained decoding to our schema
             temperature: 0.2,
             thinkingConfig: { thinkingLevel: 'low' }, // extraction needs little reasoning; keeps latency down
           },
@@ -80,21 +98,28 @@ function parseJson(text: string): unknown {
   }
 }
 
-// One call, then at most one retry when the answer is not valid JSON or fails the schema (rule from the brief),
-// all within one deadline. `deadline` is a parameter so tests can start with little time left.
-export async function analyze(
+// One call, then at most one retry when the answer is not valid JSON or fails its check (rule from the
+// brief), all within one deadline.
+async function runValidated<T>(
   apiKey: string,
   model: string,
-  documentText: string,
-  deadline = Date.now() + BUDGET_MS,
-): Promise<ModelOutput> {
-  const contents: Content[] = [{ role: 'user', parts: [{ text: wrapDocument(documentText) }] }]
+  task: Task<T>,
+  deadline: number,
+): Promise<T> {
+  const contents: Content[] = [{ role: 'user', parts: [{ text: task.userText }] }]
   let problems: string[] = []
   for (let attempt = 1; attempt <= 2; attempt++) {
     const remaining = deadline - Date.now()
     if (attempt > 1 && remaining < MIN_RETRY_MS) break // too little time left for a useful retry
-    const answer = await generate(apiKey, model, contents, remaining)
-    const check = checkModelOutput(parseJson(answer))
+    const answer = await generate(
+      apiKey,
+      model,
+      task.systemPrompt,
+      task.jsonSchema,
+      contents,
+      remaining,
+    )
+    const check = task.check(parseJson(answer))
     if (check.ok) return check.value
     problems = check.problems
     contents.push(
@@ -103,4 +128,45 @@ export async function analyze(
     )
   }
   throw new ModelError('invalid_output', problems)
+}
+
+// The text path: one document (or one fragment of a long one) in, the full analysis out.
+// `deadline` is a parameter so tests can start with little time left.
+export function analyze(
+  apiKey: string,
+  model: string,
+  documentText: string,
+  deadline = Date.now() + BUDGET_MS,
+): Promise<ModelOutput> {
+  return runValidated(
+    apiKey,
+    model,
+    {
+      systemPrompt: SYSTEM_PROMPT,
+      jsonSchema: modelOutputJsonSchema,
+      userText: wrapDocument(documentText),
+      check: checkModelOutput,
+    },
+    deadline,
+  )
+}
+
+// Long documents: one summary and key points across all fragments; their facts are merged by code.
+export function mergeSummaries(
+  apiKey: string,
+  model: string,
+  parts: ModelOutput[],
+  deadline = Date.now() + BUDGET_MS,
+): Promise<MergedSummary> {
+  return runValidated(
+    apiKey,
+    model,
+    {
+      systemPrompt: MERGE_PROMPT,
+      jsonSchema: mergedSummaryJsonSchema,
+      userText: wrapParts(parts),
+      check: checkMergedSummary,
+    },
+    deadline,
+  )
 }
