@@ -1,20 +1,28 @@
 import { AnalyzeRequestSchema, type Analysis } from '../../src/lib/schema'
 import { ModelError, analyze, type ModelErrorKind } from './model'
+import type { RateLimiter } from './rateLimiter'
 
-// Minimal shape of Cloudflare's rate-limiting binding (configured in wrangler.toml).
-interface RateLimiter {
-  limit(options: { key: string }): Promise<{ success: boolean }>
-}
+// The Durable Object class must be exported from the Worker's main module.
+export { RateLimiter } from './rateLimiter'
 
 interface Env {
   GEMINI_API_KEY: string // secret: `wrangler secret put GEMINI_API_KEY`, locally from .dev.vars
   ALLOWED_ORIGIN: string // the only browser origin allowed to call this API
   MODEL: string
   MAX_TEXT_CHARS: string
-  LIMITER?: RateLimiter // absent in some local setups, so the check is optional
+  DAILY_LIMIT: string // analyses per UTC day for the whole demo
+  RATE_LIMITER: DurableObjectNamespace<RateLimiter>
 }
 
 const MAX_BODY_BYTES = 2_000_000
+const PER_IP_PER_MINUTE = 10
+const MINUTE_MS = 60_000
+const DAY_MS = 86_400_000
+
+// Asks the Durable Object for `key` whether one more request fits into its window.
+function take(env: Env, key: string, limit: number, windowMs: number): Promise<boolean> {
+  return env.RATE_LIMITER.get(env.RATE_LIMITER.idFromName(key)).take(limit, windowMs)
+}
 
 const MODEL_ERRORS: Record<ModelErrorKind, { status: number; message: string }> = {
   rate_limited: {
@@ -62,9 +70,9 @@ export default {
       return json({ error: 'Nie znaleziono.' }, 404, cors)
     }
 
-    // Rate limit per client IP (approximate: counted per Cloudflare location).
+    // Per-IP limit before anything else is read, so a flood costs almost nothing.
     const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
-    if (env.LIMITER && !(await env.LIMITER.limit({ key: ip })).success) {
+    if (!(await take(env, `ip:${ip}`, PER_IP_PER_MINUTE, MINUTE_MS))) {
       return json({ error: 'Za dużo zapytań. Spróbuj ponownie za minutę.' }, 429, cors)
     }
 
@@ -83,6 +91,16 @@ export default {
     const input = AnalyzeRequestSchema.safeParse(body)
     if (!input.success) return json({ error: 'Nieprawidłowe żądanie.' }, 400, cors)
     if (input.data.text.length > Number(env.MAX_TEXT_CHARS)) return tooLong
+
+    // Daily cap for the whole demo, counted only for requests that would reach the model.
+    const day = new Date().toISOString().slice(0, 10) // UTC date, e.g. 2026-10-09
+    if (!(await take(env, `day:${day}`, Number(env.DAILY_LIMIT), DAY_MS))) {
+      return json(
+        { error: 'Dzienny limit analiz w tym demo został wyczerpany. Spróbuj jutro.' },
+        429,
+        cors,
+      )
+    }
 
     try {
       const output = await analyze(env.GEMINI_API_KEY, env.MODEL, input.data.text)

@@ -11,12 +11,15 @@ workers_dev = true
 ALLOWED_ORIGIN = "https://rafalmisiorski.github.io"
 MODEL = "gemini-3.8-flash"
 MAX_TEXT_CHARS = "400000"
+# Analyses per UTC day for the whole demo: keeps the prepaid model budget for the review period.
+DAILY_LIMIT = "50"
 
-# 10 analyses per minute per client IP. Approximate by design (counted per Cloudflare location).
-[[ratelimits]]
-name = "LIMITER"
-namespace_id = "1001"
+# Exact rate limits (10 per minute per IP, DAILY_LIMIT per day): one Durable Object per key.
+# Durable Objects on the Free plan must use the SQLite storage backend.
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiter"
 
-  [ratelimits.simple]
-  limit = 10
-  period = 60
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RateLimiter"]
