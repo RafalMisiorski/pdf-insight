@@ -12,16 +12,22 @@
     "preview": "vite preview",
     "worker:dev": "wrangler dev --config worker/wrangler.toml --var ALLOWED_ORIGIN:http://localhost:5173",
     "worker:deploy": "wrangler deploy --config worker/wrangler.toml",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "playwright test --project=chromium",
+    "test:live": "playwright test --project=live",
+    "eval": "playwright test --project=eval --workers=1"
   },
   "dependencies": {
+    "pdfjs-dist": "^6.4.299",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@cloudflare/workers-types": "^5.20261008.1",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
