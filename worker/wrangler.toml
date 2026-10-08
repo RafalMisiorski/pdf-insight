@@ -1,0 +1,11 @@
+# Cloudflare Worker: the API proxy between the GitHub Pages app and the LLM.
+# The LLM key is NOT in this file: production uses `npx wrangler secret put GEMINI_API_KEY`,
+# local development reads it from .dev.vars (git-ignored).
+name = "pdf-insight-api"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://rafalmisiorski.github.io"
+MODEL = "gemini-3.8-flash"
+MAX_TEXT_CHARS = "400000"
