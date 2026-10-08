@@ -1,0 +1,43 @@
+# Dependencies, builds, tool caches
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.wrangler/
+*.local
+*.log
+
+# Secrets: never commit (the LLM key lives only in Worker secrets)
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+dev.vars
+
+# Company test document: sealed test set, stays out of the public repo
+testset/*.pdf
+outputs/
+
+# Training-set file above 10 MB, generated locally for the size check
+**/X02_za_duzy_11MB.pdf
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# From the Vite template
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
