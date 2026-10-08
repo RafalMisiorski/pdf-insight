@@ -31,15 +31,19 @@ def digits(s):
 
 
 def mentions(text, phrase):
-    """True if the phrase occurs in the text. Names inflect in Polish running text ("przez Kwiaciarnię Pod
-    Różą"), so each word may differ in its last two letters; numbers are compared without spaces."""
-    if digits(phrase).lower() in digits(text).lower() or norm(phrase) in norm(text):
+    """True if the phrase occurs in the text as whole words. Numbers are compared without spaces
+    ("6 150" matches "6150,00"), but only when the phrase has digits. Longer words may change their
+    last two letters, because Polish inflects names ("przez Kwiaciarnię Pod Różą") and labels use stems
+    ("szkole" for "szkolenia"); numbers and words of up to 3 letters must match exactly, so "zł" is not
+    found inside "przyszły" and "2026" is not "2025"."""
+    if any(ch.isdigit() for ch in phrase) and digits(phrase).lower() in digits(text).lower():
         return True
     want, words = norm(phrase).split(), norm(text).split()
 
     def same(w, g):
-        keep = max(3, len(w) - 2)
-        return g[:keep] == w[:keep] and abs(len(g) - len(w)) <= 2
+        if not w.isalpha() or len(w) <= 3:
+            return g == w
+        return g.startswith(w[:max(4, len(w) - 2)])
 
     return any(all(same(w, g) for w, g in zip(want, words[i:i + len(want)])) for i in range(len(words) - len(want) + 1))
 
