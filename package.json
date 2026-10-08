@@ -13,7 +13,7 @@
     "worker:dev": "wrangler dev --config worker/wrangler.toml --var ALLOWED_ORIGIN:http://localhost:5173",
     "worker:deploy": "wrangler deploy --config worker/wrangler.toml",
     "test": "vitest run",
-    "test:e2e": "playwright test --project=chromium",
+    "test:e2e": "playwright test --project=chromium --project=firefox --project=webkit",
     "test:live": "playwright test --project=live",
     "eval": "playwright test --project=eval --workers=1"
   },

@@ -49,7 +49,7 @@ jobs:
           path: dist
 
   e2e:
-    # Browser tests (Playwright) on a production build with the analysis API mocked: no secrets needed.
+    # Browser tests (Playwright: Chromium, Firefox, WebKit) on a production build with the API mocked.
     needs: lint
     runs-on: ubuntu-latest
     steps:
@@ -59,7 +59,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps --only-shell chromium
+      - run: npx playwright install --with-deps --only-shell chromium firefox webkit
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v7
         if: failure()
