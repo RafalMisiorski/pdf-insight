@@ -1,5 +1,10 @@
 import { z } from 'zod'
-import { AnalysisSchema, type Analysis, type AnalyzeRequest } from '../lib/schema'
+import {
+  AnalysisSchema,
+  type Analysis,
+  type AnalyzeRequest,
+  type MergeRequest,
+} from '../lib/schema'
 
 // `retryable` tells the UI whether "Spróbuj ponownie" can help: not for a document that is too long.
 export class ApiError extends Error {
@@ -10,6 +15,9 @@ export class ApiError extends Error {
   }
 }
 
+// A document to analyse: its text in one part, or in fragments when it is longer than one request.
+export type AnalysisJob = { fileName: string; pages: number; parts: string[] }
+
 const SuccessSchema = z.object({ result: AnalysisSchema })
 const FailureSchema = z.object({ error: z.string() })
 
@@ -17,18 +25,15 @@ const FailureSchema = z.object({ error: z.string() })
 export const CLIENT_TIMEOUT_MS = 35_000
 const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504])
 
-// Sends the extracted text to the Worker. The answer is validated again here, so nothing that breaks
-// the schema is ever rendered, even if the Worker or the network returned something unexpected.
-export async function analyzeDocument(
-  request: AnalyzeRequest,
-  timeoutMs = CLIENT_TIMEOUT_MS,
-): Promise<Analysis> {
+// Sends one request to the Worker. The answer is validated again here, so nothing that breaks the
+// schema is ever rendered, even if the Worker or the network returned something unexpected.
+async function post(path: string, payload: unknown, timeoutMs: number): Promise<Analysis> {
   let res: Response
   try {
-    res = await fetch(`${import.meta.env.VITE_API_URL}/analyze`, {
+    res = await fetch(`${import.meta.env.VITE_API_URL}${path}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request),
+      body: JSON.stringify(payload),
       signal: AbortSignal.timeout(timeoutMs),
     })
   } catch (error) {
@@ -53,4 +58,37 @@ export async function analyzeDocument(
     throw new ApiError('Wynik analizy ma niepoprawny format. Spróbuj ponownie.', true)
   }
   return success.data.result
+}
+
+export function analyzeDocument(
+  request: AnalyzeRequest,
+  timeoutMs = CLIENT_TIMEOUT_MS,
+): Promise<Analysis> {
+  return post('/analyze', request, timeoutMs)
+}
+
+export function mergeAnalyses(
+  request: MergeRequest,
+  timeoutMs = CLIENT_TIMEOUT_MS,
+): Promise<Analysis> {
+  return post('/merge', request, timeoutMs)
+}
+
+// onPartDone reports how many fragments of a long document are done, for the progress steps.
+export async function analyzeJob(
+  job: AnalysisJob,
+  onPartDone?: (done: number) => void,
+): Promise<Analysis> {
+  const { fileName, pages, parts } = job
+  if (parts.length === 1) return analyzeDocument({ fileName, pages, text: parts[0] })
+  // Fragments are analysed in parallel, then the Worker merges their facts and writes one summary.
+  let done = 0
+  const results = await Promise.all(
+    parts.map(async (text) => {
+      const result = await analyzeDocument({ fileName, pages, text })
+      onPartDone?.((done += 1))
+      return result
+    }),
+  )
+  return mergeAnalyses({ fileName, pages, parts: results })
 }

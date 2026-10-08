@@ -1,38 +1,49 @@
 import { useState } from 'react'
-import { ApiError, analyzeDocument } from './api/analyze'
+import { ApiError, analyzeJob, type AnalysisJob } from './api/analyze'
 import { DropZone } from './components/DropZone'
 import { History } from './components/History'
+import { Progress, type ProgressState } from './components/Progress'
 import { Results } from './components/Results'
+import { splitIntoParts } from './lib/chunks'
 import { checkPdfFile } from './lib/file'
 import { addToHistory, clearHistory, loadHistory, type HistoryEntry } from './lib/history'
 import type { ExtractedText } from './lib/pdf'
-import type { Analysis, AnalyzeRequest } from './lib/schema'
+import { MAX_PARTS, MAX_TEXT_CHARS, type Analysis } from './lib/schema'
 import './App.css'
 
 // One state at a time, so the screen can never show a result and an error together.
 type State =
   | { phase: 'idle' }
-  | { phase: 'reading'; fileName: string }
-  | { phase: 'analyzing'; fileName: string }
+  | ProgressState // reading the PDF, then waiting for the analysis
   | { phase: 'done'; result: Analysis }
-  | { phase: 'error'; message: string; retry: AnalyzeRequest | null } // retry = null: choose another file
+  | { phase: 'error'; message: string; retry: AnalysisJob | null } // retry = null: choose another file
 
 export default function App() {
   const [state, setState] = useState<State>({ phase: 'idle' })
   const [history, setHistory] = useState<HistoryEntry[]>(loadHistory) // read once, on the first render
   const busy = state.phase === 'reading' || state.phase === 'analyzing'
 
-  async function analyze(request: AnalyzeRequest) {
-    setState({ phase: 'analyzing', fileName: request.fileName })
+  async function analyze(job: AnalysisJob) {
+    setState({
+      phase: 'analyzing',
+      fileName: job.fileName,
+      parts: job.parts.length,
+      partsDone: 0,
+      startedAt: Date.now(),
+    })
     try {
-      const result = await analyzeDocument(request)
+      const result = await analyzeJob(job, (partsDone) =>
+        setState((current) =>
+          current.phase === 'analyzing' ? { ...current, partsDone } : current,
+        ),
+      )
       setState({ phase: 'done', result })
       setHistory(addToHistory(result, history))
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Nieznany błąd.'
       // A retry re-sends the same text; it is not offered when it cannot help (e.g. a document too long).
       const retryable = !(error instanceof ApiError) || error.retryable
-      setState({ phase: 'error', message, retry: retryable ? request : null })
+      setState({ phase: 'error', message, retry: retryable ? job : null })
     }
   }
 
@@ -42,12 +53,14 @@ export default function App() {
       setState({ phase: 'error', message: check.message, retry: null })
       return
     }
-    setState({ phase: 'reading', fileName: file.name })
+    setState({ phase: 'reading', fileName: file.name, page: 0, pages: 0 })
     let extracted: ExtractedText
     try {
       // pdf.js is most of the bundle, so it loads with the first file instead of with the page.
       const { extractText } = await import('./lib/pdf')
-      extracted = await extractText(file)
+      extracted = await extractText(file, (page, pages) =>
+        setState({ phase: 'reading', fileName: file.name, page, pages }),
+      )
     } catch {
       setState({
         phase: 'error',
@@ -65,7 +78,20 @@ export default function App() {
       })
       return
     }
-    await analyze({ fileName: file.name, pages: extracted.pages, text: extracted.text })
+    // Text that fits one request is sent as it is; a longer one goes in fragments (docs/adr/0008).
+    const parts =
+      extracted.text.length <= MAX_TEXT_CHARS
+        ? [extracted.text]
+        : splitIntoParts(extracted.pageTexts, MAX_TEXT_CHARS)
+    if (parts.length > MAX_PARTS) {
+      setState({
+        phase: 'error',
+        message: 'Dokument jest za długi do analizy (limit to około 1,6 mln znaków tekstu).',
+        retry: null,
+      })
+      return
+    }
+    await analyze({ fileName: file.name, pages: extracted.pages, parts })
   }
 
   return (
@@ -79,13 +105,9 @@ export default function App() {
 
       <div className="status" aria-live="polite">
         {state.phase === 'idle' && <p className="muted">Nie wybrano jeszcze pliku.</p>}
-        {state.phase === 'reading' && (
-          <p className="loading">Odczytuję tekst z pliku {state.fileName}…</p>
-        )}
-        {state.phase === 'analyzing' && (
-          <p className="loading">Analizuję dokument {state.fileName}…</p>
-        )}
       </div>
+
+      {(state.phase === 'reading' || state.phase === 'analyzing') && <Progress state={state} />}
 
       {state.phase === 'error' && (
         <div className="error" role="alert">

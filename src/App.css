@@ -73,17 +73,94 @@ header p {
   margin: 16px 0;
 }
 
-.loading::before {
-  content: '';
-  display: inline-block;
-  width: 0.9em;
-  height: 0.9em;
-  margin-right: 8px;
-  border: 2px solid var(--muted);
-  border-top-color: transparent;
+/* Progress: three steps; the current one has a spinning ring around its number. */
+.progress {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.progress-title {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.steps {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.step.done,
+.step.current {
+  color: var(--text);
+}
+
+.step-marker {
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 1.7em;
+  height: 1.7em;
+  border: 2px solid var(--border);
   border-radius: 50%;
-  vertical-align: -0.1em;
-  animation: spin 0.8s linear infinite;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.step.done .step-marker {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.step.current .step-marker {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.step.current .step-marker::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border: 2px solid var(--accent);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.step-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-label {
+  font-weight: 600;
+}
+
+.step-detail {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  width: 100%;
+  margin-top: 12px;
+  accent-color: var(--accent);
 }
 
 @keyframes spin {
@@ -93,9 +170,21 @@ header p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .loading::before {
+  .step.current .step-marker::after {
     animation: none;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .error {
@@ -176,6 +265,7 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 0 12px;
+  align-items: start; /* each card as tall as its content */
 }
 
 .json-header {
@@ -199,8 +289,8 @@ button {
   border-radius: 8px;
   background: var(--bg);
   font-size: 0.85rem;
-  white-space: pre;
-  overflow-wrap: normal;
+  white-space: pre-wrap; /* long values wrap instead of hiding behind a horizontal scroll */
+  overflow-wrap: anywhere;
 }
 
 .history {
@@ -248,4 +338,61 @@ button.secondary {
 button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.subtitle {
+  margin: -6px 0 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+/* Amounts and dates: the value on one line, right next to what it refers to. */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table .num {
+  text-align: right;
+}
+
+.table .value {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.card .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card .chips li {
+  padding: 2px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.9rem;
 }

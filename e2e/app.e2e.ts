@@ -2,11 +2,12 @@ import AxeBuilder from '@axe-core/playwright'
 import { expect, test, type Page, type Route } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
-import { AnalysisSchema, type AnalyzeRequest } from '../src/lib/schema'
+import { AnalysisSchema, type AnalyzeRequest, type MergeRequest } from '../src/lib/schema'
 
 // The e2e build sends analyses to this fake address (playwright.config.ts). Every test answers it with
 // page.route, so no request reaches the real Worker or the model and each answer is under test control.
 const API = 'https://api.e2e.test/analyze'
+const MERGE_API = 'https://api.e2e.test/merge'
 const CORS = { 'access-control-allow-origin': '*', 'access-control-allow-headers': 'content-type' }
 
 const fixture = (name: string) => path.join(import.meta.dirname, 'fixtures', name)
@@ -73,7 +74,7 @@ test('PDF z tekstem: wysyła wyciągnięty tekst, pokazuje wynik i pobiera ten s
 
   await expect(page.locator('.facts')).toContainText('Faktura')
   await expect(page.locator('.facts')).toContainText('15.09.2026') // ISO date shown as DD.MM.YYYY
-  await expect(page.locator('.card', { hasText: 'Kwoty' })).toContainText('6150,00')
+  await expect(page.locator('.card', { hasText: 'Kwoty' })).toContainText(/6\s150,00/) // 6 150,00 zł
 
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('button', { name: 'Pobierz JSON' }).click()
@@ -86,7 +87,7 @@ test('PDF z tekstem: wysyła wyciągnięty tekst, pokazuje wynik i pobiera ten s
   })
 })
 
-test('stan ładowania: komunikat i zablokowana strefa do końca analizy', async ({ page }) => {
+test('postęp: kroki, licznik czasu i zablokowana strefa do końca analizy', async ({ page }) => {
   let release: () => void = () => {}
   const held = new Promise<void>((resolve) => (release = resolve))
   await mockApi(page, async (route, request) => {
@@ -95,10 +96,19 @@ test('stan ładowania: komunikat i zablokowana strefa do końca analizy', async 
   })
   await fileInput(page).setInputFiles(fixture('faktura.pdf'))
 
-  await expect(page.getByText('Analizuję dokument faktura.pdf…')).toBeVisible()
+  const progress = page.getByRole('region', { name: 'Przetwarzam plik faktura.pdf' })
+  const step = (label: string) => progress.getByRole('listitem').filter({ hasText: label })
+  await expect(step('Analiza treści przez AI')).toHaveAttribute('aria-current', 'step')
+  await expect(step('Odczyt tekstu z PDF')).toHaveClass(/done/)
+  await expect(step('Sprawdzenie wyniku ze schematem')).toHaveClass(/pending/)
+  await expect(progress).toContainText(/\d+ s · zwykle trwa to 5–10 sekund/)
   await expect(fileInput(page)).toBeDisabled()
+  const { violations } = await new AxeBuilder({ page }).analyze()
+  expect(violations.map((v) => `${v.id}: ${v.help}`)).toEqual([])
+
   release()
   await expect(resultTitle(page)).toBeVisible()
+  await expect(progress).toHaveCount(0)
   await expect(fileInput(page)).toBeEnabled()
 })
 
@@ -342,4 +352,47 @@ test('treść od modelu jest wyświetlana jako tekst, a nie wykonywana (XSS)', a
   await expect(resultTitle(page)).toHaveText(payload)
   await expect(page.locator('.results img')).toHaveCount(0)
   expect(await page.evaluate(() => (window as { __xss?: number }).__xss)).toBeUndefined()
+})
+
+test('długi dokument (ponad 400 tys. znaków): fragmenty równolegle, potem jedno scalenie', async ({
+  page,
+}) => {
+  test.setTimeout(90_000)
+  const fragments = await mockApi(page, success)
+  const merges: MergeRequest[] = []
+  let releaseMerge: () => void = () => {}
+  const mergeHeld = new Promise<void>((resolve) => (releaseMerge = resolve))
+  await page.route(MERGE_API, async (route) => {
+    if (route.request().method() === 'OPTIONS') {
+      await route.fulfill({ status: 204, headers: CORS })
+      return
+    }
+    const request = route.request().postDataJSON() as MergeRequest
+    merges.push(request)
+    await mergeHeld // released once the test has seen the merging step
+    await route.fulfill({
+      headers: CORS,
+      json: {
+        result: {
+          ...analysis,
+          document: {
+            ...analysis.document,
+            title: 'Wynik scalony',
+            fileName: request.fileName,
+            pages: request.pages,
+          },
+        },
+      },
+    })
+  })
+  await fileInput(page).setInputFiles(fixture('dlugi.pdf')) // about 700 thousand characters
+  await expect(page.getByText(/Scalam wyniki fragmentów · \d+ s/)).toBeVisible({ timeout: 60_000 })
+  releaseMerge()
+  await expect(resultTitle(page)).toHaveText('Wynik scalony')
+
+  expect(fragments).toHaveLength(2)
+  for (const fragment of fragments) expect(fragment.text.length).toBeLessThanOrEqual(400_000)
+  expect(fragments[0].text.startsWith('Warunki współpracy')).toBe(true) // the title page leads
+  expect(merges).toHaveLength(1)
+  expect(merges[0].parts).toHaveLength(2)
 })

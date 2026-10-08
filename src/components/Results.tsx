@@ -13,8 +13,13 @@ function formatDate(iso: string): string {
   return iso.split('-').reverse().join('.')
 }
 
+// "always" groups thousands also in four-digit numbers ("4 200,00 zł"), the way invoices print them.
 function formatMoney(value: number, currency: string): string {
-  return new Intl.NumberFormat('pl-PL', { style: 'currency', currency }).format(value)
+  return new Intl.NumberFormat('pl-PL', {
+    style: 'currency',
+    currency,
+    useGrouping: 'always',
+  }).format(value)
 }
 
 function languageName(code: string): string {
@@ -33,8 +38,10 @@ function downloadJson(result: Analysis) {
   setTimeout(() => URL.revokeObjectURL(url), 10_000)
 }
 
-function List({ items, empty }: { items: string[]; empty: string }) {
-  if (items.length === 0) return <p className="muted">{empty}</p>
+const Empty = () => <p className="muted">Brak w dokumencie.</p>
+
+function List({ items }: { items: string[] }) {
+  if (items.length === 0) return <Empty />
   return (
     <ul>
       {items.map((item, index) => (
@@ -44,11 +51,47 @@ function List({ items, empty }: { items: string[]; empty: string }) {
   )
 }
 
+// A two-column table: the value (dates and amounts stay on one line) and what it refers to.
+// Numeric values are right-aligned, so the decimal commas line up.
+function FactTable({
+  head,
+  rows,
+  numeric = false,
+}: {
+  head: string
+  rows: { value: string; context: string }[]
+  numeric?: boolean
+}) {
+  const valueClass = numeric ? 'value num' : 'value'
+  if (rows.length === 0) return <Empty />
+  return (
+    <table className="table">
+      <thead>
+        <tr>
+          <th scope="col" className={numeric ? 'num' : undefined}>
+            {head}
+          </th>
+          <th scope="col">Czego dotyczy</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, index) => (
+          <tr key={index}>
+            <td className={valueClass}>{row.value}</td>
+            <td>{row.context}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
+
 export function Results({ result }: { result: Analysis }) {
   const doc = result.document
   return (
     <section className="results" aria-labelledby="results-title">
       <h2 id="results-title">{doc.title ?? doc.fileName}</h2>
+      <p className="subtitle">Plik: {doc.fileName}</p>
       <dl className="facts">
         <div>
           <dt>Typ</dt>
@@ -75,40 +118,52 @@ export function Results({ result }: { result: Analysis }) {
 
       <div className="card">
         <h3>Najważniejsze punkty</h3>
-        <List items={result.keyPoints} empty="Brak." />
+        <List items={result.keyPoints} />
       </div>
 
       <div className="grid">
         <div className="card">
           <h3>Organizacje</h3>
-          <List items={result.entities.organizations} empty="Brak w dokumencie." />
+          <List items={result.entities.organizations} />
         </div>
         <div className="card">
           <h3>Osoby</h3>
-          <List items={result.entities.people} empty="Brak w dokumencie." />
-        </div>
-      </div>
-
-      <div className="grid">
-        <div className="card">
-          <h3>Kwoty</h3>
-          <List
-            items={result.amounts.map((a) => `${formatMoney(a.value, a.currency)}: ${a.context}`)}
-            empty="Brak w dokumencie."
-          />
-        </div>
-        <div className="card">
-          <h3>Daty</h3>
-          <List
-            items={result.dates.map((d) => `${formatDate(d.date)}: ${d.context}`)}
-            empty="Brak w dokumencie."
-          />
+          <List items={result.entities.people} />
         </div>
       </div>
 
       <div className="card">
-        <h3>Słowa kluczowe</h3>
-        <List items={result.keywords} empty="Brak." />
+        <h3>Kwoty</h3>
+        <FactTable
+          head="Kwota"
+          numeric
+          rows={result.amounts.map((a) => ({
+            value: formatMoney(a.value, a.currency),
+            context: a.context,
+          }))}
+        />
+      </div>
+
+      <div className="grid">
+        <div className="card">
+          <h3>Daty</h3>
+          <FactTable
+            head="Data"
+            rows={result.dates.map((d) => ({ value: formatDate(d.date), context: d.context }))}
+          />
+        </div>
+        <div className="card">
+          <h3>Słowa kluczowe</h3>
+          {result.keywords.length === 0 ? (
+            <p className="muted">Brak.</p>
+          ) : (
+            <ul className="chips">
+              {result.keywords.map((keyword, index) => (
+                <li key={index}>{keyword}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
 
       <div className="card">
