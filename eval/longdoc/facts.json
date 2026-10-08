@@ -1,0 +1,17 @@
+{
+ "amounts": [
+  1234.0,
+  2345.0,
+  3456.0
+ ],
+ "dates": [
+  "2027-03-15",
+  "2027-06-16",
+  "2027-09-17"
+ ],
+ "people": [
+  "Zofia Krawczyk",
+  "Henryk Lewandowski",
+  "Irena Szymańska"
+ ]
+}
