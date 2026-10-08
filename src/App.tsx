@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { analyzeDocument } from './api/analyze'
+import { ApiError, analyzeDocument } from './api/analyze'
 import { DropZone } from './components/DropZone'
 import { History } from './components/History'
 import { Results } from './components/Results'
@@ -30,7 +30,9 @@ export default function App() {
       setHistory(addToHistory(result, history))
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Nieznany błąd.'
-      setState({ phase: 'error', message, retry: request }) // a retry re-sends the same text
+      // A retry re-sends the same text; it is not offered when it cannot help (e.g. a document too long).
+      const retryable = !(error instanceof ApiError) || error.retryable
+      setState({ phase: 'error', message, retry: retryable ? request : null })
     }
   }
 

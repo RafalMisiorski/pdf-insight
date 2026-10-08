@@ -289,3 +289,57 @@ test.describe('historia w przeglądarce', () => {
     await expect(resultTitle(page)).toBeVisible()
   })
 })
+
+test.describe('pliki, których nie da się odczytać', () => {
+  for (const [name, file] of [
+    ['PDF zabezpieczony hasłem', 'zaszyfrowany.pdf'],
+    ['uszkodzony PDF z poprawną sygnaturą', 'uszkodzony.pdf'],
+  ] as const) {
+    test(`${name}: komunikat bez wysyłania`, async ({ page }) => {
+      const requests = await mockApi(page, success)
+      await fileInput(page).setInputFiles(fixture(file))
+      await expect(alert(page)).toContainText('Nie udało się odczytać pliku')
+      expect(requests).toHaveLength(0)
+    })
+  }
+})
+
+test('błąd, którego ponowienie nie naprawi (413): bez przycisku ponowienia', async ({ page }) => {
+  await mockApi(page, (route) =>
+    route.fulfill({
+      status: 413,
+      headers: CORS,
+      json: { error: 'Dokument jest za długi do analizy.' },
+    }),
+  )
+  await fileInput(page).setInputFiles(fixture('faktura.pdf'))
+  await expect(alert(page)).toContainText('Dokument jest za długi do analizy.')
+  await expect(page.getByRole('button', { name: 'Spróbuj ponownie' })).toHaveCount(0)
+  await expect(alert(page)).toContainText('Wybierz inny plik.')
+})
+
+test('treść od modelu jest wyświetlana jako tekst, a nie wykonywana (XSS)', async ({ page }) => {
+  const payload = '<img src=x onerror="window.__xss = 1">'
+  await mockApi(page, (route, request) =>
+    route.fulfill({
+      headers: CORS,
+      json: {
+        result: {
+          ...analysis,
+          summary: `${payload} Drugie zdanie. Trzecie zdanie.`,
+          keywords: [payload],
+          document: {
+            ...analysis.document,
+            title: payload,
+            fileName: request.fileName,
+            pages: request.pages,
+          },
+        },
+      },
+    }),
+  )
+  await fileInput(page).setInputFiles(fixture('faktura.pdf'))
+  await expect(resultTitle(page)).toHaveText(payload)
+  await expect(page.locator('.results img')).toHaveCount(0)
+  expect(await page.evaluate(() => (window as { __xss?: number }).__xss)).toBeUndefined()
+})

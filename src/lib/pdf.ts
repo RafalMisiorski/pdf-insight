@@ -13,6 +13,7 @@ const MIN_CHARS_PER_PAGE = 20
 export async function extractText(file: File): Promise<ExtractedText> {
   const task = getDocument({ data: new Uint8Array(await file.arrayBuffer()) })
   const pdf = await task.promise
+  if (pdf.numPages === 0) throw new Error('PDF has no pages') // shown as an unreadable file
   try {
     const pages: string[] = []
     for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
