@@ -1,0 +1,6 @@
+{
+ "id": "X02",
+ "file": "X02_za_duzy_11MB.pdf",
+ "expect": "error:too_large",
+ "notes": "About 11 MB: must be rejected by size (limit 10 MB) on the client, and the backend must also cap the request size. Never commit this file."
+}

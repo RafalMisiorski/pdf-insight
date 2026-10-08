@@ -1,0 +1,6 @@
+{
+ "id": "X01",
+ "file": "X01_to_nie_pdf.pdf",
+ "expect": "error:not_pdf",
+ "notes": "Extension says PDF, bytes do not start with %PDF-: validation must reject before any processing."
+}

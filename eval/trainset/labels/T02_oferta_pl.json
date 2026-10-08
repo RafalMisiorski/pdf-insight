@@ -1,0 +1,57 @@
+{
+ "id": "T02",
+ "expect": "ok",
+ "pdf_title": "Oferta OF/112/2026",
+ "document": {
+  "pages": 2,
+  "language": "pl",
+  "type": "oferta",
+  "title_contains": "OF/112/2026",
+  "date": "2026-10-01"
+ },
+ "summary": {
+  "sentences": [
+   3,
+   5
+  ],
+  "must_mention": [
+   "szkole"
+  ],
+  "must_not": []
+ },
+ "keyPoints": {
+  "count": [
+   3,
+   7
+  ]
+ },
+ "entities": {
+  "organizations": [
+   "Akademia Bezpiecznego Biura s.c.",
+   "Hotele Morskie Pomorze S.A."
+  ],
+  "people": [
+   "Ewa Grabowska",
+   "Bartosz Malinowski"
+  ]
+ },
+ "amounts": [
+  {
+   "value": 9600.0,
+   "currency": "PLN"
+  },
+  {
+   "value": 2450.0,
+   "currency": "EUR"
+  }
+ ],
+ "amounts_forbidden": [],
+ "dates": [
+  "2026-10-01",
+  "2026-10-31",
+  "2026-11-30"
+ ],
+ "dates_forbidden": [],
+ "notes": "Two currencies; a percentage (23%, 10%) is not an amount; validity and discount deadlines.",
+ "file": "T02_oferta_pl.pdf"
+}

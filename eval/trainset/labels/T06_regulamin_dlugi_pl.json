@@ -1,0 +1,54 @@
+{
+ "id": "T06",
+ "expect": "ok",
+ "pdf_title": "Regulamin hostingu",
+ "document": {
+  "pages": 11,
+  "language": "pl",
+  "type": [
+   "inne",
+   "umowa"
+  ],
+  "title_contains": "REGULAMIN",
+  "date": "2026-11-01"
+ },
+ "summary": {
+  "sentences": [
+   3,
+   5
+  ],
+  "must_mention": [],
+  "must_not": []
+ },
+ "keyPoints": {
+  "count": [
+   3,
+   7
+  ]
+ },
+ "entities": {
+  "organizations": [
+   "ChmuraPlus sp. z o.o."
+  ],
+  "people": [
+   "Natalia Wójcik"
+  ]
+ },
+ "amounts": [
+  {
+   "value": 49.0,
+   "currency": "PLN"
+  },
+  {
+   "value": 500.0,
+   "currency": "PLN"
+  }
+ ],
+ "amounts_forbidden": [],
+ "dates": [
+  "2026-11-01"
+ ],
+ "dates_forbidden": [],
+ "notes": "Long text (about 60 paragraphs): needs chunking and merging (F-08). Facts sit in paragraphs 17, 44 and 58, far apart. Type: terms of service are a standard contract form (art. 384 KC), so 'umowa' is accepted as well as 'inne'.",
+ "file": "T06_regulamin_dlugi_pl.pdf"
+}

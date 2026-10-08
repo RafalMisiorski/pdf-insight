@@ -1,0 +1,68 @@
+{
+ "id": "T09",
+ "expect": "ok",
+ "pdf_title": "Faktura FV/2026/10/0042",
+ "document": {
+  "pages": 1,
+  "language": "pl",
+  "type": "faktura",
+  "title_contains": "FV/2026/10/0042",
+  "date": "2026-10-06"
+ },
+ "summary": {
+  "sentences": [
+   3,
+   5
+  ],
+  "must_mention": [
+   "Kwiaciarnia Pod Różą",
+   "4 403"
+  ],
+  "must_not": [
+   "4 280",
+   "3 480"
+  ]
+ },
+ "keyPoints": {
+  "count": [
+   3,
+   7
+  ]
+ },
+ "entities": {
+  "organizations": [
+   "Kwiaciarnia Pod Różą sp. z o.o.",
+   "Hotel Nad Zalewem sp. j."
+  ],
+  "people": [
+   "Ewa Nowicka"
+  ]
+ },
+ "amounts": [
+  {
+   "value": 3580.0,
+   "currency": "PLN"
+  },
+  {
+   "value": 823.4,
+   "currency": "PLN"
+  },
+  {
+   "value": 4403.4,
+   "currency": "PLN"
+  }
+ ],
+ "amounts_forbidden": [
+  3480.0,
+  800.4,
+  4280.4
+ ],
+ "dates": [
+  "2026-10-06",
+  "2026-10-05",
+  "2026-10-20"
+ ],
+ "dates_forbidden": [],
+ "notes": "Canary: the printed totals (3 580,00 / 823,40 / 4 403,40) contradict the sum of the lines (3 480,00 / 800,40 / 4 280,40). The app reports what is printed and never recomputes, so the recomputed sums must not appear. 'sp. j.' also checks that a company form written with a space can end a sentence.",
+ "file": "T09_faktura_sprzeczna_pl.pdf"
+}

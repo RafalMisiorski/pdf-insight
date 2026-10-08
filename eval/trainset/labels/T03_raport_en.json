@@ -1,0 +1,63 @@
+{
+ "id": "T03",
+ "expect": "ok",
+ "pdf_title": "Q3 2026 Operations Report",
+ "document": {
+  "pages": 3,
+  "language": "en",
+  "type": "raport",
+  "title_contains": "Q3 2026",
+  "date": "2026-10-05"
+ },
+ "summary": {
+  "sentences": [
+   3,
+   5
+  ],
+  "must_mention": [
+   "4,850,000",
+   "Baltic Fresh Foods"
+  ],
+  "must_not": []
+ },
+ "keyPoints": {
+  "count": [
+   3,
+   7
+  ]
+ },
+ "entities": {
+  "organizations": [
+   "Baltic Fresh Foods Ltd.",
+   "Northern Cold Chain AB"
+  ],
+  "people": [
+   "Helena Lindqvist",
+   "Marek Nowicki"
+  ]
+ },
+ "amounts": [
+  {
+   "value": 4850000.0,
+   "currency": "EUR"
+  },
+  {
+   "value": 3920000.0,
+   "currency": "EUR"
+  },
+  {
+   "value": 310000.0,
+   "currency": "USD"
+  }
+ ],
+ "amounts_forbidden": [],
+ "dates": [
+  "2026-10-05",
+  "2026-07-01",
+  "2026-09-30",
+  "2026-12-15"
+ ],
+ "dates_forbidden": [],
+ "notes": "Values must stay in English (keys English, values in the document language); comma thousands separators.",
+ "file": "T03_raport_en.pdf"
+}

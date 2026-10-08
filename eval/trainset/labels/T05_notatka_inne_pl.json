@@ -1,0 +1,46 @@
+{
+ "id": "T05",
+ "expect": "ok",
+ "pdf_title": "Notatka",
+ "document": {
+  "pages": 1,
+  "language": "pl",
+  "type": "inne",
+  "title_contains": "Notatka",
+  "date": null
+ },
+ "summary": {
+  "sentences": [
+   3,
+   5
+  ],
+  "must_mention": [],
+  "must_not": [
+   "2026",
+   "zł"
+  ]
+ },
+ "keyPoints": {
+  "count": [
+   3,
+   7
+  ]
+ },
+ "entities": {
+  "organizations": [],
+  "people": [
+   "Karolina Zając",
+   "Igor Pawlak"
+  ]
+ },
+ "amounts": [],
+ "amounts_forbidden": [
+  "any"
+ ],
+ "dates": [],
+ "dates_forbidden": [
+  "any"
+ ],
+ "notes": "No document date and only a relative date ('w przyszły czwartek'): date must be null, dates and amounts must be empty. The model must not guess.",
+ "file": "T05_notatka_inne_pl.pdf"
+}

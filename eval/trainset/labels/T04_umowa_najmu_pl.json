@@ -1,0 +1,57 @@
+{
+ "id": "T04",
+ "expect": "ok",
+ "pdf_title": "Umowa najmu 3/2026",
+ "document": {
+  "pages": 2,
+  "language": "pl",
+  "type": "umowa",
+  "title_contains": "3/2026",
+  "date": "2026-10-02"
+ },
+ "summary": {
+  "sentences": [
+   3,
+   5
+  ],
+  "must_mention": [
+   "6 800"
+  ],
+  "must_not": []
+ },
+ "keyPoints": {
+  "count": [
+   3,
+   7
+  ]
+ },
+ "entities": {
+  "organizations": [
+   "Kamienica pod Lipami sp. z o.o.",
+   "Kawiarnia Ziarno Tomasz Wrona"
+  ],
+  "people": [
+   "Alicja Borowska",
+   "Tomasz Wrona"
+  ]
+ },
+ "amounts": [
+  {
+   "value": 6800.0,
+   "currency": "PLN"
+  },
+  {
+   "value": 20400.0,
+   "currency": "PLN"
+  }
+ ],
+ "amounts_forbidden": [],
+ "dates": [
+  "2026-10-02",
+  "2026-11-01",
+  "2029-10-31"
+ ],
+ "dates_forbidden": [],
+ "notes": "Sole trader: the firm and the person share a name; inflected Polish names (Alicję Borowską, Tomaszem Wroną) must come back in base form.",
+ "file": "T04_umowa_najmu_pl.pdf"
+}
