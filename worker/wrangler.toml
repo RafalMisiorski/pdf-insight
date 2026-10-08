@@ -4,8 +4,19 @@
 name = "pdf-insight-api"
 main = "src/index.ts"
 compatibility_date = "2026-09-01"
+# Publish on https://pdf-insight-api.<account-subdomain>.workers.dev (no custom domain needed)
+workers_dev = true
 
 [vars]
 ALLOWED_ORIGIN = "https://rafalmisiorski.github.io"
 MODEL = "gemini-3.8-flash"
 MAX_TEXT_CHARS = "400000"
+
+# 10 analyses per minute per client IP. Approximate by design (counted per Cloudflare location).
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
