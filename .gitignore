@@ -3,6 +3,13 @@ node_modules/
 dist/
 dist-ssr/
 coverage/
+
+# Playwright: e2e build, reports, traces, eval output
+e2e/.dist/
+playwright-report/
+test-results/
+blob-report/
+eval-output/
 .wrangler/
 *.local
 *.log

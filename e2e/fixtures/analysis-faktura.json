@@ -1,0 +1,87 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "faktura",
+    "title": "FAKTURA VAT nr FV/2026/09/0117",
+    "date": "2026-09-15",
+    "fileName": "T01_faktura_pl.pdf",
+    "pages": 1
+  },
+  "summary": "Dokument to faktura VAT nr FV/2026/09/0117 wystawiona 15 września 2026 roku w Gdyni przez firmę Bursztynowa Drukarnia sp. z o.o. Nabywcą usług jest Pracownia Architektoniczna Lis i Wspólnicy sp.k. z Krakowa. Przedmiotem zamówienia był druk 500 sztuk katalogów A4 oraz projekt graficzny okładki na łączną kwotę brutto 6 150,00 PLN. Płatność ma zostać uregulowana przelewem bankowym w terminie do 29 września 2026 roku.",
+  "keyPoints": [
+    "Faktura VAT nr FV/2026/09/0117 wystawiona dnia 15.09.2026 r.",
+    "Sprzedawca: Bursztynowa Drukarnia sp. z o.o., Nabywca: Pracownia Architektoniczna Lis i Wspólnicy sp.k.",
+    "Pozycje faktury obejmują druk 500 sztuk katalogów A4 oraz projekt graficzny okładki",
+    "Łączna kwota do zapłaty wynosi 6 150,00 PLN brutto",
+    "Termin płatności przypada na dzień 29.09.2026 r."
+  ],
+  "entities": {
+    "organizations": [
+      "Bursztynowa Drukarnia sp. z o.o.",
+      "Pracownia Architektoniczna Lis i Wspólnicy sp.k."
+    ],
+    "people": ["Joanna Sikora"]
+  },
+  "amounts": [
+    {
+      "value": 4200,
+      "currency": "PLN",
+      "context": "Druk katalogów A4, 48 stron - wartość netto"
+    },
+    {
+      "value": 966,
+      "currency": "PLN",
+      "context": "Druk katalogów A4, 48 stron - kwota VAT"
+    },
+    {
+      "value": 5166,
+      "currency": "PLN",
+      "context": "Druk katalogów A4, 48 stron - wartość brutto"
+    },
+    {
+      "value": 800,
+      "currency": "PLN",
+      "context": "Projekt graficzny okładki - wartość netto"
+    },
+    {
+      "value": 184,
+      "currency": "PLN",
+      "context": "Projekt graficzny okładki - kwota VAT"
+    },
+    {
+      "value": 984,
+      "currency": "PLN",
+      "context": "Projekt graficzny okładki - wartość brutto"
+    },
+    {
+      "value": 5000,
+      "currency": "PLN",
+      "context": "Razem wartość netto"
+    },
+    {
+      "value": 1150,
+      "currency": "PLN",
+      "context": "Razem kwota VAT"
+    },
+    {
+      "value": 6150,
+      "currency": "PLN",
+      "context": "Do zapłaty (Razem wartość brutto)"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-09-15",
+      "context": "Data wystawienia"
+    },
+    {
+      "date": "2026-09-14",
+      "context": "Data sprzedaży"
+    },
+    {
+      "date": "2026-09-29",
+      "context": "Termin płatności"
+    }
+  ],
+  "keywords": ["faktura VAT", "druk katalogów", "projekt graficzny", "przelew", "Gdynia"]
+}

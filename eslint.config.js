@@ -9,7 +9,15 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', 'worker/.wrangler']),
+  globalIgnores([
+    'dist',
+    'coverage',
+    'worker/.wrangler',
+    'e2e/.dist',
+    'playwright-report',
+    'test-results',
+    'eval-output',
+  ]),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [js.configs.recommended, tseslint.configs.strict, prettier],
@@ -27,5 +35,10 @@ export default defineConfig([
     // The Worker runs in Cloudflare's runtime, not in a browser page.
     files: ['worker/**/*.ts'],
     languageOptions: { globals: globals.serviceworker },
+  },
+  {
+    // Playwright tests and their config run in Node.js.
+    files: ['e2e/**/*.ts', 'playwright.config.ts'],
+    languageOptions: { globals: globals.node },
   },
 ])

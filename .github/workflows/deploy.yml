@@ -1,4 +1,4 @@
-# CI/CD required by the brief: lint -> build -> deploy to GitHub Pages.
+# CI/CD required by the brief: lint and unit tests -> build + browser tests -> deploy to GitHub Pages.
 name: CI and deploy
 
 on:
@@ -48,8 +48,28 @@ jobs:
         with:
           path: dist
 
+  e2e:
+    # Browser tests (Playwright) on a production build with the analysis API mocked: no secrets needed.
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps --only-shell chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 7
+
   deploy:
-    needs: build
+    needs: [build, e2e]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
