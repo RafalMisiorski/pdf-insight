@@ -6,6 +6,8 @@ Wgrywasz PDF, a dostajesz podsumowanie w 3–5 zdaniach w języku dokumentu oraz
 
 ![Wynik analizy faktury z zestawu treningowego](docs/screenshot.png)
 
+![Podgląd JSON wyniku i przycisk pobierania](docs/screenshot-json.png)
+
 ## Jak sprawdzić w 2 minuty
 
 1. Otwórz demo i wgraj [fakturę T01](https://github.com/RafalMisiorski/pdf-insight/raw/main/eval/trainset/pdf/T01_faktura_pl.pdf): typ, trzy daty, kwoty netto, VAT i brutto, sprzedawca i nabywca.
@@ -88,7 +90,7 @@ Zbiór treningowy ([`eval/`](eval/README.md)) jest syntetyczny i zaprojektowany 
 | pomiar (2026-10-08, o ile nie podano inaczej)                                                                          | wynik                                                                                                 |
 | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | zbiór treningowy przez interfejs, wdrożona wersja: sprawdzenia według etykiet                                          | 120 ze 120                                                                                            |
-| ten sam przebieg: czy każdy wyciągnięty fakt (kwota, data, osoba, organizacja) jest w PDF-ie                           | 97 z 97, żadnego zmyślonego faktu                                                                     |
+| ten sam przebieg: czy każdy wyciągnięty fakt (kwota, data, osoba, organizacja) jest w PDF-ie                           | dopasowanie znalazło w PDF-ie 97 z 97 faktów (sprawdza wartości i nazwy, nie kontekst ani walutę)     |
 | sprawdzenia gwarantowane przez walidację (schemat, liczba zdań i punktów, strony), raportowane osobno                  | 36 z 36                                                                                               |
 | czas analizy na zbiorze treningowym                                                                                    | 4–10 s na dokument                                                                                    |
 | ten sam zbiór na produkcji, wersja końcowa, 2 przebiegi (2026-10-09)                                                   | 120 ze 120 w obu; 95 z 95 i 97 z 97 faktów w PDF-ie; 4,9–10 s na dokument                             |
@@ -105,7 +107,7 @@ Zbiór treningowy ([`eval/`](eval/README.md)) jest syntetyczny i zaprojektowany 
 ## Bezpieczeństwo
 
 - Klucz API jest tylko w sekretach Workera. W repozytorium włączone są secret scanning i push protection, a historię gita i zbudowaną paczkę sprawdziłem pod kątem kluczy.
-- CORS dopuszcza tylko domenę demo. Nie jest to uwierzytelnienie, dlatego są limity: 10 zapytań na minutę na IP, 40 zapytań do modelu dziennie z jednego adresu i 200 dla całego demo, 2 MB treści żądania (6 MB dla obrazów skanu) i 400 tys. znaków tekstu na zapytanie. Limit treści jest liczony w bajtach.
+- CORS dopuszcza tylko domenę demo. Nie jest to uwierzytelnienie, dlatego są limity: 10 zapytań na minutę na IP, 40 zapytań dziennie z jednego adresu (dla IPv6 z jednej sieci /64) i 200 dla całego demo, przy czym jedno zapytanie to najwyżej 6 wywołań modelu (3 grupy pól, każda z jednym ponowieniem), 2 MB treści żądania (6 MB dla obrazów skanu) i 400 tys. znaków tekstu na zapytanie. Limit treści jest liczony w bajtach.
 - Treść PDF jest dla modelu danymi, a nie instrukcjami: ograniczniki, reguła w prompcie i odpowiedź wymuszona schematem. Pola, które model dopisałby na prośbę dokumentu, są usuwane przed wysłaniem wyniku. Sprawdza to dokument T07 ze wstrzykniętą instrukcją i testy schematu.
 - Wynik jest wyświetlany jako tekst (React, bez `dangerouslySetInnerHTML`), co sprawdza test XSS. Worker nie zapisuje treści dokumentów w logach.
 
@@ -116,6 +118,11 @@ Zbiór treningowy ([`eval/`](eval/README.md)) jest syntetyczny i zaprojektowany 
 - Przy limicie dostawcy albo dziennym limicie demo aplikacja pokazuje komunikat. Ponowienie proponuje tylko wtedy, gdy może pomóc.
 - Czas analizy rośnie z liczbą wyciągniętych faktów, bo zależy głównie od długości odpowiedzi modelu. Dokument testowy (dziesiątki kwot i terminów) zajął 25 s przy budżecie 27 s. Dlatego Worker liczy w tekście kwoty i daty i przy co najmniej 15 różnych kwotach i 15 różnych datach wysyła tekst trzema równoległymi grupami pól ([ADR-0011](docs/adr/0011-tryb-rownolegly-dla-gestych.md)): na nowych dokumentach gęstych mediana spadła z 21,7 do 10,7 s. Przekroczenie czasu nadal może się zdarzyć: na produkcji jedno z czterech zapytań o gęsty dokument przekroczyło 27 s, a ponowienie trwało 17 s. Dokument gęsty tylko w jednej grupie, na przykład długi cennik bez dat, zostaje przy jednym wywołaniu. Wynik dokumentu testowego pochodzi z wersji sprzed tej zmiany.
 - Dokument większy niż 4 części (tekst ponad około 1,6 mln znaków, skan ponad 32 strony) jest analizowany częściowo, z listą pominiętych stron. Podsumowanie dotyczy wtedy przeanalizowanych stron.
+- Strona z tekstem i obrazem (np. nagłówek nad zeskanowaną tabelą) jest czytana tylko jako tekst: OCR dostają strony z mniej niż 20 znakami tekstu.
+- Licznik zdań zna skróty polskie i angielskie. W innych językach poprawne podsumowanie może zostać odrzucone, a po ponowieniu skończyć się błędem.
+- Gdy nie uda się jedna część dokumentu, wynik wymienia jej strony, ale ponowienie wysyła cały dokument od nowa.
+- Budżet 28 s liczy się od wysłania części, więc odczyt PDF-u i obrazy stron w przeglądarce dochodzą do niego (w pomiarze ADR-0012: 1–7 s).
+- Odporność na instrukcje wpisane w dokument sprawdza jeden dokument treningowy (T07).
 - Limit na IP nie zatrzyma kogoś, kto zmienia adresy. Ostatnią zaporą jest dzienny limit demo i przedpłata u dostawcy. Worker wdrażam ręcznie (`npm run worker:deploy`), a CI wdraża tylko stronę.
 
 ## Struktura

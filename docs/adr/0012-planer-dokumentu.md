@@ -15,7 +15,7 @@ PDF mieszany traci dziś treść stron bez tekstu (wynik tylko je wymienia), ze 
 
 ## Pomiar (zaplanowany przed uruchomieniem)
 
-Plan zmieniłem o 10:53, na prośbę Rafała i przed jakimkolwiek przebiegiem modelu. Pierwsza wersja sprawdzała cztery przykładowe dokumenty. Ta wyznacza granicę, do której aplikacja analizuje cały dokument w 30 s, i ją deklaruje.
+Plan zmieniłem o 10:53, przed jakimkolwiek przebiegiem modelu. Pierwsza wersja sprawdzała cztery przykładowe dokumenty. Ta wyznacza granicę, do której aplikacja analizuje cały dokument w 30 s, i ją deklaruje.
 
 Drabina dokumentów syntetycznych w `eval/hard/`, każdy poniżej 10 MB, z faktami wstawionymi na początku, w środku i na końcu (na stronach skanu w obrazie strony). Każdy szczebel dwa razy przez prawdziwy interfejs, z lokalną stroną i lokalnym Workerem, na tym samym modelu. Czas liczę od wybrania pliku do wyniku, a między przebiegami czekam minutę, żeby nie trafić w limit zapytań na minutę.
 

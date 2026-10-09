@@ -9,7 +9,7 @@ Frontend jest statyczny (GitHub Pages). Backend to Cloudflare Worker na planie d
 ## Decyzja
 
 - `pdfjs-dist` 6 w przeglądarce, tekst strona po stronie. Worker pdf.js importowany przez `?url`, żeby Vite dodał bazę `/pdf-insight/` i hash (pułapka GitHub Pages z briefu).
-- Każda strona jest oceniana osobno: mniej niż 20 czytelnych znaków oznacza stronę bez tekstu. Gdy tekst ma mniej niż połowa stron, PDF idzie przez OCR (ADR-0009); w przeciwnym razie strony bez tekstu są wymienione przy wyniku (`meta.pagesWithoutText`), a nie pomijane po cichu.
+- Każda strona jest oceniana osobno: mniej niż 20 czytelnych znaków oznacza stronę bez tekstu. Pierwotna reguła (zastąpiona przez ADR-0012, w którym strony z obrazem idą do OCR także w PDF-ie z tekstem): gdy tekst ma mniej niż połowa stron, PDF idzie przez OCR (ADR-0009); w przeciwnym razie strony bez tekstu są wymienione przy wyniku (`meta.pagesWithoutText`), a nie pomijane po cichu.
 - pdf.js ładuje się dopiero przy pierwszym pliku: paczka startowa 318 kB (97 kB gzip) zamiast 748 kB.
 
 ## Rozważone i odrzucone
