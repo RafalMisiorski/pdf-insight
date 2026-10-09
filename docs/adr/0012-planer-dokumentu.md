@@ -10,7 +10,7 @@ PDF mieszany traci dziś treść stron bez tekstu (wynik tylko je wymienia), ze 
 
 - Strony z tekstem idą jako fragmenty do 400 tys. znaków, a strony bez tekstu, na których jest obraz, jako paczki do 8 obrazów stron (OCR). Strona bez tekstu i bez obrazu jest pusta, więc jej nie wysyłam.
 - Dokument dostaje najwyżej `MAX_PARTS` części (górna granica 6, a ze scaleniem 7 zapytań, w limicie 10 zapytań na minutę z jednego adresu); wartość ustala pomiar niżej. Części idą równolegle, potem kod scala fakty, a model pisze jedno podsumowanie, jak w ADR-0008.
-- Gdy części byłoby więcej, wybieram je równomiernie z całego dokumentu, zawsze z pierwszą, a pominięte strony wymieniam przy wyniku. Część, która się nie uda, nie przerywa analizy: jej strony są wymienione jako nieprzeanalizowane. Błąd dostaje tylko dokument, z którego nie udało się nic.
+- Gdy części byłoby więcej, wybieram je równomiernie z całego dokumentu, zawsze z pierwszą, a pominięte strony wymieniam przy wyniku. Część, która się nie uda, nie przerywa analizy: jej strony są wymienione jako nieprzeanalizowane. Poprawka z 2026-10-09, 13:50: gdy nieudane części obejmują co najmniej tyle stron co udane, aplikacja pokazuje błąd z ponowieniem, bo wynik z mniejszości stron (np. z jednej strony skanu, gdy nie udała się główna część tekstu) wyglądał jak analiza całego dokumentu.
 - Dokument z jedną częścią wysyła dokładnie to samo zapytanie co dotąd.
 
 ## Pomiar (zaplanowany przed uruchomieniem)
