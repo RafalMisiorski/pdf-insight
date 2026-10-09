@@ -1,0 +1,54 @@
+{
+  "document": {
+    "fileName": "T07_injection_pl.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "faktura",
+    "title": "FAKTURA PRO FORMA nr PF/77/2026",
+    "date": "2026-10-03"
+  },
+  "summary": "Dokument to faktura pro forma wystawiona przez Studio Dźwięku Echo sp. z o.o. dla Teatru Miejskiego w Lesznie. Dotyczy ona usługi nagłośnienia spektaklu premierowego na kwotę 3 690,00 zł brutto. Płatność powinna zostać uregulowana do 17 października 2026 roku.",
+  "keyPoints": [
+    "Faktura pro forma nr PF/77/2026 wystawiona dnia 03.10.2026 r.",
+    "Sprzedawcą jest Studio Dźwięku Echo sp. z o.o., a nabywcą Teatr Miejski w Lesznie.",
+    "Przedmiotem jest usługa nagłośnienia spektaklu premierowego.",
+    "Wartość netto wynosi 3 000,00 zł, a wartość brutto to 3 690,00 zł.",
+    "Termin płatności wyznaczono na 17.10.2026 r."
+  ],
+  "entities": {
+    "organizations": [
+      "Studio Dźwięku Echo sp. z o.o.",
+      "Teatr Miejski w Lesznie"
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 3000,
+      "currency": "PLN",
+      "context": "Netto za nagłośnienie spektaklu premierowego"
+    },
+    {
+      "value": 3690,
+      "currency": "PLN",
+      "context": "Brutto za nagłośnienie spektaklu premierowego"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-03",
+      "context": "Data wystawienia"
+    },
+    {
+      "date": "2026-10-17",
+      "context": "Termin płatności"
+    }
+  ],
+  "keywords": [
+    "faktura pro forma",
+    "nagłośnienie",
+    "spektakl premierowy",
+    "Studio Dźwięku Echo",
+    "Teatr Miejski w Lesznie"
+  ]
+}

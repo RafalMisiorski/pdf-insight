@@ -1,0 +1,258 @@
+{
+  "document": {
+    "fileName": "D02_harmonogram_platnosci.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "inne",
+    "title": "HARMONOGRAM RZECZOWO-FINANSOWY: HALA MAGAZYNOWA KĘPNO",
+    "date": "2026-11-20"
+  },
+  "summary": "Dokument przedstawia harmonogram rzeczowo-finansowy budowy hali magazynowej w Kępnie z dnia 20 listopada 2026 roku. Inwestorem projektu jest Hala Logistyczna Kępno sp. z o.o., natomiast wykonawcą jest Budowa Mazur S.A. Całość prac została podzielona na 24 etapy robót z określonymi terminami i kwotami netto. Realizacja rozpoczyna się w lutym 2027 roku, a zakończenie ostatniego etapu planowane jest na czerwiec 2028 roku.",
+  "keyPoints": [
+    "Inwestor: Hala Logistyczna Kępno sp. z o.o.",
+    "Wykonawca: Budowa Mazur S.A.",
+    "Data sporządzenia harmonogramu: 20 listopada 2026 r.",
+    "Harmonogram obejmuje 24 etapy robót budowlanych",
+    "Okres realizacji prac: od 5 lutego 2027 r. do 3 czerwca 2028 r."
+  ],
+  "entities": {
+    "organizations": [
+      "Hala Logistyczna Kępno sp. z o.o.",
+      "Budowa Mazur S.A."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 265257.53,
+      "currency": "PLN",
+      "context": "Etap robót nr 1 kwota netto"
+    },
+    {
+      "value": 65498.19,
+      "currency": "PLN",
+      "context": "Etap robót nr 2 kwota netto"
+    },
+    {
+      "value": 162181.66,
+      "currency": "PLN",
+      "context": "Etap robót nr 3 kwota netto"
+    },
+    {
+      "value": 457253.05,
+      "currency": "PLN",
+      "context": "Etap robót nr 4 kwota netto"
+    },
+    {
+      "value": 311297.73,
+      "currency": "PLN",
+      "context": "Etap robót nr 5 kwota netto"
+    },
+    {
+      "value": 200899.61,
+      "currency": "PLN",
+      "context": "Etap robót nr 6 kwota netto"
+    },
+    {
+      "value": 87967.79,
+      "currency": "PLN",
+      "context": "Etap robót nr 7 kwota netto"
+    },
+    {
+      "value": 272503.97,
+      "currency": "PLN",
+      "context": "Etap robót nr 8 kwota netto"
+    },
+    {
+      "value": 364884.4,
+      "currency": "PLN",
+      "context": "Etap robót nr 9 kwota netto"
+    },
+    {
+      "value": 239314.92,
+      "currency": "PLN",
+      "context": "Etap robót nr 10 kwota netto"
+    },
+    {
+      "value": 154267.81,
+      "currency": "PLN",
+      "context": "Etap robót nr 11 kwota netto"
+    },
+    {
+      "value": 48695.68,
+      "currency": "PLN",
+      "context": "Etap robót nr 12 kwota netto"
+    },
+    {
+      "value": 340732.97,
+      "currency": "PLN",
+      "context": "Etap robót nr 13 kwota netto"
+    },
+    {
+      "value": 311457.2,
+      "currency": "PLN",
+      "context": "Etap robót nr 14 kwota netto"
+    },
+    {
+      "value": 39161.37,
+      "currency": "PLN",
+      "context": "Etap robót nr 15 kwota netto"
+    },
+    {
+      "value": 86912.64,
+      "currency": "PLN",
+      "context": "Etap robót nr 16 kwota netto"
+    },
+    {
+      "value": 15004.91,
+      "currency": "PLN",
+      "context": "Etap robót nr 17 kwota netto"
+    },
+    {
+      "value": 466969.82,
+      "currency": "PLN",
+      "context": "Etap robót nr 18 kwota netto"
+    },
+    {
+      "value": 73721.49,
+      "currency": "PLN",
+      "context": "Etap robót nr 19 kwota netto"
+    },
+    {
+      "value": 367490.17,
+      "currency": "PLN",
+      "context": "Etap robót nr 20 kwota netto"
+    },
+    {
+      "value": 393726.97,
+      "currency": "PLN",
+      "context": "Etap robót nr 21 kwota netto"
+    },
+    {
+      "value": 27584.9,
+      "currency": "PLN",
+      "context": "Etap robót nr 22 kwota netto"
+    },
+    {
+      "value": 317603.75,
+      "currency": "PLN",
+      "context": "Etap robót nr 23 kwota netto"
+    },
+    {
+      "value": 30091.34,
+      "currency": "PLN",
+      "context": "Etap robót nr 24 kwota netto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-11-20",
+      "context": "Harmonogram z dnia"
+    },
+    {
+      "date": "2027-02-05",
+      "context": "Termin Etap robót nr 1"
+    },
+    {
+      "date": "2027-02-27",
+      "context": "Termin Etap robót nr 2"
+    },
+    {
+      "date": "2027-03-23",
+      "context": "Termin Etap robót nr 3"
+    },
+    {
+      "date": "2027-04-14",
+      "context": "Termin Etap robót nr 4"
+    },
+    {
+      "date": "2027-05-06",
+      "context": "Termin Etap robót nr 5"
+    },
+    {
+      "date": "2027-05-27",
+      "context": "Termin Etap robót nr 6"
+    },
+    {
+      "date": "2027-06-11",
+      "context": "Termin Etap robót nr 7"
+    },
+    {
+      "date": "2027-07-02",
+      "context": "Termin Etap robót nr 8"
+    },
+    {
+      "date": "2027-07-27",
+      "context": "Termin Etap robót nr 9"
+    },
+    {
+      "date": "2027-08-13",
+      "context": "Termin Etap robót nr 10"
+    },
+    {
+      "date": "2027-09-09",
+      "context": "Termin Etap robót nr 11"
+    },
+    {
+      "date": "2027-09-25",
+      "context": "Termin Etap robót nr 12"
+    },
+    {
+      "date": "2027-10-15",
+      "context": "Termin Etap robót nr 13"
+    },
+    {
+      "date": "2027-11-11",
+      "context": "Termin Etap robót nr 14"
+    },
+    {
+      "date": "2027-11-28",
+      "context": "Termin Etap robót nr 15"
+    },
+    {
+      "date": "2027-12-19",
+      "context": "Termin Etap robót nr 16"
+    },
+    {
+      "date": "2028-01-11",
+      "context": "Termin Etap robót nr 17"
+    },
+    {
+      "date": "2028-01-29",
+      "context": "Termin Etap robót nr 18"
+    },
+    {
+      "date": "2028-02-24",
+      "context": "Termin Etap robót nr 19"
+    },
+    {
+      "date": "2028-03-14",
+      "context": "Termin Etap robót nr 20"
+    },
+    {
+      "date": "2028-04-04",
+      "context": "Termin Etap robót nr 21"
+    },
+    {
+      "date": "2028-04-26",
+      "context": "Termin Etap robót nr 22"
+    },
+    {
+      "date": "2028-05-17",
+      "context": "Termin Etap robót nr 23"
+    },
+    {
+      "date": "2028-06-03",
+      "context": "Termin Etap robót nr 24"
+    }
+  ],
+  "keywords": [
+    "harmonogram rzeczowo-finansowy",
+    "hala magazynowa",
+    "Kępno",
+    "inwestor",
+    "wykonawca",
+    "etapy robót",
+    "kwota netto"
+  ]
+}

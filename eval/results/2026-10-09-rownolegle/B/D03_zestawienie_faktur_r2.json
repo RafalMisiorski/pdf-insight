@@ -1,0 +1,406 @@
+{
+  "document": {
+    "fileName": "D03_zestawienie_faktur.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "raport",
+    "title": "ZESTAWIENIE FAKTUR SPRZEDAŻY ZA III KWARTAŁ 2026",
+    "date": null
+  },
+  "summary": "Dokument zawiera zestawienie faktur sprzedaży za III kwartał 2026 roku sporządzone przez dział księgowości Biura Rachunkowego Kwadryga sp. j. Wykaz obejmuje 28 faktur wystawionych w okresie od lipca do września 2026 roku. Wśród kontrahentów pojawiają się m.in. Mewa Logistics sp. z o.o., Opal Foods sp. z o.o., Rydwan Auto sp. z o.o., Tęcza Media sp. z o.o., Delta Trans sp. z o.o. oraz Sigma Druk sp. z o.o. Zestawienie precyzuje numery faktur, daty ich wystawienia, terminy płatności oraz kwoty brutto w polskich złotych.",
+  "keyPoints": [
+    "Zestawienie sporządzone przez Biuro Rachunkowe Kwadryga sp. j.",
+    "Raport dotyczy sprzedaży zrealizowanej w III kwartale 2026 roku",
+    "Wykaz obejmuje 28 pozycji fakturowych od FV/2026/Q3/001 do FV/2026/Q3/028",
+    "Kontrahenci wymienieni w wykazie to m.in. Mewa Logistics, Rydwan Auto, Tęcza Media i Delta Trans",
+    "Wszystkie kwoty brutto wyrażone są w walucie PLN"
+  ],
+  "entities": {
+    "organizations": [
+      "Biuro Rachunkowe Kwadryga sp. j.",
+      "Mewa Logistics sp. z o.o.",
+      "Opal Foods sp. z o.o.",
+      "Rydwan Auto sp. z o.o.",
+      "Tęcza Media sp. z o.o.",
+      "Delta Trans sp. z o.o.",
+      "Sigma Druk sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 41199.3,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/001 Mewa Logistics sp. z o.o. Brutto"
+    },
+    {
+      "value": 67981.32,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/002 Opal Foods sp. z o.o. Brutto"
+    },
+    {
+      "value": 91420.04,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/003 Mewa Logistics sp. z o.o. Brutto"
+    },
+    {
+      "value": 45280.87,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/004 Rydwan Auto sp. z o.o. Brutto"
+    },
+    {
+      "value": 3177.55,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/005 Mewa Logistics sp. z o.o. Brutto"
+    },
+    {
+      "value": 9358.08,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/006 Tęcza Media sp. z o.o. Brutto"
+    },
+    {
+      "value": 32569.05,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/007 Rydwan Auto sp. z o.o. Brutto"
+    },
+    {
+      "value": 29300.3,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/008 Delta Trans sp. z o.o. Brutto"
+    },
+    {
+      "value": 81077.41,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/009 Sigma Druk sp. z o.o. Brutto"
+    },
+    {
+      "value": 24563.62,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/010 Mewa Logistics sp. z o.o. Brutto"
+    },
+    {
+      "value": 93700.26,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/011 Mewa Logistics sp. z o.o. Brutto"
+    },
+    {
+      "value": 40429.51,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/012 Tęcza Media sp. z o.o. Brutto"
+    },
+    {
+      "value": 87617.38,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/013 Tęcza Media sp. z o.o. Brutto"
+    },
+    {
+      "value": 54600.02,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/014 Sigma Druk sp. z o.o. Brutto"
+    },
+    {
+      "value": 94197.18,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/015 Tęcza Media sp. z o.o. Brutto"
+    },
+    {
+      "value": 75076.36,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/016 Rydwan Auto sp. z o.o. Brutto"
+    },
+    {
+      "value": 92267.43,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/017 Rydwan Auto sp. z o.o. Brutto"
+    },
+    {
+      "value": 82904.67,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/018 Rydwan Auto sp. z o.o. Brutto"
+    },
+    {
+      "value": 57920.91,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/019 Tęcza Media sp. z o.o. Brutto"
+    },
+    {
+      "value": 81400.05,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/020 Delta Trans sp. z o.o. Brutto"
+    },
+    {
+      "value": 92332.8,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/021 Opal Foods sp. z o.o. Brutto"
+    },
+    {
+      "value": 55162.64,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/022 Delta Trans sp. z o.o. Brutto"
+    },
+    {
+      "value": 64176.6,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/023 Delta Trans sp. z o.o. Brutto"
+    },
+    {
+      "value": 78228.55,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/024 Tęcza Media sp. z o.o. Brutto"
+    },
+    {
+      "value": 59796.17,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/025 Delta Trans sp. z o.o. Brutto"
+    },
+    {
+      "value": 51569.71,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/026 Rydwan Auto sp. z o.o. Brutto"
+    },
+    {
+      "value": 48943.72,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/027 Rydwan Auto sp. z o.o. Brutto"
+    },
+    {
+      "value": 68047.74,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/028 Tęcza Media sp. z o.o. Brutto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-07-04",
+      "context": "Wystawiona (FV/2026/Q3/001)"
+    },
+    {
+      "date": "2026-07-18",
+      "context": "Termin (FV/2026/Q3/001)"
+    },
+    {
+      "date": "2026-07-07",
+      "context": "Wystawiona (FV/2026/Q3/002)"
+    },
+    {
+      "date": "2026-07-28",
+      "context": "Termin (FV/2026/Q3/002)"
+    },
+    {
+      "date": "2026-07-10",
+      "context": "Wystawiona (FV/2026/Q3/003)"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "Termin (FV/2026/Q3/003)"
+    },
+    {
+      "date": "2026-07-13",
+      "context": "Wystawiona (FV/2026/Q3/004)"
+    },
+    {
+      "date": "2026-08-03",
+      "context": "Termin (FV/2026/Q3/004)"
+    },
+    {
+      "date": "2026-07-16",
+      "context": "Wystawiona (FV/2026/Q3/005)"
+    },
+    {
+      "date": "2026-07-30",
+      "context": "Termin (FV/2026/Q3/005)"
+    },
+    {
+      "date": "2026-07-19",
+      "context": "Wystawiona (FV/2026/Q3/006)"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "Termin (FV/2026/Q3/006)"
+    },
+    {
+      "date": "2026-07-22",
+      "context": "Wystawiona (FV/2026/Q3/007)"
+    },
+    {
+      "date": "2026-08-12",
+      "context": "Termin (FV/2026/Q3/007)"
+    },
+    {
+      "date": "2026-07-25",
+      "context": "Wystawiona (FV/2026/Q3/008)"
+    },
+    {
+      "date": "2026-08-24",
+      "context": "Termin (FV/2026/Q3/008)"
+    },
+    {
+      "date": "2026-07-28",
+      "context": "Wystawiona (FV/2026/Q3/009)"
+    },
+    {
+      "date": "2026-08-11",
+      "context": "Termin (FV/2026/Q3/009)"
+    },
+    {
+      "date": "2026-07-31",
+      "context": "Wystawiona (FV/2026/Q3/010)"
+    },
+    {
+      "date": "2026-08-14",
+      "context": "Termin (FV/2026/Q3/010)"
+    },
+    {
+      "date": "2026-08-03",
+      "context": "Wystawiona (FV/2026/Q3/011)"
+    },
+    {
+      "date": "2026-09-02",
+      "context": "Termin (FV/2026/Q3/011)"
+    },
+    {
+      "date": "2026-08-06",
+      "context": "Wystawiona (FV/2026/Q3/012)"
+    },
+    {
+      "date": "2026-08-20",
+      "context": "Termin (FV/2026/Q3/012)"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "Wystawiona (FV/2026/Q3/013)"
+    },
+    {
+      "date": "2026-09-08",
+      "context": "Termin (FV/2026/Q3/013)"
+    },
+    {
+      "date": "2026-08-12",
+      "context": "Wystawiona (FV/2026/Q3/014)"
+    },
+    {
+      "date": "2026-09-02",
+      "context": "Termin (FV/2026/Q3/014)"
+    },
+    {
+      "date": "2026-08-15",
+      "context": "Wystawiona (FV/2026/Q3/015)"
+    },
+    {
+      "date": "2026-09-05",
+      "context": "Termin (FV/2026/Q3/015)"
+    },
+    {
+      "date": "2026-08-18",
+      "context": "Wystawiona (FV/2026/Q3/016)"
+    },
+    {
+      "date": "2026-09-17",
+      "context": "Termin (FV/2026/Q3/016)"
+    },
+    {
+      "date": "2026-08-21",
+      "context": "Wystawiona (FV/2026/Q3/017)"
+    },
+    {
+      "date": "2026-09-04",
+      "context": "Termin (FV/2026/Q3/017)"
+    },
+    {
+      "date": "2026-08-24",
+      "context": "Wystawiona (FV/2026/Q3/018)"
+    },
+    {
+      "date": "2026-09-23",
+      "context": "Termin (FV/2026/Q3/018)"
+    },
+    {
+      "date": "2026-08-27",
+      "context": "Wystawiona (FV/2026/Q3/019)"
+    },
+    {
+      "date": "2026-09-10",
+      "context": "Termin (FV/2026/Q3/019)"
+    },
+    {
+      "date": "2026-08-30",
+      "context": "Wystawiona (FV/2026/Q3/020)"
+    },
+    {
+      "date": "2026-09-20",
+      "context": "Termin (FV/2026/Q3/020)"
+    },
+    {
+      "date": "2026-09-02",
+      "context": "Wystawiona (FV/2026/Q3/021)"
+    },
+    {
+      "date": "2026-10-02",
+      "context": "Termin (FV/2026/Q3/021)"
+    },
+    {
+      "date": "2026-09-05",
+      "context": "Wystawiona (FV/2026/Q3/022)"
+    },
+    {
+      "date": "2026-09-19",
+      "context": "Termin (FV/2026/Q3/022)"
+    },
+    {
+      "date": "2026-09-08",
+      "context": "Wystawiona (FV/2026/Q3/023)"
+    },
+    {
+      "date": "2026-09-29",
+      "context": "Termin (FV/2026/Q3/023)"
+    },
+    {
+      "date": "2026-09-11",
+      "context": "Wystawiona (FV/2026/Q3/024)"
+    },
+    {
+      "date": "2026-09-25",
+      "context": "Termin (FV/2026/Q3/024)"
+    },
+    {
+      "date": "2026-09-14",
+      "context": "Wystawiona (FV/2026/Q3/025)"
+    },
+    {
+      "date": "2026-10-05",
+      "context": "Termin (FV/2026/Q3/025)"
+    },
+    {
+      "date": "2026-09-17",
+      "context": "Wystawiona (FV/2026/Q3/026)"
+    },
+    {
+      "date": "2026-10-01",
+      "context": "Termin (FV/2026/Q3/026)"
+    },
+    {
+      "date": "2026-09-20",
+      "context": "Wystawiona (FV/2026/Q3/027)"
+    },
+    {
+      "date": "2026-10-20",
+      "context": "Termin (FV/2026/Q3/027)"
+    },
+    {
+      "date": "2026-09-23",
+      "context": "Wystawiona (FV/2026/Q3/028)"
+    },
+    {
+      "date": "2026-10-14",
+      "context": "Termin (FV/2026/Q3/028)"
+    }
+  ],
+  "keywords": [
+    "faktury sprzedaży",
+    "zestawienie",
+    "księgowość",
+    "III kwartał 2026",
+    "kontrahenci",
+    "kwota brutto"
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "document": {
+    "fileName": "M0380k_S040_mieszany.pdf",
+    "pages": 129,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null
+  },
+  "summary": "Dokument stanowi załącznik do umowy określający ogólne zasady współpracy stron przy utrzymaniu systemu informatycznego. Zgodnie z ustaleniami zgłoszenia awarii przyjmowane są przez panel obsługi klienta, kopie zapasowe muszą być regularnie tworzone i bezpiecznie przechowywane, a Zamawiający zapewnia dostęp do środowiska testowego. Ponadto Wykonawca zobowiązany jest do prowadzenia dokumentacji prac oraz informowania z wyprzedzeniem o planowanych pracach serwisowych. Wszelkie zmiany w zakresie prac wymagają zachowania formy pisemnej, a w dokumencie wyszczególniono także poszczególne opłaty wraz z terminami płatności i przypisanymi osobami odpowiedzialnymi.",
+  "keyPoints": [
+    "Zasady współpracy przy utrzymaniu systemu informatycznego oraz obsługa zgłoszeń awarii przez panel klienta",
+    "Obowiązek regularnego tworzenia kopii zapasowych, prowadzenia dokumentacji prac i wcześniejszego informowania o pracach serwisowych",
+    "Zapewnienie przez Zamawiającego dostępu do środowiska testowego oraz wymóg formy pisemnej dla zmian zakresu prac",
+    "Opłata 99 640,64 zł (termin 28.04.2027 r., Marek Zieliński) oraz 17 798,69 zł (termin 13.05.2027 r., Karolina Duda)",
+    "Opłata 38 995,76 zł (termin 27.05.2027 r., Henryk Lewandowski) oraz 1 456,74 zł (termin 12.06.2027 r., Irena Szymańska)",
+    "Opłata 93 105,87 zł (termin 05.11.2027 r., Jan Mazur) oraz 71 731,36 zł (termin 20.11.2027 r., Adam Pawlak)"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Irena Szymańska",
+      "Marek Zieliński",
+      "Henryk Lewandowski",
+      "Karolina Duda",
+      "Jan Mazur",
+      "Adam Pawlak"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 1456.74,
+      "currency": "PLN",
+      "context": "opłata z terminem płatności do 12.06.2027 r., za którą odpowiada Irena Szymańska"
+    },
+    {
+      "value": 99640.64,
+      "currency": "PLN",
+      "context": "opłata z terminem płatności do 28.04.2027 r., za którą odpowiada Marek Zieliński"
+    },
+    {
+      "value": 38995.76,
+      "currency": "PLN",
+      "context": "opłata z terminem płatności do 27.05.2027 r., za którą odpowiada Henryk Lewandowski"
+    },
+    {
+      "value": 17798.69,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 93105.87,
+      "currency": "PLN",
+      "context": "opłata wynosi 93 105,87 zł"
+    },
+    {
+      "value": 71731.36,
+      "currency": "PLN",
+      "context": "opłata wynosi 71 731,36 zł"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-06-12",
+      "context": "termin płatności opłaty w kwocie 1 456,74 zł"
+    },
+    {
+      "date": "2027-04-28",
+      "context": "termin płatności opłaty w kwocie 99 640,64 zł"
+    },
+    {
+      "date": "2027-05-27",
+      "context": "termin płatności opłaty w kwocie 38 995,76 zł"
+    },
+    {
+      "date": "2027-05-13",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-11-05",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-11-20",
+      "context": "termin płatności to 20.11.2027 r."
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "kopie zapasowe",
+    "zgłoszenia awarii",
+    "środowisko testowe",
+    "prace serwisowe",
+    "dokumentacja prac",
+    "utrzymanie systemu informatycznego",
+    "panel obsługi klienta",
+    "system informatyczny"
+  ],
+  "meta": {
+    "pagesOcr": [
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129
+    ]
+  }
+}

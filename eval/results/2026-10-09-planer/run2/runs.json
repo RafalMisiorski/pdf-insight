@@ -1,0 +1,32 @@
+{
+  "M0380k_S024_mieszany.pdf": {
+    "ok": false,
+    "ms": 13523,
+    "message": "Za dużo zapytań. Spróbuj ponownie za minutę."
+  },
+  "M0380k_S040_mieszany.pdf": {
+    "ok": false,
+    "ms": 30709,
+    "message": "Analiza dokumentu nie zmieściła się w czasie. Spróbuj ponownie."
+  },
+  "S016_skan.pdf": {
+    "ok": true,
+    "ms": 15717
+  },
+  "S032_skan.pdf": {
+    "ok": true,
+    "ms": 23670
+  },
+  "S048_skan.pdf": {
+    "ok": true,
+    "ms": 28507
+  },
+  "T1550k_tekst.pdf": {
+    "ok": true,
+    "ms": 16525
+  },
+  "T2320k_tekst.pdf": {
+    "ok": true,
+    "ms": 21662
+  }
+}

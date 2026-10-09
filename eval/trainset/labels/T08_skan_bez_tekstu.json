@@ -56,6 +56,7 @@
   "2026-09-29"
  ],
  "dates_forbidden": [],
- "notes": "OCR path (F-10, enabled by the operator 2026-10-08): image-only scan of T01 without a text layer. The app renders the page to an image in the browser and sends it to the model; expected facts are those of T01. OCR may misread single characters; the date, totals and parties must survive.",
- "file": "T08_skan_bez_tekstu.pdf"
+ "notes": "OCR path: image-only scan of T01 without a text layer. The app renders the page to an image in the browser and sends it to the model; expected facts are those of T01, and the precision check reads them from T01's text (source_pdf). OCR may misread single characters; the date, totals and parties must survive.",
+ "file": "T08_skan_bez_tekstu.pdf",
+ "source_pdf": "T01_faktura_pl.pdf"
 }

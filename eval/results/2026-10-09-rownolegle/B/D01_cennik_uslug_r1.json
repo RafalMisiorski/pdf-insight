@@ -1,0 +1,231 @@
+{
+  "document": {
+    "fileName": "D01_cennik_uslug.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "oferta",
+    "title": "CENNIK USŁUG SERWISOWYCH NA ROK 2026",
+    "date": "2025-12-15"
+  },
+  "summary": "Dokument przedstawia cennik usług serwisowych firmy Serwis Orion sp. z o.o. na rok 2026. Został opublikowany w dniu 15 grudnia 2025 roku i obowiązuje w okresie od 1 stycznia do 31 grudnia 2026 roku. Najbliższa rewizja cen planowana jest na 1 lipca 2026 roku. Cennik zawiera 36 pozycji usług serwisowych wraz z cenami netto wyrażonymi w złotych.",
+  "keyPoints": [
+    "Wydawcą cennika jest Serwis Orion sp. z o.o. z siedzibą w Szczecinie.",
+    "Okres obowiązywania cen to 01.01.2026 r. – 31.12.2026 r.",
+    "Planowana rewizja cen wyznaczona została na 01.07.2026 r.",
+    "Zestawienie obejmuje 36 różnych wariantów usług serwisowych z cenami netto."
+  ],
+  "entities": {
+    "organizations": [
+      "Serwis Orion sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 391.41,
+      "currency": "PLN",
+      "context": "Raport techniczny (wariant 1)"
+    },
+    {
+      "value": 441.98,
+      "currency": "PLN",
+      "context": "Dyżur weekendowy (wariant 2)"
+    },
+    {
+      "value": 623.45,
+      "currency": "PLN",
+      "context": "Montaż modułu (wariant 3)"
+    },
+    {
+      "value": 1691.95,
+      "currency": "PLN",
+      "context": "Przegląd okresowy (wariant 4)"
+    },
+    {
+      "value": 1834.32,
+      "currency": "PLN",
+      "context": "Wymiana filtrów (wariant 5)"
+    },
+    {
+      "value": 2331.35,
+      "currency": "PLN",
+      "context": "Czyszczenie wymienników (wariant 6)"
+    },
+    {
+      "value": 2336.26,
+      "currency": "PLN",
+      "context": "Przegląd okresowy (wariant 7)"
+    },
+    {
+      "value": 3078.93,
+      "currency": "PLN",
+      "context": "Dojazd serwisanta (wariant 8)"
+    },
+    {
+      "value": 3108.37,
+      "currency": "PLN",
+      "context": "Demontaż urządzenia (wariant 9)"
+    },
+    {
+      "value": 3154.81,
+      "currency": "PLN",
+      "context": "Dojazd serwisanta (wariant 10)"
+    },
+    {
+      "value": 3199.35,
+      "currency": "PLN",
+      "context": "Dojazd serwisanta (wariant 11)"
+    },
+    {
+      "value": 3536.42,
+      "currency": "PLN",
+      "context": "Przegląd okresowy (wariant 12)"
+    },
+    {
+      "value": 3715.97,
+      "currency": "PLN",
+      "context": "Serwis awaryjny (wariant 13)"
+    },
+    {
+      "value": 4091.15,
+      "currency": "PLN",
+      "context": "Raport techniczny (wariant 14)"
+    },
+    {
+      "value": 4374.91,
+      "currency": "PLN",
+      "context": "Diagnostyka zdalna (wariant 15)"
+    },
+    {
+      "value": 5269.57,
+      "currency": "PLN",
+      "context": "Diagnostyka zdalna (wariant 16)"
+    },
+    {
+      "value": 5729.85,
+      "currency": "PLN",
+      "context": "Wymiana filtrów (wariant 17)"
+    },
+    {
+      "value": 6076.3,
+      "currency": "PLN",
+      "context": "Diagnostyka zdalna (wariant 18)"
+    },
+    {
+      "value": 7559.03,
+      "currency": "PLN",
+      "context": "Dyżur weekendowy (wariant 19)"
+    },
+    {
+      "value": 7814.83,
+      "currency": "PLN",
+      "context": "Serwis awaryjny (wariant 20)"
+    },
+    {
+      "value": 8309.69,
+      "currency": "PLN",
+      "context": "Dojazd serwisanta (wariant 21)"
+    },
+    {
+      "value": 8703.29,
+      "currency": "PLN",
+      "context": "Serwis awaryjny (wariant 22)"
+    },
+    {
+      "value": 8734.06,
+      "currency": "PLN",
+      "context": "Diagnostyka zdalna (wariant 23)"
+    },
+    {
+      "value": 9177.97,
+      "currency": "PLN",
+      "context": "Raport techniczny (wariant 24)"
+    },
+    {
+      "value": 9196.85,
+      "currency": "PLN",
+      "context": "Czyszczenie wymienników (wariant 25)"
+    },
+    {
+      "value": 9249.33,
+      "currency": "PLN",
+      "context": "Demontaż urządzenia (wariant 26)"
+    },
+    {
+      "value": 10105.09,
+      "currency": "PLN",
+      "context": "Diagnostyka zdalna (wariant 27)"
+    },
+    {
+      "value": 10687.71,
+      "currency": "PLN",
+      "context": "Aktualizacja oprogramowania (wariant 28)"
+    },
+    {
+      "value": 10689.01,
+      "currency": "PLN",
+      "context": "Kalibracja czujników (wariant 29)"
+    },
+    {
+      "value": 10783.19,
+      "currency": "PLN",
+      "context": "Aktualizacja oprogramowania (wariant 30)"
+    },
+    {
+      "value": 10961.22,
+      "currency": "PLN",
+      "context": "Dyżur weekendowy (wariant 31)"
+    },
+    {
+      "value": 10965.96,
+      "currency": "PLN",
+      "context": "Wymiana filtrów (wariant 32)"
+    },
+    {
+      "value": 11153.34,
+      "currency": "PLN",
+      "context": "Dyżur weekendowy (wariant 33)"
+    },
+    {
+      "value": 11295.57,
+      "currency": "PLN",
+      "context": "Audyt instalacji (wariant 34)"
+    },
+    {
+      "value": 11668.43,
+      "currency": "PLN",
+      "context": "Audyt instalacji (wariant 35)"
+    },
+    {
+      "value": 12160.18,
+      "currency": "PLN",
+      "context": "Szkolenie operatora (wariant 36)"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2025-12-15",
+      "context": "Data publikacji"
+    },
+    {
+      "date": "2026-01-01",
+      "context": "Cennik obowiązuje od"
+    },
+    {
+      "date": "2026-12-31",
+      "context": "Cennik obowiązuje do"
+    },
+    {
+      "date": "2026-07-01",
+      "context": "Najbliższa rewizja cen"
+    }
+  ],
+  "keywords": [
+    "cennik",
+    "usługi serwisowe",
+    "Serwis Orion",
+    "przegląd okresowy",
+    "diagnostyka zdalna",
+    "ceny netto"
+  ]
+}

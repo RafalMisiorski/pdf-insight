@@ -1,0 +1,66 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null,
+    "fileName": "L398k_dlugi_tekst.pdf",
+    "pages": 93
+  },
+  "summary": "Dokument reguluje warunki oraz zasady współpracy stron przy utrzymaniu systemu informatycznego. Zgłoszenia awarii odbywają się poprzez panel obsługi klienta, a wszelkie zmiany w zakresie prac wymagają formy pisemnej pod rygorem nieważności. Wykonawca odpowiada za regularne wykonywanie kopii zapasowych, informowanie o planowanych pracach serwisowych oraz prowadzenie dokumentacji. W tekście określono również stawki, terminy realizacji etapów oraz osoby kontaktowe po obu stronach.",
+  "keyPoints": [
+    "Ustalenie zasad współpracy przy utrzymaniu systemu informatycznego",
+    "Wymóg formy pisemnej dla wszelkich zmian w zakresie prac",
+    "Przyjmowanie zgłoszeń awarii przez panel obsługi klienta oraz regularne tworzenie kopii zapasowych",
+    "Kara umowna za opóźnienie w wysokości 1 234,00 zł",
+    "Termin odbioru pierwszego etapu wyznaczony na 15.03.2027 r.",
+    "Umowa obowiązuje do 17.09.2027 r., a wynagrodzenie za odbiór końcowy wynosi 3 456,00 zł"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Zofia Krawczyk",
+      "Henryk Lewandowski",
+      "Irena Szymańska"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 1234,
+      "currency": "PLN",
+      "context": "Kara umowna za opóźnienie"
+    },
+    {
+      "value": 2345,
+      "currency": "PLN",
+      "context": "Opłata za dodatkowy dzień wsparcia"
+    },
+    {
+      "value": 3456,
+      "currency": "PLN",
+      "context": "Wynagrodzenie za odbiór końcowy"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-03-15",
+      "context": "Termin odbioru pierwszego etapu"
+    },
+    {
+      "date": "2027-06-16",
+      "context": "Przegląd półroczny"
+    },
+    {
+      "date": "2027-09-17",
+      "context": "Obowiązywanie umowy do"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "kopie zapasowe",
+    "prace serwisowe",
+    "zgłoszenia awarii",
+    "środowisko testowe",
+    "kara umowna"
+  ]
+}

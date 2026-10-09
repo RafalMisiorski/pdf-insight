@@ -1,0 +1,73 @@
+{
+  "document": {
+    "fileName": "T2320k_tekst.pdf",
+    "pages": 538,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null
+  },
+  "summary": "Dokument precyzuje warunki i zasady współpracy stron w ramach utrzymania systemu informatycznego. Do obowiązków Wykonawcy należy regularne tworzenie i bezpieczne przechowywanie kopii zapasowych, dokumentowanie prac oraz uprzedzanie o planowanych pracach serwisowych. Zamawiający odpowiada za zapewnienie dostępu do środowiska testowego, a zgłoszenia awarii realizowane są przez dedykowany panel obsługi klienta. Wszelkie modyfikacje w zakresie prac wymagają zachowania formy pisemnej pod rygorem nieważności. W dokumencie ujęto również poszczególne opłaty finansowe wraz z terminami płatności i osobami odpowiedzialnymi.",
+  "keyPoints": [
+    "Ustalenie zasad współpracy stron przy utrzymaniu systemu informatycznego",
+    "Wymóg formy pisemnej dla wszelkich zmian w zakresie prac",
+    "Obsługa zgłoszeń awarii za pośrednictwem dedykowanego panelu obsługi klienta",
+    "Obowiązek regularnego tworzenia kopii zapasowych oraz bezpiecznego ich przechowywania",
+    "Obowiązki Wykonawcy w zakresie prowadzenia dokumentacji i informowania o pracach serwisowych oraz zapewnienie środowiska testowego przez Zamawiającego",
+    "Opłata w kwocie 92 841,59 zł z terminem płatności do 20.03.2027 r., za którą odpowiada Jan Mazur",
+    "Pozostałe opłaty: 27 479,73 zł płatna do 22.12.2027 r. oraz 25 201,15 zł płatna do 20.07.2027 r. (odpowiedzialny Adam Pawlak)"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Marek Zieliński",
+      "Adam Pawlak",
+      "Jan Mazur"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 27479.73,
+      "currency": "PLN",
+      "context": "opłata za utrzymanie systemu"
+    },
+    {
+      "value": 25201.15,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 92841.59,
+      "currency": "PLN",
+      "context": "opłata wynosi 92 841,59 zł"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-12-22",
+      "context": "termin płatności opłaty"
+    },
+    {
+      "date": "2027-07-20",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-03-20",
+      "context": "termin płatności to 20.03.2027 r."
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "kopie zapasowe",
+    "zgłoszenia awarii",
+    "panel obsługi klienta",
+    "środowisko testowe",
+    "prace serwisowe",
+    "system informatyczny",
+    "dokumentacja prac",
+    "utrzymanie systemu informatycznego",
+    "Wykonawca",
+    "Zamawiający",
+    "płatność"
+  ]
+}

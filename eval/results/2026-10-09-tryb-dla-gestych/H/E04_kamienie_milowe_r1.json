@@ -1,0 +1,281 @@
+{
+  "document": {
+    "fileName": "E04_kamienie_milowe.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "raport",
+    "title": "ROZLICZENIE ETAPÓW PROJEKTU: WDROŻENIE SYSTEMU ERP",
+    "date": "2026-10-05"
+  },
+  "summary": "Dokument przedstawia rozliczenie etapów projektu wdrożenia systemu ERP sporządzone według stanu na dzień 5 października 2026 roku. Zamawiającym jest Mleczarnia Podlaska S.A., natomiast wykonawcą Kod i Proces sp. z o.o. Całkowity czas trwania projektu obejmuje okres od 2 marca 2026 roku do 31 stycznia 2028 roku. Wartość całej umowy wynosi 3 412 938,21 zł netto i została podzielona na poszczególne etapy od M1 do M25.",
+  "keyPoints": [
+    "Projekt obejmuje wdrożenie systemu ERP w okresie od 02.03.2026 do 31.01.2028.",
+    "Zamawiającym jest Mleczarnia Podlaska S.A., a wykonawcą Kod i Proces sp. z o.o.",
+    "Całkowita wartość umowy wynosi 3 412 938,21 zł netto.",
+    "Harmonogram przewiduje 25 etapów rozliczeniowych obejmujących m.in. analizę, konfigurację, szkolenia, migrację danych i testy.",
+    "Stan rozliczenia sporządzono na dzień 05.10.2026."
+  ],
+  "entities": {
+    "organizations": [
+      "Mleczarnia Podlaska S.A.",
+      "Kod i Proces sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 41156.73,
+      "currency": "PLN",
+      "context": "M1 analiza płatność"
+    },
+    {
+      "value": 250987.97,
+      "currency": "PLN",
+      "context": "M2 szkolenia płatność"
+    },
+    {
+      "value": 230452.87,
+      "currency": "PLN",
+      "context": "M3 integracja płatność"
+    },
+    {
+      "value": 167520.31,
+      "currency": "PLN",
+      "context": "M4 konfiguracja płatność"
+    },
+    {
+      "value": 127369.05,
+      "currency": "PLN",
+      "context": "M5 testy płatność"
+    },
+    {
+      "value": 201281.98,
+      "currency": "PLN",
+      "context": "M6 konfiguracja płatność"
+    },
+    {
+      "value": 29770.19,
+      "currency": "PLN",
+      "context": "M7 szkolenia płatność"
+    },
+    {
+      "value": 26171.07,
+      "currency": "PLN",
+      "context": "M8 migracja danych płatność"
+    },
+    {
+      "value": 30173.63,
+      "currency": "PLN",
+      "context": "M9 testy płatność"
+    },
+    {
+      "value": 70714.33,
+      "currency": "PLN",
+      "context": "M10 migracja danych płatność"
+    },
+    {
+      "value": 233434.69,
+      "currency": "PLN",
+      "context": "M11 testy płatność"
+    },
+    {
+      "value": 176566.16,
+      "currency": "PLN",
+      "context": "M12 konfiguracja płatność"
+    },
+    {
+      "value": 40044.02,
+      "currency": "PLN",
+      "context": "M13 szkolenia płatność"
+    },
+    {
+      "value": 204861.47,
+      "currency": "PLN",
+      "context": "M14 konfiguracja płatność"
+    },
+    {
+      "value": 69804.56,
+      "currency": "PLN",
+      "context": "M15 testy płatność"
+    },
+    {
+      "value": 160065.95,
+      "currency": "PLN",
+      "context": "M16 migracja danych płatność"
+    },
+    {
+      "value": 110395.11,
+      "currency": "PLN",
+      "context": "M17 konfiguracja płatność"
+    },
+    {
+      "value": 205592.27,
+      "currency": "PLN",
+      "context": "M18 analiza płatność"
+    },
+    {
+      "value": 152703.51,
+      "currency": "PLN",
+      "context": "M19 analiza płatność"
+    },
+    {
+      "value": 150643.51,
+      "currency": "PLN",
+      "context": "M20 konfiguracja płatność"
+    },
+    {
+      "value": 114663.98,
+      "currency": "PLN",
+      "context": "M21 szkolenia płatność"
+    },
+    {
+      "value": 165598.45,
+      "currency": "PLN",
+      "context": "M22 testy płatność"
+    },
+    {
+      "value": 136460.34,
+      "currency": "PLN",
+      "context": "M23 analiza płatność"
+    },
+    {
+      "value": 118786.46,
+      "currency": "PLN",
+      "context": "M24 szkolenia płatność"
+    },
+    {
+      "value": 197719.6,
+      "currency": "PLN",
+      "context": "M25 konfiguracja płatność"
+    },
+    {
+      "value": 3412938.21,
+      "currency": "PLN",
+      "context": "Wartość umowy netto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-03-02",
+      "context": "Projekt od"
+    },
+    {
+      "date": "2028-01-31",
+      "context": "do"
+    },
+    {
+      "date": "2026-10-05",
+      "context": "Stan na"
+    },
+    {
+      "date": "2026-03-21",
+      "context": "Odbiór M1"
+    },
+    {
+      "date": "2026-04-15",
+      "context": "Odbiór M2"
+    },
+    {
+      "date": "2026-05-10",
+      "context": "Odbiór M3"
+    },
+    {
+      "date": "2026-06-04",
+      "context": "Odbiór M4"
+    },
+    {
+      "date": "2026-06-24",
+      "context": "Odbiór M5"
+    },
+    {
+      "date": "2026-07-15",
+      "context": "Odbiór M6"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "Odbiór M7"
+    },
+    {
+      "date": "2026-09-01",
+      "context": "Odbiór M8"
+    },
+    {
+      "date": "2026-09-26",
+      "context": "Odbiór M9"
+    },
+    {
+      "date": "2026-10-19",
+      "context": "Odbiór M10"
+    },
+    {
+      "date": "2026-11-11",
+      "context": "Odbiór M11"
+    },
+    {
+      "date": "2026-12-04",
+      "context": "Odbiór M12"
+    },
+    {
+      "date": "2026-12-23",
+      "context": "Odbiór M13"
+    },
+    {
+      "date": "2027-01-17",
+      "context": "Odbiór M14"
+    },
+    {
+      "date": "2027-02-05",
+      "context": "Odbiór M15"
+    },
+    {
+      "date": "2027-02-25",
+      "context": "Odbiór M16"
+    },
+    {
+      "date": "2027-03-23",
+      "context": "Odbiór M17"
+    },
+    {
+      "date": "2027-04-10",
+      "context": "Odbiór M18"
+    },
+    {
+      "date": "2027-04-29",
+      "context": "Odbiór M19"
+    },
+    {
+      "date": "2027-05-23",
+      "context": "Odbiór M20"
+    },
+    {
+      "date": "2027-06-10",
+      "context": "Odbiór M21"
+    },
+    {
+      "date": "2027-07-02",
+      "context": "Odbiór M22"
+    },
+    {
+      "date": "2027-07-27",
+      "context": "Odbiór M23"
+    },
+    {
+      "date": "2027-08-18",
+      "context": "Odbiór M24"
+    },
+    {
+      "date": "2027-09-10",
+      "context": "Odbiór M25"
+    }
+  ],
+  "keywords": [
+    "wdrożenie ERP",
+    "rozliczenie etapów",
+    "harmonogram",
+    "analiza",
+    "konfiguracja",
+    "migracja danych",
+    "testy",
+    "szkolenia"
+  ]
+}

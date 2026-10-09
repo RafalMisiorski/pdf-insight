@@ -1,0 +1,73 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null,
+    "fileName": "L1198k_dlugi_tekst.pdf",
+    "pages": 279
+  },
+  "summary": "Dokument precyzuje warunki i zasady współpracy stron w ramach utrzymania systemu informatycznego, obowiązujące do 17 września 2027 roku. Zgłoszenia awarii są realizowane przez dedykowany panel obsługi klienta, a Wykonawca odpowiada za prowadzenie dokumentacji, uprzedzanie o serwisie oraz regularne i bezpieczne tworzenie kopii zapasowych. Zamawiający zapewnia dostęp do środowiska testowego, a wszelkie modyfikacje zakresu prac wymagają bezwzględnie formy pisemnej. W dokumencie wyznaczono kluczowe terminy, kwoty wynagrodzeń i kar oraz osoby odpowiedzialne za koordynację i odbiory.",
+  "keyPoints": [
+    "Ustalenie warunków utrzymania systemu informatycznego z okresem obowiązywania umowy do 17.09.2027 r.",
+    "Obsługa awarii przez dedykowany panel klienta, regularny backup oraz uprzedzanie o pracach serwisowych.",
+    "Wymóg formy pisemnej i obustronnej akceptacji dla wszelkich zmian w zakresie prac.",
+    "Zapewnienie przez Zamawiającego dostępu do środowiska testowego oraz prowadzenie dokumentacji przez Wykonawcę.",
+    "Kwestie finansowe: kara za opóźnienie 1 234,00 zł, dodatkowy dzień wsparcia 2 345,00 zł oraz odbiór końcowy 3 456,00 zł.",
+    "Harmonogram prac z odbiorem pierwszego etapu 15.03.2027 r. i przeglądem półrocznym 16.06.2027 r.",
+    "Wskazanie osób odpowiedzialnych: Zofia Krawczyk, Henryk Lewandowski oraz podpisująca protokół Irena Szymańska."
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Zofia Krawczyk",
+      "Henryk Lewandowski",
+      "Irena Szymańska"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 1234,
+      "currency": "PLN",
+      "context": "Kara umowna za opóźnienie"
+    },
+    {
+      "value": 2345,
+      "currency": "PLN",
+      "context": "Opłata za dodatkowy dzień wsparcia"
+    },
+    {
+      "value": 3456,
+      "currency": "PLN",
+      "context": "Wynagrodzenie za odbiór końcowy"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-03-15",
+      "context": "Termin odbioru pierwszego etapu"
+    },
+    {
+      "date": "2027-06-16",
+      "context": "Przegląd półroczny"
+    },
+    {
+      "date": "2027-09-17",
+      "context": "termin obowiązywania umowy"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "środowisko testowe",
+    "kopie zapasowe",
+    "awaria",
+    "kara umowna",
+    "utrzymanie systemu informatycznego",
+    "zgłoszenia awarii",
+    "prace serwisowe",
+    "wsparcie techniczne",
+    "panel obsługi klienta",
+    "odbiór końcowy",
+    "dokumentacja prac"
+  ]
+}

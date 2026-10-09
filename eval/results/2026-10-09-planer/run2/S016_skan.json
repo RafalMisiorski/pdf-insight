@@ -1,0 +1,70 @@
+{
+  "document": {
+    "fileName": "S016_skan.pdf",
+    "pages": 16,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Załącznik, strona 1",
+    "date": null
+  },
+  "summary": "Dokument stanowi załącznik określający zasady współpracy pomiędzy Zamawiającym a Wykonawcą w zakresie utrzymania systemu informatycznego. Reguluje on kwestie zgłaszania awarii przez panel obsługi klienta, planowania prac serwisowych oraz regularnego tworzenia bezpiecznych kopii zapasowych. W dokumencie określono również zobowiązania finansowe z podziałem na konkretne kwoty, terminy płatności przypadające na 2027 rok oraz osoby za nie odpowiedzialne. Wszelkie zmiany w ustalonym zakresie prac wymagają zachowania formy pisemnej oraz akceptacji obu stron.",
+  "keyPoints": [
+    "Ustalenie zasad współpracy przy utrzymaniu systemu informatycznego oraz zgłaszania awarii przez panel obsługi klienta.",
+    "Płatność 99 026,69 zł do 20.09.2027 r., za którą odpowiada Karolina Duda.",
+    "Płatność 38 659,25 zł do 06.08.2027 r., za którą odpowiada Henryk Lewandowski.",
+    "Płatność 25 564,25 zł do 13.06.2027 r., za którą odpowiada Adam Pawlak.",
+    "Obowiązek regularnego tworzenia kopii zapasowych oraz uprzedniego informowania o pracach serwisowych.",
+    "Wymóg formy pisemnej i akceptacji obu stron dla wszelkich zmian w zakresie prac."
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Karolina Duda",
+      "Adam Pawlak",
+      "Henryk Lewandowski"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 99026.69,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 25564.25,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 38659.25,
+      "currency": "PLN",
+      "context": "opłata"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-09-20",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-06-13",
+      "context": "termin płatności opłaty (Adam Pawlak)"
+    },
+    {
+      "date": "2027-08-06",
+      "context": "termin płatności opłaty (Henryk Lewandowski)"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu informatycznego",
+    "kopie zapasowe",
+    "zgłoszenia awarii",
+    "panel obsługi klienta",
+    "środowisko testowe",
+    "prace serwisowe",
+    "utrzymanie systemu"
+  ],
+  "meta": {
+    "source": "ocr"
+  }
+}

@@ -1,10 +1,12 @@
-"""Score PDF Insight outputs against the training labels (stdlib only).
+"""Score PDF Insight outputs against the training labels, and check that every extracted fact is printed
+in the source PDF (precision, eval/grounding.py; needs pypdf). Exits with 1 when any check fails.
 
 Usage:
   npm run eval                              # Playwright uploads eval/trainset/pdf/* through the real UI
   python eval/score.py                      # compares eval-output/*.json with eval/trainset/labels
   python eval/score.py --outputs path/to/dir --labels path/to/labels
 Each output file is the JSON downloaded from the app, named after the PDF (T01_faktura_pl.json for T01_faktura_pl.pdf).
+A missing output counts as a failure. Recorded runs are in eval/results/.
 Error cases (expect = error:...) are listed for a manual check of the UI message; they need no output file.
 The company test PDF is not part of this repository and is never used for tuning: it is run once, at the end.
 """
@@ -14,6 +16,8 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
+
+from grounding import source_text, ungrounded
 
 HERE = Path(__file__).resolve().parent
 TYPES = {"faktura", "umowa", "oferta", "raport", "inne"}
@@ -36,8 +40,10 @@ def mentions(text, phrase):
     last two letters, because Polish inflects names ("przez Kwiaciarnię Pod Różą") and labels use stems
     ("szkole" for "szkolenia"); numbers and words of up to 3 letters must match exactly, so "zł" is not
     found inside "przyszły" and "2026" is not "2025"."""
-    if any(ch.isdigit() for ch in phrase) and digits(phrase).lower() in digits(text).lower():
-        return True
+    if any(ch.isdigit() for ch in phrase):
+        number = re.escape(digits(phrase).lower())
+        if re.search(r"(?<!\d)" + number + r"(?!\d)", digits(text).lower()):
+            return True
     want, words = norm(phrase).split(), norm(text).split()
 
     def same(w, g):
@@ -82,10 +88,13 @@ def structure_errors(o):
 
 # Same rule as the app (src/lib/sentences.ts): a dot ends a sentence only when the next word starts
 # like a sentence and the word before is not an abbreviation that precedes a name ("ul.", "dr", "m.in.").
-PREFIX_ABBREVIATIONS = {"ul", "al", "pl", "nr", "tel", "ok", "np", "m.in", "tj", "tzw", "dr", "prof", "mgr", "inż", "św",
-                        "godz", "mr", "mrs", "ms", "no", "vs", "st", "approx"}
+PREFIX_ABBREVIATIONS = {"ul", "al", "pl", "os", "woj", "nr", "tel", "ok", "np", "m.in", "tj", "tzw", "wg", "zob", "por",
+                        "dr", "hab", "prof", "mgr", "inż", "mec", "adw", "ks", "red", "św", "im", "godz", "tys",
+                        "art", "ust", "pkt", "lit", "poz", "par", "zał", "rozdz", "str", "tab", "rys", "dz",
+                        "mr", "mrs", "ms", "no", "vs", "st", "approx", "sec", "e.g", "i.e", "cf"}
+# The app counts caseless scripts (Japanese, Arabic...) with Intl.Segmenter; the training set is Polish and English.
 TERMINAL = re.compile(r"[.!?][\"”')]?$")
-STARTS = re.compile(r"^[\"„“'(]?[^\W\d_]|^[\"„“'(]?\d")
+STARTS = re.compile(r"^[\"„“'(¿¡]?[^\W\d_]|^[\"„“'(¿¡]?\d")
 
 
 def count_sentences(text):
@@ -156,12 +165,19 @@ def score(label, out):
 ERROR_MESSAGES = {"not_pdf": "nie jest", "too_large": "za duży", "no_text_layer": "warstwy tekstowej"}
 
 
+# Checks that the app's own validation guarantees (an answer that fails them never reaches the user);
+# they are reported apart from the measured ones, so they cannot inflate the measured result.
+BY_CONSTRUCTION = {"schema", "summary.sentences", "keyPoints.count", "document.pages"}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--labels", default=str(HERE / "trainset" / "labels"))
     ap.add_argument("--outputs", default=str(HERE.parent / "eval-output"))
     a = ap.parse_args()
-    total_ok = total = 0
+    measured, construction, grounded = [0, 0], [0, 0], [0, 0]
+    failed = False
+    pdf_dir = Path(a.labels).parent / "pdf"
     # runs.json is written by the Playwright eval (npm run eval): the UI outcome of every uploaded file.
     runs_path = Path(a.outputs) / "runs.json"
     runs = json.loads(runs_path.read_text(encoding="utf-8")) if runs_path.exists() else {}
@@ -175,25 +191,43 @@ def main():
             kind = label["expect"].split(":", 1)[1]
             message = run.get("message") or ""
             passed = not run["ok"] and ERROR_MESSAGES[kind] in message
-            total_ok += passed
-            total += 1
+            measured[0] += passed
+            measured[1] += 1
+            failed |= not passed
             print("\n%s  %s  %d/1 checks (UI message: %r)" % (label["id"], label["file"], passed, message))
             continue
         op = Path(a.outputs) / (Path(label["file"]).stem + ".json")
         if not op.exists():
-            print("\n%s  %s -> no output yet (%s)" % (label["id"], label["file"], op))
+            print("\n%s  %s -> NO OUTPUT: counted as a failure (%s)" % (label["id"], label["file"], op))
+            measured[1] += 1
+            failed = True
             continue
-        rows = score(label, json.loads(op.read_text(encoding="utf-8")))
+        out = json.loads(op.read_text(encoding="utf-8"))
+        rows = score(label, out)
+        for name, passed, _ in rows:
+            bucket = construction if name in BY_CONSTRUCTION else measured
+            bucket[0] += passed
+            bucket[1] += 1
         ok = sum(r[1] for r in rows)
-        total_ok += ok
-        total += len(rows)
+        failed |= ok < len(rows)
         print("\n%s  %s  %d/%d checks" % (label["id"], label["file"], ok, len(rows)))
         for name, passed, detail in rows:
             if not passed:
                 print("   FAIL %-34s %s" % (name, detail))
-    if total:
-        print("\nTOTAL %d/%d checks passed (%.0f%%)" % (total_ok, total, 100.0 * total_ok / total))
-    return 0
+        # Precision: every extracted fact must be printed in the source PDF (a scan uses its text twin).
+        source = pdf_dir / label.get("source_pdf", label["file"])
+        if source.exists():
+            checked, missing = ungrounded(out, *source_text(source))
+            grounded[0] += checked - len(missing)
+            grounded[1] += checked
+            failed |= bool(missing)
+            for item in missing:
+                print("   NOT IN SOURCE %s" % item)
+    pct = lambda pair: 100.0 * pair[0] / pair[1] if pair[1] else 100.0
+    print("\nMEASURED label checks      %d/%d (%.0f%%)" % (measured[0], measured[1], pct(measured)))
+    print("GROUNDED extracted facts   %d/%d (%.0f%%)  every amount, date, person, organization found in the PDF" % (grounded[0], grounded[1], pct(grounded)))
+    print("BY CONSTRUCTION            %d/%d  (guaranteed by the app's validation, not a measurement)" % tuple(construction))
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

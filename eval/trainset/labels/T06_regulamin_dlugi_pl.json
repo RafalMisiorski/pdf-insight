@@ -49,6 +49,6 @@
   "2026-11-01"
  ],
  "dates_forbidden": [],
- "notes": "Long text (about 60 paragraphs): needs chunking and merging (F-08). Facts sit in paragraphs 17, 44 and 58, far apart. Type: terms of service are a standard contract form (art. 384 KC), so 'umowa' is accepted as well as 'inne'.",
+ "notes": "Long text (about 60 paragraphs): facts far apart in one long text. Facts sit in paragraphs 17, 44 and 58, far apart. Type: terms of service are a standard contract form (art. 384 KC), so 'umowa' is accepted as well as 'inne'.",
  "file": "T06_regulamin_dlugi_pl.pdf"
 }

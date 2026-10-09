@@ -1,0 +1,413 @@
+{
+  "document": {
+    "fileName": "E03_aneks_dostawy.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "umowa",
+    "title": "ANEKS NR 3 DO UMOWY DOSTAWY NR 12/2025",
+    "date": "2026-10-01"
+  },
+  "summary": "Dokument stanowi aneks nr 3 do umowy dostawy nr 12/2025 zawarty w dniu 1 października 2026 roku pomiędzy firmami Elektro-Hurt Kalisz sp. z o.o. oraz Budimex-Instal Poznań sp. z o.o. W aneksie ustalono nowy harmonogram obejmujący czterdzieści dostaw w okresie od października 2026 roku do maja 2027 roku. Zakres asortymentu obejmuje m.in. osprzęt, rozdzielnice, aparaturę modułową, oprawy LED, kable YKY i korytka kablowe. Łączna wartość dostaw netto określona w aneksie wynosi 1 930 610,77 zł.",
+  "keyPoints": [
+    "Zawarcie aneksu nr 3 do umowy nr 12/2025 z dnia 03.03.2025 r.",
+    "Stronami umowy są Elektro-Hurt Kalisz sp. z o.o. oraz Budimex-Instal Poznań sp. z o.o.",
+    "Ustalenie nowego harmonogramu obejmującego 40 etapów dostaw (D1–D40)",
+    "Realizacja dostaw zaplanowana od 19.10.2026 r. do 14.05.2027 r.",
+    "Łączna wartość netto dostaw wynosi 1 930 610,77 zł"
+  ],
+  "entities": {
+    "organizations": [
+      "Elektro-Hurt Kalisz sp. z o.o.",
+      "Budimex-Instal Poznań sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 61087.54,
+      "currency": "PLN",
+      "context": "Dostawa D1 osprzęt"
+    },
+    {
+      "value": 61603.14,
+      "currency": "PLN",
+      "context": "Dostawa D2 rozdzielnice"
+    },
+    {
+      "value": 64830.03,
+      "currency": "PLN",
+      "context": "Dostawa D3 aparatura modułowa"
+    },
+    {
+      "value": 3787.33,
+      "currency": "PLN",
+      "context": "Dostawa D4 osprzęt"
+    },
+    {
+      "value": 94987.8,
+      "currency": "PLN",
+      "context": "Dostawa D5 rozdzielnice"
+    },
+    {
+      "value": 59586.42,
+      "currency": "PLN",
+      "context": "Dostawa D6 rozdzielnice"
+    },
+    {
+      "value": 64017.98,
+      "currency": "PLN",
+      "context": "Dostawa D7 oprawy LED"
+    },
+    {
+      "value": 93012.14,
+      "currency": "PLN",
+      "context": "Dostawa D8 oprawy LED"
+    },
+    {
+      "value": 40495.23,
+      "currency": "PLN",
+      "context": "Dostawa D9 aparatura modułowa"
+    },
+    {
+      "value": 42486.75,
+      "currency": "PLN",
+      "context": "Dostawa D10 kable YKY"
+    },
+    {
+      "value": 64933.96,
+      "currency": "PLN",
+      "context": "Dostawa D11 oprawy LED"
+    },
+    {
+      "value": 24866.54,
+      "currency": "PLN",
+      "context": "Dostawa D12 aparatura modułowa"
+    },
+    {
+      "value": 52524.74,
+      "currency": "PLN",
+      "context": "Dostawa D13 aparatura modułowa"
+    },
+    {
+      "value": 80294.78,
+      "currency": "PLN",
+      "context": "Dostawa D14 kable YKY"
+    },
+    {
+      "value": 71671.17,
+      "currency": "PLN",
+      "context": "Dostawa D15 osprzęt"
+    },
+    {
+      "value": 67125.7,
+      "currency": "PLN",
+      "context": "Dostawa D16 rozdzielnice"
+    },
+    {
+      "value": 20551.3,
+      "currency": "PLN",
+      "context": "Dostawa D17 rozdzielnice"
+    },
+    {
+      "value": 13220.73,
+      "currency": "PLN",
+      "context": "Dostawa D18 oprawy LED"
+    },
+    {
+      "value": 72325.59,
+      "currency": "PLN",
+      "context": "Dostawa D19 aparatura modułowa"
+    },
+    {
+      "value": 48544.32,
+      "currency": "PLN",
+      "context": "Dostawa D20 kable YKY"
+    },
+    {
+      "value": 15246.79,
+      "currency": "PLN",
+      "context": "Dostawa D21 osprzęt"
+    },
+    {
+      "value": 5028.15,
+      "currency": "PLN",
+      "context": "Dostawa D22 kable YKY"
+    },
+    {
+      "value": 42753.4,
+      "currency": "PLN",
+      "context": "Dostawa D23 korytka kablowe"
+    },
+    {
+      "value": 43118.28,
+      "currency": "PLN",
+      "context": "Dostawa D24 osprzęt"
+    },
+    {
+      "value": 28443.9,
+      "currency": "PLN",
+      "context": "Dostawa D25 oprawy LED"
+    },
+    {
+      "value": 18818.48,
+      "currency": "PLN",
+      "context": "Dostawa D26 kable YKY"
+    },
+    {
+      "value": 2752.94,
+      "currency": "PLN",
+      "context": "Dostawa D27 oprawy LED"
+    },
+    {
+      "value": 89190.08,
+      "currency": "PLN",
+      "context": "Dostawa D28 korytka kablowe"
+    },
+    {
+      "value": 87625.49,
+      "currency": "PLN",
+      "context": "Dostawa D29 oprawy LED"
+    },
+    {
+      "value": 19493.49,
+      "currency": "PLN",
+      "context": "Dostawa D30 kable YKY"
+    },
+    {
+      "value": 21198.04,
+      "currency": "PLN",
+      "context": "Dostawa D31 aparatura modułowa"
+    },
+    {
+      "value": 86129.56,
+      "currency": "PLN",
+      "context": "Dostawa D32 oprawy LED"
+    },
+    {
+      "value": 59576.11,
+      "currency": "PLN",
+      "context": "Dostawa D33 osprzęt"
+    },
+    {
+      "value": 31647.37,
+      "currency": "PLN",
+      "context": "Dostawa D34 aparatura modułowa"
+    },
+    {
+      "value": 77243.87,
+      "currency": "PLN",
+      "context": "Dostawa D35 rozdzielnice"
+    },
+    {
+      "value": 18453.81,
+      "currency": "PLN",
+      "context": "Dostawa D36 rozdzielnice"
+    },
+    {
+      "value": 2566.76,
+      "currency": "PLN",
+      "context": "Dostawa D37 oprawy LED"
+    },
+    {
+      "value": 78153.14,
+      "currency": "PLN",
+      "context": "Dostawa D38 oprawy LED"
+    },
+    {
+      "value": 29552.91,
+      "currency": "PLN",
+      "context": "Dostawa D39 aparatura modułowa"
+    },
+    {
+      "value": 71665.01,
+      "currency": "PLN",
+      "context": "Dostawa D40 korytka kablowe"
+    },
+    {
+      "value": 1930610.77,
+      "currency": "PLN",
+      "context": "Łączna wartość dostaw według aneksu netto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-01",
+      "context": "Data zawarcia aneksu nr 3"
+    },
+    {
+      "date": "2025-03-03",
+      "context": "Data zawarcia umowy głównej"
+    },
+    {
+      "date": "2026-10-19",
+      "context": "Termin dostawy D1"
+    },
+    {
+      "date": "2026-10-25",
+      "context": "Termin dostawy D2"
+    },
+    {
+      "date": "2026-10-31",
+      "context": "Termin dostawy D3"
+    },
+    {
+      "date": "2026-11-06",
+      "context": "Termin dostawy D4"
+    },
+    {
+      "date": "2026-11-10",
+      "context": "Termin dostawy D5"
+    },
+    {
+      "date": "2026-11-14",
+      "context": "Termin dostawy D6"
+    },
+    {
+      "date": "2026-11-19",
+      "context": "Termin dostawy D7"
+    },
+    {
+      "date": "2026-11-25",
+      "context": "Termin dostawy D8"
+    },
+    {
+      "date": "2026-11-29",
+      "context": "Termin dostawy D9"
+    },
+    {
+      "date": "2026-12-04",
+      "context": "Termin dostawy D10"
+    },
+    {
+      "date": "2026-12-08",
+      "context": "Termin dostawy D11"
+    },
+    {
+      "date": "2026-12-14",
+      "context": "Termin dostawy D12"
+    },
+    {
+      "date": "2026-12-20",
+      "context": "Termin dostawy D13"
+    },
+    {
+      "date": "2026-12-26",
+      "context": "Termin dostawy D14"
+    },
+    {
+      "date": "2026-12-31",
+      "context": "Termin dostawy D15"
+    },
+    {
+      "date": "2027-01-05",
+      "context": "Termin dostawy D16"
+    },
+    {
+      "date": "2027-01-10",
+      "context": "Termin dostawy D17"
+    },
+    {
+      "date": "2027-01-15",
+      "context": "Termin dostawy D18"
+    },
+    {
+      "date": "2027-01-21",
+      "context": "Termin dostawy D19"
+    },
+    {
+      "date": "2027-01-26",
+      "context": "Termin dostawy D20"
+    },
+    {
+      "date": "2027-02-01",
+      "context": "Termin dostawy D21"
+    },
+    {
+      "date": "2027-02-06",
+      "context": "Termin dostawy D22"
+    },
+    {
+      "date": "2027-02-10",
+      "context": "Termin dostawy D23"
+    },
+    {
+      "date": "2027-02-14",
+      "context": "Termin dostawy D24"
+    },
+    {
+      "date": "2027-02-20",
+      "context": "Termin dostawy D25"
+    },
+    {
+      "date": "2027-02-25",
+      "context": "Termin dostawy D26"
+    },
+    {
+      "date": "2027-03-03",
+      "context": "Termin dostawy D27"
+    },
+    {
+      "date": "2027-03-07",
+      "context": "Termin dostawy D28"
+    },
+    {
+      "date": "2027-03-13",
+      "context": "Termin dostawy D29"
+    },
+    {
+      "date": "2027-03-19",
+      "context": "Termin dostawy D30"
+    },
+    {
+      "date": "2027-03-25",
+      "context": "Termin dostawy D31"
+    },
+    {
+      "date": "2027-03-30",
+      "context": "Termin dostawy D32"
+    },
+    {
+      "date": "2027-04-05",
+      "context": "Termin dostawy D33"
+    },
+    {
+      "date": "2027-04-09",
+      "context": "Termin dostawy D34"
+    },
+    {
+      "date": "2027-04-15",
+      "context": "Termin dostawy D35"
+    },
+    {
+      "date": "2027-04-21",
+      "context": "Termin dostawy D36"
+    },
+    {
+      "date": "2027-04-27",
+      "context": "Termin dostawy D37"
+    },
+    {
+      "date": "2027-05-03",
+      "context": "Termin dostawy D38"
+    },
+    {
+      "date": "2027-05-09",
+      "context": "Termin dostawy D39"
+    },
+    {
+      "date": "2027-05-14",
+      "context": "Termin dostawy D40"
+    }
+  ],
+  "keywords": [
+    "aneks",
+    "harmonogram dostaw",
+    "umowa dostawy",
+    "osprzęt",
+    "rozdzielnice",
+    "aparatura modułowa",
+    "oprawy LED",
+    "kable YKY",
+    "korytka kablowe"
+  ]
+}

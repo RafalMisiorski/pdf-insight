@@ -1,0 +1,280 @@
+{
+  "document": {
+    "fileName": "E04_kamienie_milowe.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "raport",
+    "title": "ROZLICZENIE ETAPÓW PROJEKTU: WDROŻENIE SYSTEMU ERP",
+    "date": "2026-10-05"
+  },
+  "summary": "Dokument przedstawia rozliczenie etapów projektu dotyczącego wdrożenia systemu ERP sporządzone na dzień 5 października 2026 roku. Zamawiającym jest Mleczarnia Podlaska S.A., natomiast wykonawcą Kod i Proces sp. z o.o. Całkowity czas realizacji projektu zaplanowano w okresie od 2 marca 2026 roku do 31 stycznia 2028 roku. Łączna wartość umowy wynosi 3 412 938,21 zł netto i obejmuje co najmniej 25 etapów prac.",
+  "keyPoints": [
+    "Zamawiającym jest Mleczarnia Podlaska S.A., a wykonawcą Kod i Proces sp. z o.o.",
+    "Projekt obejmuje wdrożenie systemu ERP w okresie od 02.03.2026 do 31.01.2028.",
+    "Stan rozliczenia sporządzono na dzień 05.10.2026.",
+    "Wyszczególniono 25 etapów obejmujących analizę, szkolenia, integrację, konfigurację, testy oraz migrację danych.",
+    "Łączna wartość umowy opiewa na kwotę 3 412 938,21 zł netto."
+  ],
+  "entities": {
+    "organizations": [
+      "Mleczarnia Podlaska S.A.",
+      "Kod i Proces sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 41156.73,
+      "currency": "PLN",
+      "context": "M1 płatność"
+    },
+    {
+      "value": 250987.97,
+      "currency": "PLN",
+      "context": "M2 płatność"
+    },
+    {
+      "value": 230452.87,
+      "currency": "PLN",
+      "context": "M3 płatność"
+    },
+    {
+      "value": 167520.31,
+      "currency": "PLN",
+      "context": "M4 płatność"
+    },
+    {
+      "value": 127369.05,
+      "currency": "PLN",
+      "context": "M5 płatność"
+    },
+    {
+      "value": 201281.98,
+      "currency": "PLN",
+      "context": "M6 płatność"
+    },
+    {
+      "value": 29770.19,
+      "currency": "PLN",
+      "context": "M7 płatność"
+    },
+    {
+      "value": 26171.07,
+      "currency": "PLN",
+      "context": "M8 płatność"
+    },
+    {
+      "value": 30173.63,
+      "currency": "PLN",
+      "context": "M9 płatność"
+    },
+    {
+      "value": 70714.33,
+      "currency": "PLN",
+      "context": "M10 płatność"
+    },
+    {
+      "value": 233434.69,
+      "currency": "PLN",
+      "context": "M11 płatność"
+    },
+    {
+      "value": 176566.16,
+      "currency": "PLN",
+      "context": "M12 płatność"
+    },
+    {
+      "value": 40044.02,
+      "currency": "PLN",
+      "context": "M13 płatność"
+    },
+    {
+      "value": 204861.47,
+      "currency": "PLN",
+      "context": "M14 płatność"
+    },
+    {
+      "value": 69804.56,
+      "currency": "PLN",
+      "context": "M15 płatność"
+    },
+    {
+      "value": 160065.95,
+      "currency": "PLN",
+      "context": "M16 płatność"
+    },
+    {
+      "value": 110395.11,
+      "currency": "PLN",
+      "context": "M17 płatność"
+    },
+    {
+      "value": 205592.27,
+      "currency": "PLN",
+      "context": "M18 płatność"
+    },
+    {
+      "value": 152703.51,
+      "currency": "PLN",
+      "context": "M19 płatność"
+    },
+    {
+      "value": 150643.51,
+      "currency": "PLN",
+      "context": "M20 płatność"
+    },
+    {
+      "value": 114663.98,
+      "currency": "PLN",
+      "context": "M21 płatność"
+    },
+    {
+      "value": 165598.45,
+      "currency": "PLN",
+      "context": "M22 płatność"
+    },
+    {
+      "value": 136460.34,
+      "currency": "PLN",
+      "context": "M23 płatność"
+    },
+    {
+      "value": 118786.46,
+      "currency": "PLN",
+      "context": "M24 płatność"
+    },
+    {
+      "value": 197719.6,
+      "currency": "PLN",
+      "context": "M25 płatność"
+    },
+    {
+      "value": 3412938.21,
+      "currency": "PLN",
+      "context": "Wartość umowy netto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-03-02",
+      "context": "Projekt od"
+    },
+    {
+      "date": "2028-01-31",
+      "context": "Projekt do"
+    },
+    {
+      "date": "2026-10-05",
+      "context": "Stan na"
+    },
+    {
+      "date": "2026-03-21",
+      "context": "Odbiór etapu M1"
+    },
+    {
+      "date": "2026-04-15",
+      "context": "Odbiór etapu M2"
+    },
+    {
+      "date": "2026-05-10",
+      "context": "Odbiór etapu M3"
+    },
+    {
+      "date": "2026-06-04",
+      "context": "Odbiór etapu M4"
+    },
+    {
+      "date": "2026-06-24",
+      "context": "Odbiór etapu M5"
+    },
+    {
+      "date": "2026-07-15",
+      "context": "Odbiór etapu M6"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "Odbiór etapu M7"
+    },
+    {
+      "date": "2026-09-01",
+      "context": "Odbiór etapu M8"
+    },
+    {
+      "date": "2026-09-26",
+      "context": "Odbiór etapu M9"
+    },
+    {
+      "date": "2026-10-19",
+      "context": "Odbiór etapu M10"
+    },
+    {
+      "date": "2026-11-11",
+      "context": "Odbiór etapu M11"
+    },
+    {
+      "date": "2026-12-04",
+      "context": "Odbiór etapu M12"
+    },
+    {
+      "date": "2026-12-23",
+      "context": "Odbiór etapu M13"
+    },
+    {
+      "date": "2027-01-17",
+      "context": "Odbiór etapu M14"
+    },
+    {
+      "date": "2027-02-05",
+      "context": "Odbiór etapu M15"
+    },
+    {
+      "date": "2027-02-25",
+      "context": "Odbiór etapu M16"
+    },
+    {
+      "date": "2027-03-23",
+      "context": "Odbiór etapu M17"
+    },
+    {
+      "date": "2027-04-10",
+      "context": "Odbiór etapu M18"
+    },
+    {
+      "date": "2027-04-29",
+      "context": "Odbiór etapu M19"
+    },
+    {
+      "date": "2027-05-23",
+      "context": "Odbiór etapu M20"
+    },
+    {
+      "date": "2027-06-10",
+      "context": "Odbiór etapu M21"
+    },
+    {
+      "date": "2027-07-02",
+      "context": "Odbiór etapu M22"
+    },
+    {
+      "date": "2027-07-27",
+      "context": "Odbiór etapu M23"
+    },
+    {
+      "date": "2027-08-18",
+      "context": "Odbiór etapu M24"
+    },
+    {
+      "date": "2027-09-10",
+      "context": "Odbiór etapu M25"
+    }
+  ],
+  "keywords": [
+    "wdrożenie ERP",
+    "rozliczenie etapów",
+    "harmonogram",
+    "płatności",
+    "konfiguracja",
+    "szkolenia",
+    "testy"
+  ]
+}

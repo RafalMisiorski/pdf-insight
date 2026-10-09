@@ -1,0 +1,280 @@
+{
+  "document": {
+    "fileName": "E04_kamienie_milowe.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "raport",
+    "title": "ROZLICZENIE ETAPÓW PROJEKTU: WDROŻENIE SYSTEMU ERP",
+    "date": "2026-10-05"
+  },
+  "summary": "Dokument przedstawia rozliczenie etapów projektu wdrożenia systemu ERP realizowanego na rzecz Mleczarni Podlaskiej S.A. przez firmę Kod i Proces sp. z o.o. Projekt obejmuje okres od 2 marca 2026 roku do 31 stycznia 2028 roku, a stan zaprezentowany w dokumencie sporządzono na dzień 5 października 2026 roku. Zestawienie zawiera harmonogram odbiorów poszczególnych etapów (od M1 do M25), ich zakresy tematyczne oraz powiązane kwoty płatności. Całkowita wartość umowy wynosi 3 412 938,21 zł netto.",
+  "keyPoints": [
+    "Zamawiającym jest Mleczarnia Podlaska S.A., a wykonawcą Kod i Proces sp. z o.o.",
+    "Czas trwania projektu obejmuje okres od 02.03.2026 do 31.01.2028 roku.",
+    "Stan rozliczenia sporządzono na dzień 05.10.2026 roku.",
+    "Harmonogram obejmuje 25 etapów realizacyjnych z przypisanymi płatnościami.",
+    "Całkowita wartość umowy wynosi 3 412 938,21 zł netto."
+  ],
+  "entities": {
+    "organizations": [
+      "Mleczarnia Podlaska S.A.",
+      "Kod i Proces sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 41156.73,
+      "currency": "PLN",
+      "context": "Płatność za etap M1 (analiza)"
+    },
+    {
+      "value": 250987.97,
+      "currency": "PLN",
+      "context": "Płatność za etap M2 (szkolenia)"
+    },
+    {
+      "value": 230452.87,
+      "currency": "PLN",
+      "context": "Płatność za etap M3 (integracja)"
+    },
+    {
+      "value": 167520.31,
+      "currency": "PLN",
+      "context": "Płatność za etap M4 (konfiguracja)"
+    },
+    {
+      "value": 127369.05,
+      "currency": "PLN",
+      "context": "Płatność za etap M5 (testy)"
+    },
+    {
+      "value": 201281.98,
+      "currency": "PLN",
+      "context": "Płatność za etap M6 (konfiguracja)"
+    },
+    {
+      "value": 29770.19,
+      "currency": "PLN",
+      "context": "Płatność za etap M7 (szkolenia)"
+    },
+    {
+      "value": 26171.07,
+      "currency": "PLN",
+      "context": "Płatność za etap M8 (migracja danych)"
+    },
+    {
+      "value": 30173.63,
+      "currency": "PLN",
+      "context": "Płatność za etap M9 (testy)"
+    },
+    {
+      "value": 70714.33,
+      "currency": "PLN",
+      "context": "Płatność za etap M10 (migracja danych)"
+    },
+    {
+      "value": 233434.69,
+      "currency": "PLN",
+      "context": "Płatność za etap M11 (testy)"
+    },
+    {
+      "value": 176566.16,
+      "currency": "PLN",
+      "context": "Płatność za etap M12 (konfiguracja)"
+    },
+    {
+      "value": 40044.02,
+      "currency": "PLN",
+      "context": "Płatność za etap M13 (szkolenia)"
+    },
+    {
+      "value": 204861.47,
+      "currency": "PLN",
+      "context": "Płatność za etap M14 (konfiguracja)"
+    },
+    {
+      "value": 69804.56,
+      "currency": "PLN",
+      "context": "Płatność za etap M15 (testy)"
+    },
+    {
+      "value": 160065.95,
+      "currency": "PLN",
+      "context": "Płatność za etap M16 (migracja danych)"
+    },
+    {
+      "value": 110395.11,
+      "currency": "PLN",
+      "context": "Płatność za etap M17 (konfiguracja)"
+    },
+    {
+      "value": 205592.27,
+      "currency": "PLN",
+      "context": "Płatność za etap M18 (analiza)"
+    },
+    {
+      "value": 152703.51,
+      "currency": "PLN",
+      "context": "Płatność za etap M19 (analiza)"
+    },
+    {
+      "value": 150643.51,
+      "currency": "PLN",
+      "context": "Płatność za etap M20 (konfiguracja)"
+    },
+    {
+      "value": 114663.98,
+      "currency": "PLN",
+      "context": "Płatność za etap M21 (szkolenia)"
+    },
+    {
+      "value": 165598.45,
+      "currency": "PLN",
+      "context": "Płatność za etap M22 (testy)"
+    },
+    {
+      "value": 136460.34,
+      "currency": "PLN",
+      "context": "Płatność za etap M23 (analiza)"
+    },
+    {
+      "value": 118786.46,
+      "currency": "PLN",
+      "context": "Płatność za etap M24 (szkolenia)"
+    },
+    {
+      "value": 197719.6,
+      "currency": "PLN",
+      "context": "Płatność za etap M25 (konfiguracja)"
+    },
+    {
+      "value": 3412938.21,
+      "currency": "PLN",
+      "context": "Wartość umowy netto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-03-02",
+      "context": "Początek projektu"
+    },
+    {
+      "date": "2028-01-31",
+      "context": "Koniec projektu"
+    },
+    {
+      "date": "2026-10-05",
+      "context": "Stan na"
+    },
+    {
+      "date": "2026-03-21",
+      "context": "Odbiór etapu M1"
+    },
+    {
+      "date": "2026-04-15",
+      "context": "Odbiór etapu M2"
+    },
+    {
+      "date": "2026-05-10",
+      "context": "Odbiór etapu M3"
+    },
+    {
+      "date": "2026-06-04",
+      "context": "Odbiór etapu M4"
+    },
+    {
+      "date": "2026-06-24",
+      "context": "Odbiór etapu M5"
+    },
+    {
+      "date": "2026-07-15",
+      "context": "Odbiór etapu M6"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "Odbiór etapu M7"
+    },
+    {
+      "date": "2026-09-01",
+      "context": "Odbiór etapu M8"
+    },
+    {
+      "date": "2026-09-26",
+      "context": "Odbiór etapu M9"
+    },
+    {
+      "date": "2026-10-19",
+      "context": "Odbiór etapu M10"
+    },
+    {
+      "date": "2026-11-11",
+      "context": "Odbiór etapu M11"
+    },
+    {
+      "date": "2026-12-04",
+      "context": "Odbiór etapu M12"
+    },
+    {
+      "date": "2026-12-23",
+      "context": "Odbiór etapu M13"
+    },
+    {
+      "date": "2027-01-17",
+      "context": "Odbiór etapu M14"
+    },
+    {
+      "date": "2027-02-05",
+      "context": "Odbiór etapu M15"
+    },
+    {
+      "date": "2027-02-25",
+      "context": "Odbiór etapu M16"
+    },
+    {
+      "date": "2027-03-23",
+      "context": "Odbiór etapu M17"
+    },
+    {
+      "date": "2027-04-10",
+      "context": "Odbiór etapu M18"
+    },
+    {
+      "date": "2027-04-29",
+      "context": "Odbiór etapu M19"
+    },
+    {
+      "date": "2027-05-23",
+      "context": "Odbiór etapu M20"
+    },
+    {
+      "date": "2027-06-10",
+      "context": "Odbiór etapu M21"
+    },
+    {
+      "date": "2027-07-02",
+      "context": "Odbiór etapu M22"
+    },
+    {
+      "date": "2027-07-27",
+      "context": "Odbiór etapu M23"
+    },
+    {
+      "date": "2027-08-18",
+      "context": "Odbiór etapu M24"
+    },
+    {
+      "date": "2027-09-10",
+      "context": "Odbiór etapu M25"
+    }
+  ],
+  "keywords": [
+    "wdrożenie ERP",
+    "rozliczenie etapów",
+    "harmonogram",
+    "analiza",
+    "szkolenia",
+    "konfiguracja",
+    "testy"
+  ]
+}

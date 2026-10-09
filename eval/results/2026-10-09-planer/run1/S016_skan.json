@@ -1,0 +1,70 @@
+{
+  "document": {
+    "fileName": "S016_skan.pdf",
+    "pages": 16,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Załącznik",
+    "date": null
+  },
+  "summary": "Dokument stanowi załącznik regulujący zasady współpracy pomiędzy Zamawiającym a Wykonawcą w zakresie utrzymania systemu informatycznego. Określa on obowiązki Wykonawcy dotyczące prowadzenia dokumentacji, regularnego tworzenia kopii zapasowych oraz uprzedzania o pracach serwisowych, a także rolę Zamawiającego w zapewnieniu środowiska testowego. Zgłoszenia awarii są przyjmowane za pośrednictwem panelu obsługi klienta, a wszelkie zmiany zakresu prac wymagają pisemnej akceptacji obu stron. W dokumencie wyszczególniono także opłaty przypisane do konkretnych osób odpowiedzialnych: 99 026,69 zł do 20 września 2027 r. powiązaną z Karoliną Dudą, 25 564,25 zł do 13 czerwca 2027 r. z Adamem Pawlakiem oraz 38 659,25 zł do 6 sierpnia 2027 r. z Henrykiem Lewandowskim.",
+  "keyPoints": [
+    "Współpraca stron dotyczy utrzymania systemu informatycznego.",
+    "Ustalono opłaty: 99 026,69 zł (termin 20.09.2027 r., Karolina Duda), 25 564,25 zł (termin 13.06.2027 r., Adam Pawlak) oraz 38 659,25 zł (termin 06.08.2027 r., Henryk Lewandowski).",
+    "Zgłoszenia awarii przyjmowane są przez panel obsługi klienta.",
+    "Kopie zapasowe są wykonywane regularnie i przechowywane w bezpiecznej lokalizacji.",
+    "Zamawiający zapewnia dostęp do środowiska testowego w uzgodnionym zakresie.",
+    "Wszelkie zmiany w zakresie prac wymagają pisemnej akceptacji obu stron."
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Karolina Duda",
+      "Adam Pawlak",
+      "Henryk Lewandowski"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 99026.69,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 25564.25,
+      "currency": "PLN",
+      "context": "opłata (odpowiada za nią Adam Pawlak)"
+    },
+    {
+      "value": 38659.25,
+      "currency": "PLN",
+      "context": "opłata (odpowiada za nią Henryk Lewandowski)"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-09-20",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-06-13",
+      "context": "termin płatności opłaty 25 564,25 zł"
+    },
+    {
+      "date": "2027-08-06",
+      "context": "termin płatności opłaty 38 659,25 zł"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu informatycznego",
+    "kopie zapasowe",
+    "środowisko testowe",
+    "zgłoszenia awarii",
+    "prace serwisowe",
+    "dokumentacja prac",
+    "panel obsługi klienta"
+  ],
+  "meta": {
+    "source": "ocr"
+  }
+}

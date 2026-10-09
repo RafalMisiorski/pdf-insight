@@ -31,6 +31,11 @@ outputs/
 # Training-set file above 10 MB, generated locally for the size check
 **/X02_za_duzy_11MB.pdf
 
+# ADR-0012 ladder: 23 MB of PDFs and a 5 MB truth file, recreated by eval/hard/make_hard.py
+eval/hard/pdf/*
+!eval/hard/pdf/M0380k_S024_mieszany.pdf
+eval/hard/truth.json
+
 # Editor and OS files
 .vscode/*
 !.vscode/extensions.json

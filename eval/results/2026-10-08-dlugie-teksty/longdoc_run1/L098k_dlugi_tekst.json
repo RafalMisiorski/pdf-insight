@@ -1,0 +1,66 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null,
+    "fileName": "L098k_dlugi_tekst.pdf",
+    "pages": 23
+  },
+  "summary": "Dokument określa ogólne warunki współpracy przy utrzymaniu systemu informatycznego pomiędzy Zamawiającym a Wykonawcą. Wykonawca odpowiada m.in. za zgłaszanie prac serwisowych, dokumentowanie działań oraz regularne tworzenie kopii zapasowych. W tekście określono wysokość kar umownych, wynagrodzenie za odbiór końcowy oraz termin obowiązywania umowy do 17 września 2027 roku. Wskazano również osoby odpowiedzialne po obu stronach za koordynację, kontakt i podpisanie protokołu odbioru.",
+  "keyPoints": [
+    "Ustalenie zasad współpracy i utrzymania systemu informatycznego",
+    "Kara umowna za opóźnienie wynosi 1 234,00 zł",
+    "Termin odbioru pierwszego etapu wyznaczono na 15.03.2027 r.",
+    "Opłata za dodatkowy dzień wsparcia wynosi 2 345,00 zł, a przegląd półroczny zaplanowano na 16.06.2027 r.",
+    "Wynagrodzenie za odbiór końcowy wynosi 3 456,00 zł, a umowa obowiązuje do 17.09.2027 r.",
+    "Wszelkie zmiany w zakresie prac wymagają formy pisemnej"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Zofia Krawczyk",
+      "Henryk Lewandowski",
+      "Irena Szymańska"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 1234,
+      "currency": "PLN",
+      "context": "Kara umowna za opóźnienie"
+    },
+    {
+      "value": 2345,
+      "currency": "PLN",
+      "context": "Opłata za dodatkowy dzień wsparcia"
+    },
+    {
+      "value": 3456,
+      "currency": "PLN",
+      "context": "Wynagrodzenie za odbiór końcowy"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-03-15",
+      "context": "Termin odbioru pierwszego etapu"
+    },
+    {
+      "date": "2027-06-16",
+      "context": "Termin przeglądu półrocznego"
+    },
+    {
+      "date": "2027-09-17",
+      "context": "Termin obowiązywania umowy"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "prace serwisowe",
+    "kopie zapasowe",
+    "kara umowna",
+    "odbiór końcowy",
+    "wsparcie techniczne"
+  ]
+}

@@ -1,0 +1,413 @@
+{
+  "document": {
+    "fileName": "E03_aneks_dostawy.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "umowa",
+    "title": "ANEKS NR 3 DO UMOWY DOSTAWY NR 12/2025",
+    "date": "2026-10-01"
+  },
+  "summary": "Dokument stanowi Aneks nr 3 do umowy dostawy nr 12/2025 zawarty w dniu 1 października 2026 roku pomiędzy firmami Elektro-Hurt Kalisz sp. z o.o. a Budimex-Instal Poznań sp. z o.o. W aneksie strony ustaliły nowy harmonogram obejmujący czterdzieści dostaw materiałów elektrycznych. Dostawy zaplanowano na okres od 19 października 2026 roku do 14 maja 2027 roku. Łączna wartość netto zaplanowanych dostaw wynosi 1 930 610,77 zł.",
+  "keyPoints": [
+    "Zawarcie Aneksu nr 3 w dniu 01.10.2026 r. do umowy z dnia 03.03.2025 r.",
+    "Stronami umowy są Elektro-Hurt Kalisz sp. z o.o. oraz Budimex-Instal Poznań sp. z o.o.",
+    "Ustalenie nowego harmonogramu obejmującego 40 etapów dostaw (D1–D40)",
+    "Okres realizacji dostaw od 19.10.2026 r. do 14.05.2027 r.",
+    "Łączna wartość dostaw wynosi 1 930 610,77 zł netto"
+  ],
+  "entities": {
+    "organizations": [
+      "Elektro-Hurt Kalisz sp. z o.o.",
+      "Budimex-Instal Poznań sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 61087.54,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D1"
+    },
+    {
+      "value": 61603.14,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D2"
+    },
+    {
+      "value": 64830.03,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D3"
+    },
+    {
+      "value": 3787.33,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D4"
+    },
+    {
+      "value": 94987.8,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D5"
+    },
+    {
+      "value": 59586.42,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D6"
+    },
+    {
+      "value": 64017.98,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D7"
+    },
+    {
+      "value": 93012.14,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D8"
+    },
+    {
+      "value": 40495.23,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D9"
+    },
+    {
+      "value": 42486.75,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D10"
+    },
+    {
+      "value": 64933.96,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D11"
+    },
+    {
+      "value": 24866.54,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D12"
+    },
+    {
+      "value": 52524.74,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D13"
+    },
+    {
+      "value": 80294.78,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D14"
+    },
+    {
+      "value": 71671.17,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D15"
+    },
+    {
+      "value": 67125.7,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D16"
+    },
+    {
+      "value": 20551.3,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D17"
+    },
+    {
+      "value": 13220.73,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D18"
+    },
+    {
+      "value": 72325.59,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D19"
+    },
+    {
+      "value": 48544.32,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D20"
+    },
+    {
+      "value": 15246.79,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D21"
+    },
+    {
+      "value": 5028.15,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D22"
+    },
+    {
+      "value": 42753.4,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D23"
+    },
+    {
+      "value": 43118.28,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D24"
+    },
+    {
+      "value": 28443.9,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D25"
+    },
+    {
+      "value": 18818.48,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D26"
+    },
+    {
+      "value": 2752.94,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D27"
+    },
+    {
+      "value": 89190.08,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D28"
+    },
+    {
+      "value": 87625.49,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D29"
+    },
+    {
+      "value": 19493.49,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D30"
+    },
+    {
+      "value": 21198.04,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D31"
+    },
+    {
+      "value": 86129.56,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D32"
+    },
+    {
+      "value": 59576.11,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D33"
+    },
+    {
+      "value": 31647.37,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D34"
+    },
+    {
+      "value": 77243.87,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D35"
+    },
+    {
+      "value": 18453.81,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D36"
+    },
+    {
+      "value": 2566.76,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D37"
+    },
+    {
+      "value": 78153.14,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D38"
+    },
+    {
+      "value": 29552.91,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D39"
+    },
+    {
+      "value": 71665.01,
+      "currency": "PLN",
+      "context": "Wartość netto dostawy D40"
+    },
+    {
+      "value": 1930610.77,
+      "currency": "PLN",
+      "context": "Łączna wartość dostaw według aneksu"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-01",
+      "context": "Zawarcie aneksu nr 3"
+    },
+    {
+      "date": "2025-03-03",
+      "context": "Data umowy głównej"
+    },
+    {
+      "date": "2026-10-19",
+      "context": "Termin dostawy D1"
+    },
+    {
+      "date": "2026-10-25",
+      "context": "Termin dostawy D2"
+    },
+    {
+      "date": "2026-10-31",
+      "context": "Termin dostawy D3"
+    },
+    {
+      "date": "2026-11-06",
+      "context": "Termin dostawy D4"
+    },
+    {
+      "date": "2026-11-10",
+      "context": "Termin dostawy D5"
+    },
+    {
+      "date": "2026-11-14",
+      "context": "Termin dostawy D6"
+    },
+    {
+      "date": "2026-11-19",
+      "context": "Termin dostawy D7"
+    },
+    {
+      "date": "2026-11-25",
+      "context": "Termin dostawy D8"
+    },
+    {
+      "date": "2026-11-29",
+      "context": "Termin dostawy D9"
+    },
+    {
+      "date": "2026-12-04",
+      "context": "Termin dostawy D10"
+    },
+    {
+      "date": "2026-12-08",
+      "context": "Termin dostawy D11"
+    },
+    {
+      "date": "2026-12-14",
+      "context": "Termin dostawy D12"
+    },
+    {
+      "date": "2026-12-20",
+      "context": "Termin dostawy D13"
+    },
+    {
+      "date": "2026-12-26",
+      "context": "Termin dostawy D14"
+    },
+    {
+      "date": "2026-12-31",
+      "context": "Termin dostawy D15"
+    },
+    {
+      "date": "2027-01-05",
+      "context": "Termin dostawy D16"
+    },
+    {
+      "date": "2027-01-10",
+      "context": "Termin dostawy D17"
+    },
+    {
+      "date": "2027-01-15",
+      "context": "Termin dostawy D18"
+    },
+    {
+      "date": "2027-01-21",
+      "context": "Termin dostawy D19"
+    },
+    {
+      "date": "2027-01-26",
+      "context": "Termin dostawy D20"
+    },
+    {
+      "date": "2027-02-01",
+      "context": "Termin dostawy D21"
+    },
+    {
+      "date": "2027-02-06",
+      "context": "Termin dostawy D22"
+    },
+    {
+      "date": "2027-02-10",
+      "context": "Termin dostawy D23"
+    },
+    {
+      "date": "2027-02-14",
+      "context": "Termin dostawy D24"
+    },
+    {
+      "date": "2027-02-20",
+      "context": "Termin dostawy D25"
+    },
+    {
+      "date": "2027-02-25",
+      "context": "Termin dostawy D26"
+    },
+    {
+      "date": "2027-03-03",
+      "context": "Termin dostawy D27"
+    },
+    {
+      "date": "2027-03-07",
+      "context": "Termin dostawy D28"
+    },
+    {
+      "date": "2027-03-13",
+      "context": "Termin dostawy D29"
+    },
+    {
+      "date": "2027-03-19",
+      "context": "Termin dostawy D30"
+    },
+    {
+      "date": "2027-03-25",
+      "context": "Termin dostawy D31"
+    },
+    {
+      "date": "2027-03-30",
+      "context": "Termin dostawy D32"
+    },
+    {
+      "date": "2027-04-05",
+      "context": "Termin dostawy D33"
+    },
+    {
+      "date": "2027-04-09",
+      "context": "Termin dostawy D34"
+    },
+    {
+      "date": "2027-04-15",
+      "context": "Termin dostawy D35"
+    },
+    {
+      "date": "2027-04-21",
+      "context": "Termin dostawy D36"
+    },
+    {
+      "date": "2027-04-27",
+      "context": "Termin dostawy D37"
+    },
+    {
+      "date": "2027-05-03",
+      "context": "Termin dostawy D38"
+    },
+    {
+      "date": "2027-05-09",
+      "context": "Termin dostawy D39"
+    },
+    {
+      "date": "2027-05-14",
+      "context": "Termin dostawy D40"
+    }
+  ],
+  "keywords": [
+    "aneks",
+    "umowa dostawy",
+    "harmonogram dostaw",
+    "osprzęt",
+    "rozdzielnice",
+    "aparatura modułowa",
+    "oprawy LED",
+    "kable YKY",
+    "korytka kablowe"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "document": {
+    "fileName": "T05_notatka_inne_pl.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "inne",
+    "title": "Notatka ze spotkania zespołu projektowego",
+    "date": null
+  },
+  "summary": "Dokument stanowi notatkę ze spotkania zespołu projektowego, które prowadziła Karolina Zając. Zespół przeanalizował listę zgłoszeń z ostatniego sprintu i ustalił priorytet w postaci skrócenia czasu odpowiedzi dla klientów. Igor Pawlak ma przygotować propozycję nowego podziału dyżurów, natomiast Karolina Zając odpowiada za zebranie uwag od działu sprzedaży. Kolejne spotkanie zaplanowano po zakończeniu przeglądu zgłoszeń.",
+  "keyPoints": [
+    "Priorytetem zespołu jest skrócenie czasu odpowiedzi na zgłoszenia klientów",
+    "Igor Pawlak przygotuje propozycję nowego podziału dyżurów",
+    "Karolina Zając zbierze uwagi od działu sprzedaży",
+    "Kolejne spotkanie zaplanowano po zakończeniu przeglądu zgłoszeń"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Karolina Zając",
+      "Igor Pawlak"
+    ]
+  },
+  "amounts": [],
+  "dates": [],
+  "keywords": [
+    "notatka ze spotkania",
+    "zespół projektowy",
+    "sprint",
+    "zgłoszenia klientów",
+    "dyżury",
+    "dział sprzedaży"
+  ]
+}

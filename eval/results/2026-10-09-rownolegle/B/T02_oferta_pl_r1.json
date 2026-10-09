@@ -1,0 +1,61 @@
+{
+  "document": {
+    "fileName": "T02_oferta_pl.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "oferta",
+    "title": "OFERTA HANDLOWA nr OF/112/2026 Szkolenia z cyberbezpieczeństwa dla pracowników recepcji i administracji",
+    "date": "2026-10-01"
+  },
+  "summary": "Dokument stanowi ofertę handlową przygotowaną przez Akademię Bezpiecznego Biura s.c. dla firmy Hotele Morskie Pomorze S.A. Przedmiotem oferty są stacjonarne szkolenia z zakresu cyberbezpieczeństwa dla pracowników recepcji i administracji. Dostępne są dwa warianty szkolenia: pakiet podstawowy w cenie 9 600,00 zł netto oraz pakiet rozszerzony w cenie 2 450,00 EUR netto. Oferta zachowuje ważność do 31 października 2026 roku, a przy zamówieniu do końca listopada przewidziano 10% rabatu.",
+  "keyPoints": [
+    "Oferentem jest Akademia Bezpiecznego Biura s.c., a adresatem Hotele Morskie Pomorze S.A.",
+    "Przedmiotem są stacjonarne szkolenia z cyberbezpieczeństwa w dwóch wariantach.",
+    "Cena pakietu podstawowego wynosi 9 600,00 zł netto, a rozszerzonego 2 450,00 EUR netto.",
+    "Oferta jest ważna do 31 października 2026 r., z 10% rabatem przy zamówieniu do 30 listopada 2026 r.",
+    "Termin płatności przelewem wynosi 14 dni od dnia przeprowadzenia szkolenia."
+  ],
+  "entities": {
+    "organizations": [
+      "Akademia Bezpiecznego Biura s.c.",
+      "Hotele Morskie Pomorze S.A."
+    ],
+    "people": [
+      "Ewa Grabowska",
+      "Bartosz Malinowski"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 9600,
+      "currency": "PLN",
+      "context": "Pakiet podstawowy (cena netto)"
+    },
+    {
+      "value": 2450,
+      "currency": "EUR",
+      "context": "Pakiet rozszerzony (z ćwiczeniami symulacyjnymi, cena netto)"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-01",
+      "context": "data sporządzenia oferty handlowej w Gdańsku"
+    },
+    {
+      "date": "2026-11-30",
+      "context": "termin zamówienia uprawniający do rabatu 10%"
+    },
+    {
+      "date": "2026-10-31",
+      "context": "termin ważności oferty"
+    }
+  ],
+  "keywords": [
+    "cyberbezpieczeństwo",
+    "szkolenia",
+    "oferta handlowa",
+    "phishing",
+    "ochrona danych"
+  ]
+}

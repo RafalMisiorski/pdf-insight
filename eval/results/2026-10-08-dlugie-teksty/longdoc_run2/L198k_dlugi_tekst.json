@@ -1,0 +1,64 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null,
+    "fileName": "L198k_dlugi_tekst.pdf",
+    "pages": 47
+  },
+  "summary": "Dokument określa warunki i zasady współpracy między stronami w zakresie utrzymania systemu informatycznego. Zgłoszenia awarii mają być realizowane za pośrednictwem panelu obsługi klienta, a kopie zapasowe wykonywane regularnie. Wszelkie zmiany w zakresie prac wymagają pisemnej akceptacji obu stron. Umowa reguluje również kwestie kar umownych, opłat za dodatkowe wsparcie oraz wskazuje osoby odpowiedzialne za kontakty i odbiory.",
+  "keyPoints": [
+    "Zgłoszenia awarii realizowane są przez panel obsługi klienta",
+    "Zmiany w zakresie prac wymagają formy pisemnej pod rygorem nieważności",
+    "Kara umowna za opóźnienie wynosi 1 234,00 zł",
+    "Termin odbioru pierwszego etapu wyznaczono na 15.03.2027 r.",
+    "Wynagrodzenie za odbiór końcowy wynosi 3 456,00 zł, a umowa obowiązuje do 17.09.2027 r."
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Zofia Krawczyk",
+      "Henryk Lewandowski",
+      "Irena Szymańska"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 1234,
+      "currency": "PLN",
+      "context": "Kara umowna za opóźnienie"
+    },
+    {
+      "value": 2345,
+      "currency": "PLN",
+      "context": "Opłata za dodatkowy dzień wsparcia"
+    },
+    {
+      "value": 3456,
+      "currency": "PLN",
+      "context": "Wynagrodzenie za odbiór końcowy"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-03-15",
+      "context": "Termin odbioru pierwszego etapu"
+    },
+    {
+      "date": "2027-06-16",
+      "context": "Przegląd półroczny"
+    },
+    {
+      "date": "2027-09-17",
+      "context": "Termin obowiązywania umowy"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "środowisko testowe",
+    "kopie zapasowe",
+    "zgłoszenia awarii",
+    "prace serwisowe"
+  ]
+}

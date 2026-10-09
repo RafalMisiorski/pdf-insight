@@ -1,0 +1,360 @@
+[
+ {
+  "doc": "D01_cennik_uslug.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 15.7,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "36/36",
+  "dates": "4/4",
+  "found": 40
+ },
+ {
+  "doc": "D01_cennik_uslug.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 10.8,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "36/36",
+  "dates": "4/4",
+  "found": 40
+ },
+ {
+  "doc": "D01_cennik_uslug.pdf",
+  "arm": "B",
+  "run": 2,
+  "s": 14.5,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "36/36",
+  "dates": "4/4",
+  "found": 40
+ },
+ {
+  "doc": "D01_cennik_uslug.pdf",
+  "arm": "A",
+  "run": 2,
+  "s": 12.2,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "36/36",
+  "dates": "4/4",
+  "found": 40
+ },
+ {
+  "doc": "D01_cennik_uslug.pdf",
+  "arm": "A",
+  "run": 3,
+  "s": 12.2,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "36/36",
+  "dates": "4/4",
+  "found": 40
+ },
+ {
+  "doc": "D01_cennik_uslug.pdf",
+  "arm": "B",
+  "run": 3,
+  "s": 13.2,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "36/36",
+  "dates": "4/4",
+  "found": 40
+ },
+ {
+  "doc": "D02_harmonogram_platnosci.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 15.8,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "24/24",
+  "dates": "25/25",
+  "found": 49
+ },
+ {
+  "doc": "D02_harmonogram_platnosci.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 9.9,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "24/24",
+  "dates": "25/25",
+  "found": 49
+ },
+ {
+  "doc": "D02_harmonogram_platnosci.pdf",
+  "arm": "B",
+  "run": 2,
+  "s": 11.1,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "24/24",
+  "dates": "25/25",
+  "found": 49
+ },
+ {
+  "doc": "D02_harmonogram_platnosci.pdf",
+  "arm": "A",
+  "run": 2,
+  "s": 18.9,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "24/24",
+  "dates": "25/25",
+  "found": 49
+ },
+ {
+  "doc": "D02_harmonogram_platnosci.pdf",
+  "arm": "A",
+  "run": 3,
+  "s": 18.5,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "24/24",
+  "dates": "25/25",
+  "found": 49
+ },
+ {
+  "doc": "D02_harmonogram_platnosci.pdf",
+  "arm": "B",
+  "run": 3,
+  "s": 9.7,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "24/24",
+  "dates": "25/25",
+  "found": 49
+ },
+ {
+  "doc": "D03_zestawienie_faktur.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 28.8,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "28/28",
+  "dates": "43/43",
+  "found": 71
+ },
+ {
+  "doc": "D03_zestawienie_faktur.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 20.0,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "28/28",
+  "dates": "43/43",
+  "found": 71
+ },
+ {
+  "doc": "D03_zestawienie_faktur.pdf",
+  "arm": "B",
+  "run": 2,
+  "s": 16.3,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "28/28",
+  "dates": "43/43",
+  "found": 71
+ },
+ {
+  "doc": "D03_zestawienie_faktur.pdf",
+  "arm": "A",
+  "run": 2,
+  "s": 27.3,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "28/28",
+  "dates": "43/43",
+  "found": 71
+ },
+ {
+  "doc": "D03_zestawienie_faktur.pdf",
+  "arm": "A",
+  "run": 3,
+  "s": 25.6,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "28/28",
+  "dates": "43/43",
+  "found": 71
+ },
+ {
+  "doc": "D03_zestawienie_faktur.pdf",
+  "arm": "B",
+  "run": 3,
+  "s": 16.9,
+  "error": null,
+  "ungrounded": 0,
+  "amounts": "28/28",
+  "dates": "43/43",
+  "found": 71
+ },
+ {
+  "doc": "T01_faktura_pl.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 8.6,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "18/18",
+  "passed": 18
+ },
+ {
+  "doc": "T01_faktura_pl.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 7.1,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "18/18",
+  "passed": 18
+ },
+ {
+  "doc": "T02_oferta_pl.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 6.9,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "16/16",
+  "passed": 16
+ },
+ {
+  "doc": "T02_oferta_pl.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 12.6,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "16/16",
+  "passed": 16
+ },
+ {
+  "doc": "T03_raport_en.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 7.8,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "19/19",
+  "passed": 19
+ },
+ {
+  "doc": "T03_raport_en.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 6.4,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "19/19",
+  "passed": 19
+ },
+ {
+  "doc": "T04_umowa_najmu_pl.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 7.2,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "16/16",
+  "passed": 16
+ },
+ {
+  "doc": "T04_umowa_najmu_pl.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 6.9,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "16/16",
+  "passed": 16
+ },
+ {
+  "doc": "T05_notatka_inne_pl.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 5.0,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "14/14",
+  "passed": 14
+ },
+ {
+  "doc": "T05_notatka_inne_pl.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 7.1,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "14/14",
+  "passed": 14
+ },
+ {
+  "doc": "T06_regulamin_dlugi_pl.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 8.3,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "13/13",
+  "passed": 13
+ },
+ {
+  "doc": "T06_regulamin_dlugi_pl.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 7.6,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "13/13",
+  "passed": 13
+ },
+ {
+  "doc": "T07_injection_pl.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 8.4,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "18/18",
+  "passed": 18
+ },
+ {
+  "doc": "T07_injection_pl.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 6.7,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "18/18",
+  "passed": 18
+ },
+ {
+  "doc": "T09_faktura_sprzeczna_pl.pdf",
+  "arm": "A",
+  "run": 1,
+  "s": 9.2,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "23/23",
+  "passed": 23
+ },
+ {
+  "doc": "T09_faktura_sprzeczna_pl.pdf",
+  "arm": "B",
+  "run": 1,
+  "s": 7.5,
+  "error": null,
+  "ungrounded": 0,
+  "checks": "23/23",
+  "passed": 23
+ }
+]

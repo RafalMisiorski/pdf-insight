@@ -1,0 +1,64 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null,
+    "fileName": "L398k_dlugi_tekst.pdf",
+    "pages": 93
+  },
+  "summary": "Dokument reguluje warunki i zasady współpracy między stronami w zakresie utrzymania systemu informatycznego. Zgłoszenia awarii realizowane są za pośrednictwem panelu obsługi klienta, a kopie zapasowe tworzone są w sposób regularny. Wykonawca zobowiązany jest do prowadzenia dokumentacji prac oraz uprzedzania o planowanych pracach serwisowych. W tekście określono kary umowne, stawki za wsparcie oraz terminy odbioru etapów.",
+  "keyPoints": [
+    "Zgłoszenia awarii dokonywane są przez panel obsługi klienta",
+    "Wszelkie zmiany w zakresie prac wymagają formy pisemnej pod rygorem nieważności",
+    "Kara umowna za opóźnienie została ustalona na 1 234,00 zł",
+    "Termin odbioru pierwszego etapu wyznaczono na 15.03.2027 r.",
+    "Wynagrodzenie za odbiór końcowy wynosi 3 456,00 zł, a umowa obowiązuje do 17.09.2027 r."
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Zofia Krawczyk",
+      "Henryk Lewandowski",
+      "Irena Szymańska"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 1234,
+      "currency": "PLN",
+      "context": "Kara umowna za opóźnienie"
+    },
+    {
+      "value": 2345,
+      "currency": "PLN",
+      "context": "Opłata za dodatkowy dzień wsparcia"
+    },
+    {
+      "value": 3456,
+      "currency": "PLN",
+      "context": "Wynagrodzenie za odbiór końcowy"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-03-15",
+      "context": "Termin odbioru pierwszego etapu"
+    },
+    {
+      "date": "2027-06-16",
+      "context": "Przegląd półroczny"
+    },
+    {
+      "date": "2027-09-17",
+      "context": "Umowa obowiązuje do"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "kopie zapasowe",
+    "panel obsługi klienta",
+    "środowisko testowe",
+    "prace serwisowe"
+  ]
+}

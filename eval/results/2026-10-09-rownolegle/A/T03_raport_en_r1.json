@@ -1,0 +1,71 @@
+{
+  "document": {
+    "fileName": "T03_raport_en.pdf",
+    "pages": 3,
+    "language": "en",
+    "type": "raport",
+    "title": "Q3 2026 Operations Report",
+    "date": "2026-10-05"
+  },
+  "summary": "This document covers the Q3 2026 operational performance of Baltic Fresh Foods Ltd. During this period, revenue reached EUR 4,850,000, while operating costs were EUR 3,920,000. Capital expenditure totaled USD 310,000, primarily allocated towards temperature sensors and electric vans. Key achievements included route planning migration to a new telematics platform, depot consolidation, and extending a framework agreement with Northern Cold Chain AB.",
+  "keyPoints": [
+    "Revenue reached EUR 4,850,000, up 6% from the previous quarter.",
+    "Operating costs were EUR 3,920,000.",
+    "Northern Cold Chain AB extended the framework agreement until 2028.",
+    "Capital expenditure amounted to USD 310,000 for sensors and two electric vans.",
+    "Route planning was migrated to a new telematics platform, and two legacy depots were retired."
+  ],
+  "entities": {
+    "organizations": [
+      "Baltic Fresh Foods Ltd.",
+      "Northern Cold Chain AB"
+    ],
+    "people": [
+      "Helena Lindqvist",
+      "Marek Nowicki"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 4850000,
+      "currency": "EUR",
+      "context": "Revenue reached EUR 4,850,000"
+    },
+    {
+      "value": 3920000,
+      "currency": "EUR",
+      "context": "operating costs were EUR 3,920,000"
+    },
+    {
+      "value": 310000,
+      "currency": "USD",
+      "context": "Capital expenditure in the quarter amounted to USD 310,000"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-05",
+      "context": "Issued: 5 October 2026"
+    },
+    {
+      "date": "2026-07-01",
+      "context": "The reporting period runs from 1 July 2026"
+    },
+    {
+      "date": "2026-09-30",
+      "context": "to 30 September 2026"
+    },
+    {
+      "date": "2026-12-15",
+      "context": "The next operating review is scheduled for 15 December 2026"
+    }
+  ],
+  "keywords": [
+    "operations",
+    "cold-chain",
+    "logistics",
+    "revenue",
+    "expenditure",
+    "telematics"
+  ]
+}

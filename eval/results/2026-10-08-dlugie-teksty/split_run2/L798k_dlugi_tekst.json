@@ -1,0 +1,75 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null,
+    "fileName": "L798k_dlugi_tekst.pdf",
+    "pages": 185
+  },
+  "summary": "Dokument precyzuje warunki i zasady współpracy stron w zakresie utrzymania systemu informatycznego. Zgłoszenia awarii mają być realizowane przez dedykowany panel obsługi klienta, a Wykonawca zobowiązany jest do prowadzenia dokumentacji, uprzedzania o pracach serwisowych oraz bezpiecznego tworzenia kopii zapasowych. Zamawiający zapewnia dostęp do środowiska testowego, a wszelkie zmiany w zakresie prac wymagają formy pisemnej. Umowa obowiązuje do 17 września 2027 roku i zawiera określone terminy etapów, przeglądów oraz kwoty kar i wynagrodzeń.",
+  "keyPoints": [
+    "Ustalenie zasad współpracy przy utrzymaniu systemu informatycznego obowiązującej do 17.09.2027 r.",
+    "Zgłaszanie awarii przez panel klienta, wykonywanie kopii zapasowych i zapewnienie środowiska testowego",
+    "Wymóg formy pisemnej dla wszelkich zmian w zakresie prac",
+    "Termin odbioru I etapu na 15.03.2027 r. oraz przegląd półroczny wyznaczony na 16.06.2027 r.",
+    "Kary umowne i opłaty: kara za opóźnienie 1 234,00 zł, dodatkowy dzień wsparcia 2 345,00 zł, odbiór końcowy 3 456,00 zł",
+    "Prowadzenie dokumentacji prac przez Wykonawcę oraz informowanie o serwisie z wyprzedzeniem",
+    "Wyznaczone osoby kontaktowe i koordynatorzy: Zofia Krawczyk, Henryk Lewandowski oraz Irena Szymańska"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Zofia Krawczyk",
+      "Henryk Lewandowski",
+      "Irena Szymańska"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 1234,
+      "currency": "PLN",
+      "context": "Kara umowna za opóźnienie"
+    },
+    {
+      "value": 2345,
+      "currency": "PLN",
+      "context": "Opłata za dodatkowy dzień wsparcia"
+    },
+    {
+      "value": 3456,
+      "currency": "PLN",
+      "context": "Wynagrodzenie za odbiór końcowy"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-03-15",
+      "context": "Termin odbioru pierwszego etapu"
+    },
+    {
+      "date": "2027-06-16",
+      "context": "Przegląd półroczny"
+    },
+    {
+      "date": "2027-09-17",
+      "context": "Umowa obowiązuje do"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "kopie zapasowe",
+    "zgłoszenia awarii",
+    "środowisko testowe",
+    "kara umowna",
+    "Wykonawca",
+    "Zamawiający",
+    "przegląd półroczny",
+    "odbiór końcowy",
+    "system informatyczny",
+    "utrzymanie",
+    "dokumentacja prac",
+    "panel obsługi klienta",
+    "prace serwisowe"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "document": {
+    "fileName": "T02_oferta_pl.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "oferta",
+    "title": "OFERTA HANDLOWA nr OF/112/2026 Szkolenia z cyberbezpieczeństwa dla pracowników recepcji i administracji",
+    "date": "2026-10-01"
+  },
+  "summary": "Dokument przedstawia ofertę handlową firmy Akademia Bezpiecznego Biura s.c. skierowaną do Hotele Morskie Pomorze S.A. Oferta dotyczy szkoleń z zakresu cyberbezpieczeństwa dla pracowników recepcji i administracji w dwóch wariantach cenowych. Szkolenia mają formę stacjonarną i obejmują zagadnienia takie jak phishing oraz ochrona danych gości. Oferta zachowuje ważność do 31 października 2026 roku.",
+  "keyPoints": [
+    "Oferta szkoleniowa z cyberbezpieczeństwa dla pracowników recepcji i administracji",
+    "Pakiet podstawowy w cenie 9 600,00 zł netto dla maksymalnie 8 osób",
+    "Pakiet rozszerzony w cenie 2 450,00 EUR netto dla maksymalnie 12 osób",
+    "Rabat 10% przy złożeniu zamówienia do 30 listopada 2026 roku",
+    "Ważność oferty do 31 października 2026 roku z terminem płatności 14 dni"
+  ],
+  "entities": {
+    "organizations": [
+      "Akademia Bezpiecznego Biura s.c.",
+      "Hotele Morskie Pomorze S.A."
+    ],
+    "people": [
+      "Ewa Grabowska",
+      "Bartosz Malinowski"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 9600,
+      "currency": "PLN",
+      "context": "Pakiet podstawowy do 8 osób netto"
+    },
+    {
+      "value": 2450,
+      "currency": "EUR",
+      "context": "Pakiet rozszerzony (z ćwiczeniami symulacyjnymi) do 12 osób netto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-01",
+      "context": "data sporządzenia oferty"
+    },
+    {
+      "date": "2026-11-30",
+      "context": "termin na zamówienie uprawniający do rabatu 10%"
+    },
+    {
+      "date": "2026-10-31",
+      "context": "termin ważności oferty"
+    }
+  ],
+  "keywords": [
+    "cyberbezpieczeństwo",
+    "szkolenia",
+    "oferta handlowa",
+    "phishing",
+    "ochrona danych"
+  ]
+}

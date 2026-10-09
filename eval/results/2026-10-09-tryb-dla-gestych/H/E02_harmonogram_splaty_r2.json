@@ -1,0 +1,209 @@
+{
+  "document": {
+    "fileName": "E02_harmonogram_splaty.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "inne",
+    "title": "HARMONOGRAM SPŁATY POŻYCZKI NR P/118/2026",
+    "date": "2026-10-20"
+  },
+  "summary": "Dokument przedstawia harmonogram spłaty pożyczki nr P/118/2026 powiązany z umową z dnia 20 października 2026 roku. Całkowita kwota pożyczki wynosi 180 000,00 zł przy oprocentowaniu 9% w skali roku. Spłata została rozłożona na 18 rat malejących, płatnych do 15. dnia każdego miesiąca od listopada 2026 roku do kwietnia 2028 roku. Łączna suma odsetek do spłaty wynosi 12 825,00 zł.",
+  "keyPoints": [
+    "Kwota pożyczki wynosi 180 000,00 zł",
+    "Oprocentowanie wynosi 9% w skali roku",
+    "Spłata obejmuje 18 rat malejących",
+    "Termin spłaty pierwszej raty to 15.11.2026 r., a ostatniej 15.04.2028 r.",
+    "Łączna suma odsetek wynosi 12 825,00 zł"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 180000,
+      "currency": "PLN",
+      "context": "Kwota pożyczki"
+    },
+    {
+      "value": 11350,
+      "currency": "PLN",
+      "context": "Kwota raty 1"
+    },
+    {
+      "value": 11275,
+      "currency": "PLN",
+      "context": "Kwota raty 2"
+    },
+    {
+      "value": 11200,
+      "currency": "PLN",
+      "context": "Kwota raty 3"
+    },
+    {
+      "value": 11125,
+      "currency": "PLN",
+      "context": "Kwota raty 4"
+    },
+    {
+      "value": 11050,
+      "currency": "PLN",
+      "context": "Kwota raty 5"
+    },
+    {
+      "value": 10975,
+      "currency": "PLN",
+      "context": "Kwota raty 6"
+    },
+    {
+      "value": 10900,
+      "currency": "PLN",
+      "context": "Kwota raty 7"
+    },
+    {
+      "value": 10825,
+      "currency": "PLN",
+      "context": "Kwota raty 8"
+    },
+    {
+      "value": 10750,
+      "currency": "PLN",
+      "context": "Kwota raty 9"
+    },
+    {
+      "value": 10675,
+      "currency": "PLN",
+      "context": "Kwota raty 10"
+    },
+    {
+      "value": 10600,
+      "currency": "PLN",
+      "context": "Kwota raty 11"
+    },
+    {
+      "value": 10525,
+      "currency": "PLN",
+      "context": "Kwota raty 12"
+    },
+    {
+      "value": 10450,
+      "currency": "PLN",
+      "context": "Kwota raty 13"
+    },
+    {
+      "value": 10375,
+      "currency": "PLN",
+      "context": "Kwota raty 14"
+    },
+    {
+      "value": 10300,
+      "currency": "PLN",
+      "context": "Kwota raty 15"
+    },
+    {
+      "value": 10225,
+      "currency": "PLN",
+      "context": "Kwota raty 16"
+    },
+    {
+      "value": 10150,
+      "currency": "PLN",
+      "context": "Kwota raty 17"
+    },
+    {
+      "value": 10075,
+      "currency": "PLN",
+      "context": "Kwota raty 18"
+    },
+    {
+      "value": 12825,
+      "currency": "PLN",
+      "context": "Suma odsetek"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-20",
+      "context": "data zawarcia umowy pożyczki"
+    },
+    {
+      "date": "2026-11-15",
+      "context": "termin płatności raty 1"
+    },
+    {
+      "date": "2026-12-15",
+      "context": "termin płatności raty 2"
+    },
+    {
+      "date": "2027-01-15",
+      "context": "termin płatności raty 3"
+    },
+    {
+      "date": "2027-02-15",
+      "context": "termin płatności raty 4"
+    },
+    {
+      "date": "2027-03-15",
+      "context": "termin płatności raty 5"
+    },
+    {
+      "date": "2027-04-15",
+      "context": "termin płatności raty 6"
+    },
+    {
+      "date": "2027-05-15",
+      "context": "termin płatności raty 7"
+    },
+    {
+      "date": "2027-06-15",
+      "context": "termin płatności raty 8"
+    },
+    {
+      "date": "2027-07-15",
+      "context": "termin płatności raty 9"
+    },
+    {
+      "date": "2027-08-15",
+      "context": "termin płatności raty 10"
+    },
+    {
+      "date": "2027-09-15",
+      "context": "termin płatności raty 11"
+    },
+    {
+      "date": "2027-10-15",
+      "context": "termin płatności raty 12"
+    },
+    {
+      "date": "2027-11-15",
+      "context": "termin płatności raty 13"
+    },
+    {
+      "date": "2027-12-15",
+      "context": "termin płatności raty 14"
+    },
+    {
+      "date": "2028-01-15",
+      "context": "termin płatności raty 15"
+    },
+    {
+      "date": "2028-02-15",
+      "context": "termin płatności raty 16"
+    },
+    {
+      "date": "2028-03-15",
+      "context": "termin płatności raty 17"
+    },
+    {
+      "date": "2028-04-15",
+      "context": "termin płatności raty 18"
+    }
+  ],
+  "keywords": [
+    "harmonogram spłaty",
+    "pożyczka",
+    "raty malejące",
+    "oprocentowanie",
+    "odsetki"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "document": {
+    "fileName": "M0380k_S024_mieszany.pdf",
+    "pages": 113,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null
+  },
+  "summary": "Dokument reguluje warunki oraz zasady współpracy stron przy utrzymaniu systemu informatycznego. Zgłoszenia awarii dokonywane są przez dedykowany panel obsługi klienta, a Wykonawca odpowiada za regularne sporządzanie kopii zapasowych, ich bezpieczne przechowywanie, uprzednie powiadamianie o pracach serwisowych oraz prowadzenie dokumentacji prac. Zamawiający jest z kolei zobowiązany do zapewnienia dostępu do środowiska testowego w uzgodnionym zakresie. Wszelkie modyfikacje zakresu realizowanych prac wymagają obustronnej zgody wyrażonej w formie pisemnej. Ponadto określono szczegółowe opłaty za realizację usług wraz z terminami płatności i przypisanymi osobami odpowiedzialnymi.",
+  "keyPoints": [
+    "Ustalenie zasad współpracy stron przy utrzymaniu systemu informatycznego.",
+    "Wymóg formy pisemnej i obustronnej akceptacji dla wszelkich zmian w zakresie prac.",
+    "Wykonywanie kopii zapasowych, prowadzenie dokumentacji oraz uprzednie informowanie o pracach serwisowych przez Wykonawcę.",
+    "Zapewnienie przez Zamawiającego dostępu do środowiska testowego oraz obsługa zgłoszeń awarii przez panel klienta.",
+    "Opłata 35 208,65 zł z terminem płatności do 11.06.2027 r., odpowiedzialny Tomasz Kowalczyk.",
+    "Opłata 49 641,06 zł z terminem płatności do 19.11.2027 r., odpowiedzialny Piotr Nowicki.",
+    "Opłata 62 381,68 zł z terminem płatności do 24.12.2027 r., odpowiedzialny Adam Pawlak."
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Jan Mazur",
+      "Beata Sikora",
+      "Marek Zieliński",
+      "Tomasz Kowalczyk",
+      "Piotr Nowicki",
+      "Adam Pawlak"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 77607.24,
+      "currency": "PLN",
+      "context": "opłata, za którą odpowiada Jan Mazur"
+    },
+    {
+      "value": 6677.08,
+      "currency": "PLN",
+      "context": "opłata, za którą odpowiada Beata Sikora"
+    },
+    {
+      "value": 69220.75,
+      "currency": "PLN",
+      "context": "opłata, za którą odpowiada Marek Zieliński"
+    },
+    {
+      "value": 35208.65,
+      "currency": "PLN",
+      "context": "opłata wynosi"
+    },
+    {
+      "value": 49641.06,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 62381.68,
+      "currency": "PLN",
+      "context": "opłata wynosi 62 381,68 zł"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-09-16",
+      "context": "termin płatności opłaty przypisanej do Jana Mazura"
+    },
+    {
+      "date": "2027-05-01",
+      "context": "termin płatności opłaty przypisanej do Beaty Sikory"
+    },
+    {
+      "date": "2027-08-21",
+      "context": "termin płatności opłaty przypisanej do Marka Zielińskiego"
+    },
+    {
+      "date": "2027-06-11",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-11-19",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-12-24",
+      "context": "termin płatności to 24.12.2027 r."
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "prace serwisowe",
+    "zgłoszenia awarii",
+    "kopie zapasowe",
+    "środowisko testowe",
+    "dokumentacja prac",
+    "panel obsługi klienta",
+    "utrzymanie systemu informatycznego"
+  ],
+  "meta": {
+    "pagesOcr": [
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113
+    ]
+  }
+}

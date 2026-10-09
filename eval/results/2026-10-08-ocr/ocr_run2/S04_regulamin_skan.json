@@ -1,0 +1,49 @@
+{
+  "document": {
+    "language": "pl",
+    "type": "inne",
+    "title": "REGULAMIN ŚWIADCZENIA USŁUG HOSTINGOWYCH",
+    "date": "2026-11-01",
+    "fileName": "S04_regulamin_skan.pdf",
+    "pages": 4
+  },
+  "summary": "Niniejszy dokument to regulamin świadczenia usług hostingowych spółki ChmuraPlus sp. z o.o., który wchodzi w życie z dniem 1 listopada 2026 roku. Określa on zasady dostępności infrastruktury, wykonywania codziennych kopii zapasowych przechowywanych przez 14 dni oraz przyjmowania zgłoszeń technicznych przez panel klienta. Klient zobowiązany jest do korzystania z usług zgodnie z prawem, a reklamacje rozpatrywane są w terminie 14 dni od ich otrzymania. Opłata za pakiet Standard została ustalona na 49,00 zł netto miesięcznie.",
+  "keyPoints": [
+    "Regulamin wchodzi w życie 1 listopada 2026 r.",
+    "Kopie zapasowe wykonywane są codziennie i przechowywane przez 14 dni.",
+    "Zgłoszenia techniczne przyjmowane są przez panel klienta.",
+    "Reklamacje są rozpatrywane w terminie 14 dni od ich otrzymania.",
+    "Opłata za pakiet Standard wynosi 49,00 zł netto miesięcznie."
+  ],
+  "entities": {
+    "organizations": [
+      "ChmuraPlus sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 49,
+      "currency": "PLN",
+      "context": "Opłata za pakiet Standard wynosi 49,00 zł netto miesięcznie."
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-11-01",
+      "context": "Regulamin wchodzi w życie z dniem 1 listopada 2026 r."
+    }
+  ],
+  "keywords": [
+    "regulamin",
+    "usługi hostingowe",
+    "kopie zapasowe",
+    "reklamacje",
+    "panel klienta",
+    "prace serwisowe"
+  ],
+  "meta": {
+    "source": "ocr",
+    "pagesAnalyzed": 4
+  }
+}

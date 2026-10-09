@@ -1,0 +1,62 @@
+{
+  "document": {
+    "fileName": "T04_umowa_najmu_pl.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "umowa",
+    "title": "UMOWA NAJMU LOKALU UŻYTKOWEGO nr 3/2026",
+    "date": "2026-10-02"
+  },
+  "summary": "Umowa najmu lokalu użytkowego nr 3/2026 została zawarta w Poznaniu w dniu 2 października 2026 roku pomiędzy spółką Kamienica pod Lipami sp. z o.o. a Tomaszem Wroną prowadzącym działalność Kawiarnia Ziarno Tomasz Wrona. Przedmiotem umowy jest lokal o powierzchni 64 m² z przeznaczeniem na kawiarnię. Umowę zawarto na czas określony od 1 listopada 2026 roku do 31 października 2029 roku. Miesięczny czynsz wynosi 6 800,00 zł netto, a kaucja zabezpieczająca została ustalona na kwotę 20 400,00 zł.",
+  "keyPoints": [
+    "Przedmiotem najmu jest lokal użytkowy o powierzchni 64 m² przy ul. Ogrodowej 3 w Poznaniu z przeznaczeniem na kawiarnię.",
+    "Umowa obowiązuje na czas określony od 1 listopada 2026 r. do 31 października 2029 r.",
+    "Czynsz najmu wynosi 6 800,00 zł netto miesięcznie i jest płatny do 10. dnia każdego miesiąca.",
+    "Kaucja zabezpieczająca wynosi 20 400,00 zł i jest płatna w terminie 7 dni od podpisania umowy.",
+    "Wszelkie zmiany umowy wymagają zachowania formy pisemnej pod rygorem nieważności."
+  ],
+  "entities": {
+    "organizations": [
+      "Kamienica pod Lipami sp. z o.o.",
+      "Kawiarnia Ziarno Tomasz Wrona"
+    ],
+    "people": [
+      "Alicja Borowska",
+      "Tomasz Wrona"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 6800,
+      "currency": "PLN",
+      "context": "czynsz miesięczny netto"
+    },
+    {
+      "value": 20400,
+      "currency": "PLN",
+      "context": "kaucja"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-02",
+      "context": "data zawarcia umowy"
+    },
+    {
+      "date": "2026-11-01",
+      "context": "początek okresu najmu"
+    },
+    {
+      "date": "2029-10-31",
+      "context": "koniec okresu najmu"
+    }
+  ],
+  "keywords": [
+    "umowa najmu",
+    "lokal użytkowy",
+    "kawiarnia",
+    "czynsz",
+    "kaucja",
+    "Poznań"
+  ]
+}

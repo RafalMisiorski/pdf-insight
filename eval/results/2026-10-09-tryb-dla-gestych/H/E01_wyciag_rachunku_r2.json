@@ -1,0 +1,349 @@
+{
+  "document": {
+    "fileName": "E01_wyciag_rachunku.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "inne",
+    "title": "WYCIĄG Z RACHUNKU FIRMOWEGO NR 9/2026",
+    "date": "2026-10-01"
+  },
+  "summary": "Dokument stanowi wyciąg z rachunku firmowego spółki Pracownia Tekstu Mazur sp. z o.o. obejmujący okres od 1 sierpnia do 30 września 2026 roku. Saldo początkowe rachunku wynosiło 48 250,00 zł, natomiast na koniec okresu ukształtowało się na poziomie -79 527,95 zł. Wyciąg rejestruje transakcje z podmiotami takimi jak Opal Foods S.A., Delta Trans sp. z o.o. oraz Mewa Logistics sp. z o.o. W zestawieniu ujęto również wydatki na najem biura oraz płatności na rzecz ZUS i Urzędu Skarbowego.",
+  "keyPoints": [
+    "Wyciąg bankowy nr 9/2026 wystawiony w dniu 01.10.2026 roku dla firmy Pracownia Tekstu Mazur sp. z o.o.",
+    "Okres rozliczeniowy obejmuje transakcje od 01.08.2026 do 30.09.2026 roku.",
+    "Saldo początkowe wynosiło 48 250,00 zł, a saldo końcowe spadło do -79 527,95 zł.",
+    "W wyciągu odnotowano liczne wpływy i wydatki dotyczące kontrahentów biznesowych oraz instytucji publicznych."
+  ],
+  "entities": {
+    "organizations": [
+      "Pracownia Tekstu Mazur sp. z o.o.",
+      "Opal Foods S.A.",
+      "Delta Trans sp. z o.o.",
+      "Mewa Logistics sp. z o.o.",
+      "ZUS",
+      "Urząd Skarbowy"
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 48250,
+      "currency": "PLN",
+      "context": "Saldo początkowe"
+    },
+    {
+      "value": -79527.95,
+      "currency": "PLN",
+      "context": "Saldo końcowe"
+    },
+    {
+      "value": 23122.86,
+      "currency": "PLN",
+      "context": "Wpływ za Najem biura z dnia 02.08.2026"
+    },
+    {
+      "value": 27348.27,
+      "currency": "PLN",
+      "context": "Wydatek dla Opal Foods S.A. z dnia 03.08.2026"
+    },
+    {
+      "value": 10418.68,
+      "currency": "PLN",
+      "context": "Wpływ od Delta Trans sp. z o.o. z dnia 04.08.2026"
+    },
+    {
+      "value": 24765.39,
+      "currency": "PLN",
+      "context": "Wydatek dla Delta Trans sp. z o.o. z dnia 08.08.2026"
+    },
+    {
+      "value": 7743.81,
+      "currency": "PLN",
+      "context": "Wpływ od Mewa Logistics sp. z o.o. z dnia 11.08.2026"
+    },
+    {
+      "value": 18759.17,
+      "currency": "PLN",
+      "context": "Wydatek dla Mewa Logistics sp. z o.o. z dnia 12.08.2026"
+    },
+    {
+      "value": 21070.3,
+      "currency": "PLN",
+      "context": "Wpływ od ZUS z dnia 14.08.2026"
+    },
+    {
+      "value": 22097.49,
+      "currency": "PLN",
+      "context": "Wydatek za Najem biura z dnia 15.08.2026"
+    },
+    {
+      "value": 7757.36,
+      "currency": "PLN",
+      "context": "Wpływ od ZUS z dnia 16.08.2026"
+    },
+    {
+      "value": 25534.79,
+      "currency": "PLN",
+      "context": "Wydatek dla Delta Trans sp. z o.o. z dnia 19.08.2026"
+    },
+    {
+      "value": 16936.09,
+      "currency": "PLN",
+      "context": "Wpływ za Najem biura z dnia 20.08.2026"
+    },
+    {
+      "value": 10332.1,
+      "currency": "PLN",
+      "context": "Wydatek dla Urząd Skarbowy z dnia 21.08.2026"
+    },
+    {
+      "value": 22853.98,
+      "currency": "PLN",
+      "context": "Wpływ od Delta Trans sp. z o.o. z dnia 23.08.2026"
+    },
+    {
+      "value": 4393.57,
+      "currency": "PLN",
+      "context": "Wydatek dla Mewa Logistics sp. z o.o. z dnia 24.08.2026"
+    },
+    {
+      "value": 26837.35,
+      "currency": "PLN",
+      "context": "Wpływ od Delta Trans sp. z o.o. z dnia 25.08.2026"
+    },
+    {
+      "value": 22985.88,
+      "currency": "PLN",
+      "context": "Wydatek dla Opal Foods S.A. z dnia 26.08.2026"
+    },
+    {
+      "value": 8658.5,
+      "currency": "PLN",
+      "context": "Wpływ od Mewa Logistics sp. z o.o. z dnia 27.08.2026"
+    },
+    {
+      "value": 27502.58,
+      "currency": "PLN",
+      "context": "Wydatek dla Opal Foods S.A. z dnia 30.08.2026"
+    },
+    {
+      "value": 13234.75,
+      "currency": "PLN",
+      "context": "Wpływ za Najem biura z dnia 02.09.2026"
+    },
+    {
+      "value": 24131.56,
+      "currency": "PLN",
+      "context": "Wydatek dla Opal Foods S.A. z dnia 03.09.2026"
+    },
+    {
+      "value": 20219.97,
+      "currency": "PLN",
+      "context": "Wpływ od Mewa Logistics sp. z o.o. z dnia 04.09.2026"
+    },
+    {
+      "value": 20629.09,
+      "currency": "PLN",
+      "context": "Wydatek dla Delta Trans sp. z o.o. z dnia 10.09.2026"
+    },
+    {
+      "value": 19454.05,
+      "currency": "PLN",
+      "context": "Wpływ od Urząd Skarbowy z dnia 11.09.2026"
+    },
+    {
+      "value": 8233.32,
+      "currency": "PLN",
+      "context": "Wydatek dla ZUS z dnia 14.09.2026"
+    },
+    {
+      "value": 19703.23,
+      "currency": "PLN",
+      "context": "Wpływ od Mewa Logistics sp. z o.o. z dnia 17.09.2026"
+    },
+    {
+      "value": 18232.23,
+      "currency": "PLN",
+      "context": "Wydatek dla Opal Foods S.A. z dnia 18.09.2026"
+    },
+    {
+      "value": 5715.4,
+      "currency": "PLN",
+      "context": "Wpływ za Najem biura z dnia 21.09.2026"
+    },
+    {
+      "value": 23902.43,
+      "currency": "PLN",
+      "context": "Wydatek dla Delta Trans sp. z o.o. z dnia 22.09.2026"
+    },
+    {
+      "value": 11652.12,
+      "currency": "PLN",
+      "context": "Wpływ za Najem biura z dnia 23.09.2026"
+    },
+    {
+      "value": 22848.59,
+      "currency": "PLN",
+      "context": "Wydatek dla ZUS z dnia 25.09.2026"
+    },
+    {
+      "value": 14486.09,
+      "currency": "PLN",
+      "context": "Wpływ za Najem biura z dnia 28.09.2026"
+    },
+    {
+      "value": 26988.95,
+      "currency": "PLN",
+      "context": "Wydatek dla Delta Trans sp. z o.o. z dnia 30.09.2026"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-08-01",
+      "context": "Początek okresu wyciągu"
+    },
+    {
+      "date": "2026-09-30",
+      "context": "Koniec okresu wyciągu"
+    },
+    {
+      "date": "2026-10-01",
+      "context": "Data wyciągu"
+    },
+    {
+      "date": "2026-08-02",
+      "context": "Data operacji: Najem biura"
+    },
+    {
+      "date": "2026-08-03",
+      "context": "Data operacji: Opal Foods S.A."
+    },
+    {
+      "date": "2026-08-04",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    },
+    {
+      "date": "2026-08-08",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    },
+    {
+      "date": "2026-08-11",
+      "context": "Data operacji: Mewa Logistics sp. z o.o."
+    },
+    {
+      "date": "2026-08-12",
+      "context": "Data operacji: Mewa Logistics sp. z o.o."
+    },
+    {
+      "date": "2026-08-14",
+      "context": "Data operacji: ZUS"
+    },
+    {
+      "date": "2026-08-15",
+      "context": "Data operacji: Najem biura"
+    },
+    {
+      "date": "2026-08-16",
+      "context": "Data operacji: ZUS"
+    },
+    {
+      "date": "2026-08-19",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    },
+    {
+      "date": "2026-08-20",
+      "context": "Data operacji: Najem biura"
+    },
+    {
+      "date": "2026-08-21",
+      "context": "Data operacji: Urząd Skarbowy"
+    },
+    {
+      "date": "2026-08-23",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    },
+    {
+      "date": "2026-08-24",
+      "context": "Data operacji: Mewa Logistics sp. z o.o."
+    },
+    {
+      "date": "2026-08-25",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    },
+    {
+      "date": "2026-08-26",
+      "context": "Data operacji: Opal Foods S.A."
+    },
+    {
+      "date": "2026-08-27",
+      "context": "Data operacji: Mewa Logistics sp. z o.o."
+    },
+    {
+      "date": "2026-08-30",
+      "context": "Data operacji: Opal Foods S.A."
+    },
+    {
+      "date": "2026-09-02",
+      "context": "Data operacji: Najem biura"
+    },
+    {
+      "date": "2026-09-03",
+      "context": "Data operacji: Opal Foods S.A."
+    },
+    {
+      "date": "2026-09-04",
+      "context": "Data operacji: Mewa Logistics sp. z o.o."
+    },
+    {
+      "date": "2026-09-10",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    },
+    {
+      "date": "2026-09-11",
+      "context": "Data operacji: Urząd Skarbowy"
+    },
+    {
+      "date": "2026-09-14",
+      "context": "Data operacji: ZUS"
+    },
+    {
+      "date": "2026-09-17",
+      "context": "Data operacji: Mewa Logistics sp. z o.o."
+    },
+    {
+      "date": "2026-09-18",
+      "context": "Data operacji: Opal Foods S.A."
+    },
+    {
+      "date": "2026-09-21",
+      "context": "Data operacji: Najem biura"
+    },
+    {
+      "date": "2026-09-22",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    },
+    {
+      "date": "2026-09-23",
+      "context": "Data operacji: Najem biura"
+    },
+    {
+      "date": "2026-09-25",
+      "context": "Data operacji: ZUS"
+    },
+    {
+      "date": "2026-09-28",
+      "context": "Data operacji: Najem biura"
+    },
+    {
+      "date": "2026-09-30",
+      "context": "Data operacji: Delta Trans sp. z o.o."
+    }
+  ],
+  "keywords": [
+    "wyciąg z rachunku firmowego",
+    "saldo",
+    "transakcje",
+    "najem biura",
+    "rozliczenia"
+  ]
+}

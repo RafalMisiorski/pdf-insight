@@ -2,9 +2,9 @@
 
 Creates trainset/pdf/*.pdf and trainset/labels/*.json:
   T01 faktura (pl, 1 page)        T05 inne: meeting note without a date or amounts (pl)
-  T02 oferta (pl, 2 pages)        T06 long document for chunking (pl, 11 pages, ~38k chars)
+  T02 oferta (pl, 2 pages)        T06 long document (pl, 11 pages, ~38k chars)
   T03 raport (en, 3 pages)        T07 prompt-injection trap inside an invoice (pl)
-  T04 umowa najmu (pl, 2 pages)   T08 scan without a text layer (must show an error)
+  T04 umowa najmu (pl, 2 pages)   T08 scan without a text layer (read by OCR)
   X01 not a PDF renamed to .pdf (must fail validation), X02 PDF above 10 MB (generated, never committed)
 Run: python trainset/make_trainset.py
 """
@@ -179,7 +179,7 @@ build("T05_notatka_inne_pl.pdf", [
     "amounts": [], "amounts_forbidden": ["any"], "dates": [], "dates_forbidden": ["any"],
     "notes": "No document date and only a relative date ('w przyszły czwartek'): date must be null, dates and amounts must be empty. The model must not guess."})
 
-# T06 long document for chunking ---------------------------------------------------------------------------
+# T06 long document, facts far apart -------------------------------------------------------------------------------
 random.seed(606)
 sec = ["Usługodawca zapewnia dostępność infrastruktury zgodnie z niniejszym regulaminem.", "Klient zobowiązuje się do korzystania z usług zgodnie z prawem.",
        "Zgłoszenia techniczne przyjmowane są przez panel klienta.", "Kopie zapasowe wykonywane są codziennie i przechowywane przez 14 dni.",
@@ -202,7 +202,7 @@ build("T06_regulamin_dlugi_pl.pdf", long_story, {"id": "T06", "expect": "ok", "p
     "entities": {"organizations": ["ChmuraPlus sp. z o.o."], "people": ["Natalia Wójcik"]},
     "amounts": [{"value": 49.00, "currency": "PLN"}, {"value": 500.00, "currency": "PLN"}], "amounts_forbidden": [],
     "dates": ["2026-11-01"], "dates_forbidden": [],
-    "notes": "Long text (about 60 paragraphs): needs chunking and merging (F-08). Facts sit in paragraphs 17, 44 and 58, far apart. Type: terms of service are a standard contract form (art. 384 KC), so 'umowa' is accepted as well as 'inne'."})
+    "notes": "Long text (about 60 paragraphs): facts far apart in one long text. Facts sit in paragraphs 17, 44 and 58, far apart. Type: terms of service are a standard contract form (art. 384 KC), so 'umowa' is accepted as well as 'inne'."})
 
 # T07 prompt-injection trap --------------------------------------------------------------------------------
 build("T07_injection_pl.pdf", [
@@ -255,8 +255,8 @@ page = scan.new_page(width=src[0].rect.width, height=src[0].rect.height)
 page.insert_image(page.rect, pixmap=pix)
 scan.save(PDF / "T08_skan_bez_tekstu.pdf")
 t08 = json.loads((LAB / "T01_faktura_pl.json").read_text(encoding="utf-8"))  # same facts as T01, read from the image
-t08.update({"id": "T08", "file": "T08_skan_bez_tekstu.pdf",
-            "notes": "OCR path (F-10, enabled by the operator 2026-10-08): image-only scan of T01 without a text layer. The app renders the page to an image in the browser and sends it to the model; expected facts are those of T01. OCR may misread single characters; the date, totals and parties must survive."})
+t08.update({"id": "T08", "file": "T08_skan_bez_tekstu.pdf", "source_pdf": "T01_faktura_pl.pdf",
+            "notes": "OCR path: image-only scan of T01 without a text layer. The app renders the page to an image in the browser and sends it to the model; expected facts are those of T01, and the precision check reads them from T01's text (source_pdf). OCR may misread single characters; the date, totals and parties must survive."})
 (LAB / "T08_skan_bez_tekstu.json").write_text(json.dumps(t08, ensure_ascii=False, indent=1), encoding="utf-8")
 
 # X01 not a PDF, X02 too large -----------------------------------------------------------------------------

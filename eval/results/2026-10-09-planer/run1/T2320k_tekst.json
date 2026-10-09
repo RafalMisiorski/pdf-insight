@@ -1,0 +1,70 @@
+{
+  "document": {
+    "fileName": "T2320k_tekst.pdf",
+    "pages": 538,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null
+  },
+  "summary": "Dokument reguluje kompleksowe zasady współpracy stron w zakresie utrzymania systemu informatycznego. Zgłoszenia awarii realizowane są za pośrednictwem dedykowanego panelu obsługi klienta, a Zamawiający zapewnia dostęp do środowiska testowego. Do obowiązków Wykonawcy należy uprzedzanie o pracach serwisowych, regularne i bezpieczne tworzenie kopii zapasowych oraz udostępnianie dokumentacji prac. Wszelkie modyfikacje zakresu umowy wymagają formy pisemnej pod rygorem nieważności. W dokumencie określono również poszczególne zobowiązania finansowe z terminami płatności przypadającymi na 2027 rok.",
+  "keyPoints": [
+    "Zasady współpracy stron przy utrzymaniu systemu informatycznego i obsługa awarii przez panel klienta",
+    "Obowiązek regularnego tworzenia kopii zapasowych oraz informowania o pracach serwisowych",
+    "Wymóg formy pisemnej dla wszelkich zmian w zakresie prac",
+    "Zapewnienie przez Zamawiającego dostępu do środowiska testowego",
+    "Prowadzenie dokumentacji prac i udostępnianie jej Zamawiającemu na żądanie",
+    "Ustalenie płatności: 27 479,73 zł (do 22.12.2027 r.), 25 201,15 zł (do 20.07.2027 r., odp. Adam Pawlak) oraz 92 841,59 zł (do 20.03.2027 r., odp. Jan Mazur)"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Marek Zieliński",
+      "Adam Pawlak",
+      "Jan Mazur"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 27479.73,
+      "currency": "PLN",
+      "context": "opłata wynosi 27 479,73 zł"
+    },
+    {
+      "value": 25201.15,
+      "currency": "PLN",
+      "context": "opłata wynosi 25 201,15 zł"
+    },
+    {
+      "value": 92841.59,
+      "currency": "PLN",
+      "context": "opłata"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-12-22",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-07-20",
+      "context": "termin płatności to 20.07.2027 r."
+    },
+    {
+      "date": "2027-03-20",
+      "context": "termin płatności"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "kopie zapasowe",
+    "zgłoszenia awarii",
+    "środowisko testowe",
+    "prace serwisowe",
+    "dokumentacja prac",
+    "system informatyczny",
+    "serwis",
+    "panel obsługi klienta",
+    "utrzymanie systemu informatycznego"
+  ]
+}

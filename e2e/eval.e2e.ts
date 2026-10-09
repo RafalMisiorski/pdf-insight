@@ -14,8 +14,9 @@ const files = existsSync(inputDir)
       .sort()
   : []
 
-// The Worker allows 10 analyses per minute per IP; one start every 7 s stays below that.
-const MIN_GAP_MS = 7_000
+// The Worker allows 10 requests per minute per IP; one start every 7 s stays below that. A document in
+// parts sends up to 7 requests, so its measurement waits longer: EVAL_GAP_MS (docs/adr/0012).
+const MIN_GAP_MS = Number(process.env.EVAL_GAP_MS ?? 7_000)
 let lastStart = 0
 
 type Run = { ok: boolean; ms: number; message?: string }

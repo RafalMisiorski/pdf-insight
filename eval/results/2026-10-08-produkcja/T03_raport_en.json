@@ -1,0 +1,72 @@
+{
+  "document": {
+    "language": "en",
+    "type": "raport",
+    "title": "Q3 2026 Operations Report",
+    "date": "2026-10-05",
+    "fileName": "T03_raport_en.pdf",
+    "pages": 3
+  },
+  "summary": "Baltic Fresh Foods Ltd. presented its operations report for the third quarter of 2026. The company achieved a revenue of EUR 4,850,000, while operating costs amounted to EUR 3,920,000. Capital expenditure totaled USD 310,000, primarily directed toward temperature sensors and electric vans. Additionally, Northern Cold Chain AB extended its framework agreement until 2028.",
+  "keyPoints": [
+    "Q3 2026 revenue reached EUR 4,850,000 and operating costs were EUR 3,920,000",
+    "Capital expenditure amounted to USD 310,000 for sensors and electric vans",
+    "Cold-chain utilisation remained above target throughout the quarter",
+    "Migration of route planning to the new telematics platform was completed",
+    "Northern Cold Chain AB extended the framework agreement until 2028",
+    "The next operating review is scheduled for 15 December 2026"
+  ],
+  "entities": {
+    "organizations": [
+      "Baltic Fresh Foods Ltd.",
+      "Northern Cold Chain AB"
+    ],
+    "people": [
+      "Helena Lindqvist",
+      "Marek Nowicki"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 4850000,
+      "currency": "EUR",
+      "context": "Revenue reached"
+    },
+    {
+      "value": 3920000,
+      "currency": "EUR",
+      "context": "operating costs were"
+    },
+    {
+      "value": 310000,
+      "currency": "USD",
+      "context": "Capital expenditure in the quarter"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-05",
+      "context": "Issued"
+    },
+    {
+      "date": "2026-07-01",
+      "context": "reporting period start"
+    },
+    {
+      "date": "2026-09-30",
+      "context": "reporting period end"
+    },
+    {
+      "date": "2026-12-15",
+      "context": "next operating review"
+    }
+  ],
+  "keywords": [
+    "operations report",
+    "cold-chain utilisation",
+    "telematics",
+    "logistics",
+    "revenue",
+    "capital expenditure"
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "document": {
+    "fileName": "D03_zestawienie_faktur.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "raport",
+    "title": "ZESTAWIENIE FAKTUR SPRZEDAŻY ZA III KWARTAŁ 2026",
+    "date": null
+  },
+  "summary": "Dokument stanowi zestawienie faktur sprzedaży za III kwartał 2026 roku. Został przygotowany przez dział księgowości Biura Rachunkowego Kwadryga sp. j. Rejestr zawiera dwadzieścia osiem faktur wystawionych dla różnych kontrahentów wraz z terminami płatności oraz kwotami brutto. Wśród odbiorców znajdują się między innymi Mewa Logistics sp. z o.o., Opal Foods sp. z o.o., Rydwan Auto sp. z o.o., Tęcza Media sp. z o.o., Delta Trans sp. z o.o. oraz Sigma Druk sp. z o.o.",
+  "keyPoints": [
+    "Zestawienie obejmuje 28 faktur sprzedaży wystawionych w III kwartale 2026 roku.",
+    "Dokument został sporządzony przez dział księgowości Biura Rachunkowego Kwadryga sp. j.",
+    "Faktury wystawiono m.in. dla Mewa Logistics, Rydwan Auto, Tęcza Media, Delta Trans, Sigma Druk oraz Opal Foods.",
+    "Dokument zawiera numery dokumentów, daty wystawienia, terminy płatności i kwoty brutto w PLN."
+  ],
+  "entities": {
+    "organizations": [
+      "Biuro Rachunkowe Kwadryga sp. j.",
+      "Mewa Logistics sp. z o.o.",
+      "Opal Foods sp. z o.o.",
+      "Rydwan Auto sp. z o.o.",
+      "Tęcza Media sp. z o.o.",
+      "Delta Trans sp. z o.o.",
+      "Sigma Druk sp. z o.o."
+    ],
+    "people": []
+  },
+  "amounts": [
+    {
+      "value": 41199.3,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/001 brutto"
+    },
+    {
+      "value": 67981.32,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/002 brutto"
+    },
+    {
+      "value": 91420.04,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/003 brutto"
+    },
+    {
+      "value": 45280.87,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/004 brutto"
+    },
+    {
+      "value": 3177.55,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/005 brutto"
+    },
+    {
+      "value": 9358.08,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/006 brutto"
+    },
+    {
+      "value": 32569.05,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/007 brutto"
+    },
+    {
+      "value": 29300.3,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/008 brutto"
+    },
+    {
+      "value": 81077.41,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/009 brutto"
+    },
+    {
+      "value": 24563.62,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/010 brutto"
+    },
+    {
+      "value": 93700.26,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/011 brutto"
+    },
+    {
+      "value": 40429.51,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/012 brutto"
+    },
+    {
+      "value": 87617.38,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/013 brutto"
+    },
+    {
+      "value": 54600.02,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/014 brutto"
+    },
+    {
+      "value": 94197.18,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/015 brutto"
+    },
+    {
+      "value": 75076.36,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/016 brutto"
+    },
+    {
+      "value": 92267.43,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/017 brutto"
+    },
+    {
+      "value": 82904.67,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/018 brutto"
+    },
+    {
+      "value": 57920.91,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/019 brutto"
+    },
+    {
+      "value": 81400.05,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/019 brutto"
+    },
+    {
+      "value": 92332.8,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/021 brutto"
+    },
+    {
+      "value": 55162.64,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/022 brutto"
+    },
+    {
+      "value": 64176.6,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/023 brutto"
+    },
+    {
+      "value": 78228.55,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/024 brutto"
+    },
+    {
+      "value": 59796.17,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/025 brutto"
+    },
+    {
+      "value": 51569.71,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/026 brutto"
+    },
+    {
+      "value": 48943.72,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/027 brutto"
+    },
+    {
+      "value": 68047.74,
+      "currency": "PLN",
+      "context": "FV/2026/Q3/028 brutto"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-07-04",
+      "context": "FV/2026/Q3/001 data wystawienia"
+    },
+    {
+      "date": "2026-07-18",
+      "context": "FV/2026/Q3/001 termin płatności"
+    },
+    {
+      "date": "2026-07-07",
+      "context": "FV/2026/Q3/002 data wystawienia"
+    },
+    {
+      "date": "2026-07-28",
+      "context": "FV/2026/Q3/002 termin płatności"
+    },
+    {
+      "date": "2026-07-10",
+      "context": "FV/2026/Q3/003 data wystawienia"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "FV/2026/Q3/003 termin płatności"
+    },
+    {
+      "date": "2026-07-13",
+      "context": "FV/2026/Q3/004 data wystawienia"
+    },
+    {
+      "date": "2026-08-03",
+      "context": "FV/2026/Q3/004 termin płatności"
+    },
+    {
+      "date": "2026-07-16",
+      "context": "FV/2026/Q3/005 data wystawienia"
+    },
+    {
+      "date": "2026-07-30",
+      "context": "FV/2026/Q3/005 termin płatności"
+    },
+    {
+      "date": "2026-07-19",
+      "context": "FV/2026/Q3/006 data wystawienia"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "FV/2026/Q3/006 termin płatności"
+    },
+    {
+      "date": "2026-07-22",
+      "context": "FV/2026/Q3/007 data wystawienia"
+    },
+    {
+      "date": "2026-08-12",
+      "context": "FV/2026/Q3/007 termin płatności"
+    },
+    {
+      "date": "2026-07-25",
+      "context": "FV/2026/Q3/008 data wystawienia"
+    },
+    {
+      "date": "2026-08-24",
+      "context": "FV/2026/Q3/008 termin płatności"
+    },
+    {
+      "date": "2026-07-28",
+      "context": "FV/2026/Q3/009 data wystawienia"
+    },
+    {
+      "date": "2026-08-11",
+      "context": "FV/2026/Q3/009 termin płatności"
+    },
+    {
+      "date": "2026-07-31",
+      "context": "FV/2026/Q3/010 data wystawienia"
+    },
+    {
+      "date": "2026-08-14",
+      "context": "FV/2026/Q3/010 termin płatności"
+    },
+    {
+      "date": "2026-08-03",
+      "context": "FV/2026/Q3/011 data wystawienia"
+    },
+    {
+      "date": "2026-09-02",
+      "context": "FV/2026/Q3/011 termin płatności"
+    },
+    {
+      "date": "2026-08-06",
+      "context": "FV/2026/Q3/012 data wystawienia"
+    },
+    {
+      "date": "2026-08-20",
+      "context": "FV/2026/Q3/012 termin płatności"
+    },
+    {
+      "date": "2026-08-09",
+      "context": "FV/2026/Q3/013 data wystawienia"
+    },
+    {
+      "date": "2026-09-08",
+      "context": "FV/2026/Q3/013 termin płatności"
+    },
+    {
+      "date": "2026-08-12",
+      "context": "FV/2026/Q3/014 data wystawienia"
+    },
+    {
+      "date": "2026-09-02",
+      "context": "FV/2026/Q3/014 termin płatności"
+    },
+    {
+      "date": "2026-08-15",
+      "context": "FV/2026/Q3/015 data wystawienia"
+    },
+    {
+      "date": "2026-09-05",
+      "context": "FV/2026/Q3/015 termin płatności"
+    },
+    {
+      "date": "2026-08-18",
+      "context": "FV/2026/Q3/016 data wystawienia"
+    },
+    {
+      "date": "2026-09-17",
+      "context": "FV/2026/Q3/016 termin płatności"
+    },
+    {
+      "date": "2026-08-21",
+      "context": "FV/2026/Q3/017 data wystawienia"
+    },
+    {
+      "date": "2026-09-04",
+      "context": "FV/2026/Q3/017 termin płatności"
+    },
+    {
+      "date": "2026-08-24",
+      "context": "FV/2026/Q3/018 data wystawienia"
+    },
+    {
+      "date": "2026-09-23",
+      "context": "FV/2026/Q3/018 termin płatności"
+    },
+    {
+      "date": "2026-08-27",
+      "context": "FV/2026/Q3/019 data wystawienia"
+    },
+    {
+      "date": "2026-09-10",
+      "context": "FV/2026/Q3/019 termin płatności"
+    },
+    {
+      "date": "2026-08-30",
+      "context": "FV/2026/Q3/020 data wystawienia"
+    },
+    {
+      "date": "2026-09-20",
+      "context": "FV/2026/Q3/020 termin płatności"
+    },
+    {
+      "date": "2026-09-02",
+      "context": "FV/2026/Q3/021 data wystawienia"
+    },
+    {
+      "date": "2026-10-02",
+      "context": "FV/2026/Q3/021 termin płatności"
+    },
+    {
+      "date": "2026-09-05",
+      "context": "FV/2026/Q3/022 data wystawienia"
+    },
+    {
+      "date": "2026-09-19",
+      "context": "FV/2026/Q3/022 termin płatności"
+    },
+    {
+      "date": "2026-09-08",
+      "context": "FV/2026/Q3/023 data wystawienia"
+    },
+    {
+      "date": "2026-09-29",
+      "context": "FV/2026/Q3/023 termin płatności"
+    },
+    {
+      "date": "2026-09-11",
+      "context": "FV/2026/Q3/024 data wystawienia"
+    },
+    {
+      "date": "2026-09-25",
+      "context": "FV/2026/Q3/024 termin płatności"
+    },
+    {
+      "date": "2026-09-14",
+      "context": "FV/2026/Q3/025 data wystawienia"
+    },
+    {
+      "date": "2026-10-05",
+      "context": "FV/2026/Q3/025 termin płatności"
+    },
+    {
+      "date": "2026-09-17",
+      "context": "FV/2026/Q3/026 data wystawienia"
+    },
+    {
+      "date": "2026-10-01",
+      "context": "FV/2026/Q3/026 termin płatności"
+    },
+    {
+      "date": "2026-09-20",
+      "context": "FV/2026/Q3/027 data wystawienia"
+    },
+    {
+      "date": "2026-10-20",
+      "context": "FV/2026/Q3/027 termin płatności"
+    },
+    {
+      "date": "2026-09-23",
+      "context": "FV/2026/Q3/028 data wystawienia"
+    },
+    {
+      "date": "2026-10-14",
+      "context": "FV/2026/Q3/028 termin płatności"
+    }
+  ],
+  "keywords": [
+    "faktura sprzedaży",
+    "zestawienie",
+    "księgowość",
+    "termin płatności",
+    "brutto",
+    "kontrahent"
+  ]
+}

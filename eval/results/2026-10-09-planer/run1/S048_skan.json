@@ -1,0 +1,72 @@
+{
+  "document": {
+    "fileName": "S048_skan.pdf",
+    "pages": 48,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Załącznik",
+    "date": null
+  },
+  "summary": "Dokument stanowi załącznik regulujący zasady współpracy pomiędzy Zamawiającym a Wykonawcą w zakresie utrzymania systemu informatycznego. Zapisy nakładają na Wykonawcę obowiązek regularnego tworzenia kopii zapasowych, informowania z wyprzedzeniem o pracach serwisowych oraz prowadzenia dokumentacji prac udostępnianej na żądanie. Zgłoszenia awarii mają być realizowane za pośrednictwem panelu obsługi klienta, natomiast Zamawiający zobowiązuje się do zapewnienia dostępu do środowiska testowego. Ponadto wszelkie zmiany zakresu prac wymagają formy pisemnej i zgody obu stron, a w dokumencie określono poszczególne opłaty, terminy ich płatności oraz osoby za nie odpowiedzialne.",
+  "keyPoints": [
+    "Ustalenie zasad współpracy stron przy utrzymaniu systemu informatycznego",
+    "Przyjmowanie zgłoszeń awarii przez panel obsługi klienta oraz wcześniejsze informowanie o pracach serwisowych",
+    "Obowiązek regularnego tworzenia i bezpiecznego przechowywania kopii zapasowych oraz prowadzenia dokumentacji prac",
+    "Zapewnienie przez Zamawiającego dostępu do środowiska testowego",
+    "Wymóg formy pisemnej i akceptacji obu stron dla wszelkich zmian w zakresie prac",
+    "Wyszczególnione płatności i osoby odpowiedzialne: 50 635,61 zł do 21.06.2027 r. (Karolina Duda), 15 462,50 zł do 03.07.2027 r. (Adam Pawlak) oraz 69 884,79 zł do 25.09.2027 r. (Beata Sikora)"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Karolina Duda",
+      "Adam Pawlak",
+      "Beata Sikora"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 50635.61,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 15462.5,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 69884.79,
+      "currency": "PLN",
+      "context": "opłata wynosi 69 884,79 zł"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-06-21",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-07-03",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-09-25",
+      "context": "termin płatności"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu informatycznego",
+    "kopie zapasowe",
+    "prace serwisowe",
+    "panel obsługi klienta",
+    "środowisko testowe",
+    "utrzymanie systemu",
+    "zgłoszenia awarii",
+    "system informatyczny",
+    "utrzymanie"
+  ],
+  "meta": {
+    "source": "ocr"
+  }
+}

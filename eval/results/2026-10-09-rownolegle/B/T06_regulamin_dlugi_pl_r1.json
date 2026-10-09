@@ -1,0 +1,55 @@
+{
+  "document": {
+    "fileName": "T06_regulamin_dlugi_pl.pdf",
+    "pages": 11,
+    "language": "pl",
+    "type": "inne",
+    "title": "REGULAMIN ŚWIADCZENIA USŁUG HOSTINGOWYCH",
+    "date": "2026-11-01"
+  },
+  "summary": "Dokument zawiera Regulamin Świadczenia Usług Hostingowych spółki ChmuraPlus sp. z o.o., który wchodzi w życie z dniem 1 listopada 2026 roku. Reguluje zasady korzystania z usług, realizacji kopii zapasowych, obsługi zgłoszeń technicznych oraz rozpatrywania reklamacji. Przewiduje opłatę za pakiet Standard w wysokości 49,00 zł netto miesięcznie oraz karę umowną w kwocie 500,00 zł za naruszenie postanowień regulaminu. Osobą do kontaktu w sprawach regulaminu jest inspektor ochrony danych Natalia Wójcik.",
+  "keyPoints": [
+    "Wejście regulaminu w życie: 1 listopada 2026 r.",
+    "Kopie zapasowe wykonywane są codziennie i przechowywane przez 14 dni",
+    "Reklamacje rozpatrywane są w terminie 14 dni od ich otrzymania",
+    "Zgłoszenia techniczne przyjmowane są przez panel klienta",
+    "Opłata za pakiet Standard wynosi 49,00 zł netto miesięcznie",
+    "Kara umowna za naruszenie § 9 wynosi 500,00 zł",
+    "Spory rozstrzyga sąd właściwy dla siedziby Usługodawcy"
+  ],
+  "entities": {
+    "organizations": [
+      "ChmuraPlus sp. z o.o."
+    ],
+    "people": [
+      "Natalia Wójcik"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 49,
+      "currency": "PLN",
+      "context": "Opłata za pakiet Standard"
+    },
+    {
+      "value": 500,
+      "currency": "PLN",
+      "context": "kara umowna w razie naruszenia § 9"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-11-01",
+      "context": "Regulamin wchodzi w życie z dniem 1 listopada 2026 r."
+    }
+  ],
+  "keywords": [
+    "hosting",
+    "regulamin",
+    "kopie zapasowe",
+    "reklamacje",
+    "zgłoszenia techniczne",
+    "kara umowna",
+    "pakiet Standard"
+  ]
+}

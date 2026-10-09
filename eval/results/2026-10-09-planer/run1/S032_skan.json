@@ -1,0 +1,73 @@
+{
+  "document": {
+    "fileName": "S032_skan.pdf",
+    "pages": 32,
+    "language": "pl",
+    "type": "inne",
+    "title": "Załącznik, strona 1",
+    "date": null
+  },
+  "summary": "Dokument stanowi załącznik regulujący zasady współpracy stron przy utrzymaniu systemu informatycznego. W ramach ustaleń określono poszczególne opłaty wraz z terminami płatności i osobami za nie odpowiedzialnymi: 9 011,78 zł do 23 września 2027 roku (Ewa Kamińska), 36 705,57 zł do 2 lipca 2027 roku (Tomasz Kowalczyk) oraz 36 885,84 zł do 25 września 2027 roku (Zofia Krawczyk). Umowa zobowiązuje Wykonawcę do regularnego tworzenia kopii zapasowych, prowadzenia dokumentacji prac oraz informowania o planowanych pracach serwisowych z wyprzedzeniem. Zamawiający zapewnia dostęp do środowiska testowego, zgłoszenia awarii odbywają się przez panel obsługi klienta, a wszelkie zmiany w zakresie prac wymagają formy pisemnej.",
+  "keyPoints": [
+    "Wyszczególnienie opłat: 9 011,78 zł do 23.09.2027 r. (Ewa Kamińska), 36 705,57 zł do 02.07.2027 r. (Tomasz Kowalczyk) oraz 36 885,84 zł do 25.09.2027 r. (Zofia Krawczyk).",
+    "Ustalenie zasad współpracy przy utrzymaniu systemu informatycznego.",
+    "Wymóg pisemnej akceptacji obu stron dla wszelkich zmian w zakresie prac.",
+    "Zgłaszanie awarii wyłącznie za pośrednictwem dedykowanego panelu obsługi klienta.",
+    "Obowiązek regularnego wykonywania i bezpiecznego przechowywania kopii zapasowych przez Wykonawcę.",
+    "Zapewnienie przez Zamawiającego dostępu do środowiska testowego.",
+    "Prowadzenie dokumentacji prac oraz uprzednie informowanie o planowanych pracach serwisowych."
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Ewa Kamińska",
+      "Tomasz Kowalczyk",
+      "Zofia Krawczyk"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 9011.78,
+      "currency": "PLN",
+      "context": "opłata"
+    },
+    {
+      "value": 36705.57,
+      "currency": "PLN",
+      "context": "opłata wynosi 36 705,57 zł"
+    },
+    {
+      "value": 36885.84,
+      "currency": "PLN",
+      "context": "opłata wynosi 36 885,84 zł"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-09-23",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-07-02",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-09-25",
+      "context": "termin płatności to 25.09.2027 r."
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu informatycznego",
+    "kopie zapasowe",
+    "zgłoszenia awarii",
+    "panel obsługi klienta",
+    "środowisko testowe",
+    "prace serwisowe",
+    "dokumentacja prac",
+    "załącznik",
+    "utrzymanie systemu"
+  ],
+  "meta": {
+    "source": "ocr"
+  }
+}

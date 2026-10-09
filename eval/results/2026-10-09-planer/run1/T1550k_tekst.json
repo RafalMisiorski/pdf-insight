@@ -1,0 +1,69 @@
+{
+  "document": {
+    "fileName": "T1550k_tekst.pdf",
+    "pages": 360,
+    "language": "pl",
+    "type": "umowa",
+    "title": "Warunki współpracy przy utrzymaniu systemu",
+    "date": null
+  },
+  "summary": "Dokument reguluje ramowe zasady i warunki współpracy między Zamawiającym a Wykonawcą w zakresie utrzymania systemu informatycznego w dobrej wierze. Zgłoszenia awarii są realizowane za pośrednictwem panelu obsługi klienta, a Wykonawca ma obowiązek uprzedzania o planowanych pracach serwisowych oraz prowadzenia dokumentacji. W ramach ustaleń Wykonawca regularnie tworzy kopie zapasowe przechowywane w bezpiecznej lokalizacji, natomiast Zamawiający zapewnia dostęp do środowiska testowego. Wszelkie zmiany w zakresie prac wymagają zachowania formy pisemnej pod rygorem nieważności. W dokumencie wskazano również określone kwoty opłat oraz terminy ich płatności.",
+  "keyPoints": [
+    "Zasady współpracy stron przy utrzymaniu systemu informatycznego w dobrej wierze",
+    "Zgłaszanie awarii przez panel obsługi klienta oraz wcześniejsze informowanie o pracach serwisowych",
+    "Regularne tworzenie i bezpieczne przechowywanie kopii zapasowych",
+    "Wymóg formy pisemnej dla wszelkich zmian w zakresie prac",
+    "Prowadzenie dokumentacji prac przez Wykonawcę i zapewnienie dostępu do środowiska testowego przez Zamawiającego",
+    "Ustalenia finansowe obejmujące opłaty: 17 116,35 zł (płatna do 07.10.2027 r., odpowiedzialny Piotr Nowicki), 43 526,84 zł (płatna do 01.12.2027 r.) oraz 55 519,05 zł (płatna do 06.01.2027 r.)"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Piotr Nowicki",
+      "Irena Szymańska",
+      "Zofia Krawczyk"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 17116.35,
+      "currency": "PLN",
+      "context": "opłata wynosi 17 116,35 zł"
+    },
+    {
+      "value": 43526.84,
+      "currency": "PLN",
+      "context": "opłata wynosi"
+    },
+    {
+      "value": 55519.05,
+      "currency": "PLN",
+      "context": "opłata"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2027-10-07",
+      "context": "termin płatności to 07.10.2027 r."
+    },
+    {
+      "date": "2027-12-01",
+      "context": "termin płatności"
+    },
+    {
+      "date": "2027-01-06",
+      "context": "termin płatności"
+    }
+  ],
+  "keywords": [
+    "utrzymanie systemu",
+    "kopie zapasowe",
+    "panel obsługi klienta",
+    "środowisko testowe",
+    "prace serwisowe",
+    "opłata",
+    "termin płatności",
+    "utrzymanie systemu informatycznego",
+    "dokumentacja prac"
+  ]
+}
