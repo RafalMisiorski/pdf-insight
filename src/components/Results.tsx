@@ -53,6 +53,14 @@ function formatPageList(pages: number[]): string {
 
 const Empty = () => <p className="muted">Brak w dokumencie.</p>
 
+// Keeps a number in one piece on screen: "13 100,00 PLN" never breaks after "13" or before the
+// currency. Display only; the JSON keeps the model's text unchanged.
+function keepNumbersTogether(text: string): string {
+  return text
+    .replace(/(\d) (?=\d{3}(?!\d))/g, '$1\u00a0')
+    .replace(/(\d) (?=(?:zł|PLN|EUR|USD|GBP|CHF)(?![\p{L}]))/gu, '$1\u00a0')
+}
+
 // One sentence about a list of pages: `one` for a single page, `many` for more, {pages} for the list.
 function PagesNotice({ pages, one, many }: { pages?: number[]; one: string; many: string }) {
   if (!pages || pages.length === 0) return null
@@ -65,7 +73,7 @@ function List({ items, lang }: { items: string[]; lang?: string }) {
   return (
     <ul lang={lang}>
       {items.map((item, index) => (
-        <li key={index}>{item}</li>
+        <li key={index}>{keepNumbersTogether(item)}</li>
       ))}
     </ul>
   )
@@ -100,7 +108,7 @@ function FactTable({
         {rows.map((row, index) => (
           <tr key={index}>
             <td className={valueClass}>{row.value}</td>
-            <td>{row.context}</td>
+            <td>{keepNumbersTogether(row.context)}</td>
           </tr>
         ))}
       </tbody>
@@ -168,12 +176,25 @@ export function Results({ result }: { result: Analysis }) {
 
       <div className="card">
         <h3>Podsumowanie</h3>
-        <p lang={lang}>{result.summary}</p>
+        <p lang={lang}>{keepNumbersTogether(result.summary)}</p>
       </div>
 
       <div className="card">
         <h3>Najważniejsze punkty</h3>
         <List items={result.keyPoints} lang={lang} />
+      </div>
+
+      <div className="card">
+        <h3>Słowa kluczowe</h3>
+        {result.keywords.length === 0 ? (
+          <p className="muted">Brak.</p>
+        ) : (
+          <ul className="chips" lang={lang}>
+            {result.keywords.map((keyword, index) => (
+              <li key={index}>{keyword}</li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="grid">
@@ -200,27 +221,13 @@ export function Results({ result }: { result: Analysis }) {
         />
       </div>
 
-      <div className="grid">
-        <div className="card">
-          <h3>Daty</h3>
-          <FactTable
-            head="Data"
-            lang={lang}
-            rows={result.dates.map((d) => ({ value: formatDate(d.date), context: d.context }))}
-          />
-        </div>
-        <div className="card">
-          <h3>Słowa kluczowe</h3>
-          {result.keywords.length === 0 ? (
-            <p className="muted">Brak.</p>
-          ) : (
-            <ul className="chips" lang={lang}>
-              {result.keywords.map((keyword, index) => (
-                <li key={index}>{keyword}</li>
-              ))}
-            </ul>
-          )}
-        </div>
+      <div className="card">
+        <h3>Daty</h3>
+        <FactTable
+          head="Data"
+          lang={lang}
+          rows={result.dates.map((d) => ({ value: formatDate(d.date), context: d.context }))}
+        />
       </div>
 
       <div className="card">

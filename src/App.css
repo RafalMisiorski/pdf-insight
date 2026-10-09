@@ -265,7 +265,7 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 0 12px;
-  align-items: start; /* each card as tall as its content */
+  align-items: stretch; /* the two cards of a row end at the same height */
 }
 
 .json-header {
