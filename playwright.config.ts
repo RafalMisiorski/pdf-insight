@@ -6,7 +6,9 @@ import { defineConfig, devices } from '@playwright/test'
 // - live: one smoke test of the deployed app (GitHub Pages, Worker, model). On demand: npm run test:live
 // - eval: the training set through the real UI, JSON saved for scoring. On demand: npm run eval
 const PORT = 4173
-const LOCAL_URL = `http://localhost:${PORT}/pdf-insight/`
+// 127.0.0.1 rather than localhost: on Windows localhost may resolve to IPv6 or IPv4, which made one run
+// in 225 fail with ERR_CONNECTION_REFUSED under parallel load.
+const LOCAL_URL = `http://127.0.0.1:${PORT}/pdf-insight/`
 const PAGES_URL = 'https://rafalmisiorski.github.io/pdf-insight/'
 const MOCKED = { testIgnore: /(live|eval)\.e2e\.ts/, fullyParallel: true }
 
@@ -34,7 +36,7 @@ export default defineConfig({
   ],
   webServer: {
     // A separate build whose API address is a fake host that only page.route answers.
-    command: `npx vite build --outDir e2e/.dist && npx vite preview --outDir e2e/.dist --port ${PORT} --strictPort`,
+    command: `npx vite build --outDir e2e/.dist && npx vite preview --outDir e2e/.dist --host 127.0.0.1 --port ${PORT} --strictPort`,
     url: LOCAL_URL,
     env: { VITE_API_URL: 'https://api.e2e.test' },
     reuseExistingServer: false,

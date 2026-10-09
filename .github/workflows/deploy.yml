@@ -11,9 +11,9 @@ on:
 permissions:
   contents: read
 
-# One Pages deployment at a time; a newer push cancels an older run.
+# A newer push cancels an older run of the same branch; pull requests never cancel a run on main.
 concurrency:
-  group: pages
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -40,6 +40,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Check that the API address is set
+        run: test -n "$VITE_API_URL" || { echo "::error::Repository variable VITE_API_URL is empty"; exit 1; }
+        env:
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
       - run: npm run build
         env:
           # Public Worker URL, set in Settings > Secrets and variables > Actions > Variables.
@@ -75,9 +79,22 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    # Deployments queue instead of cancelling each other.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+      - name: Smoke test of the live app and API
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          API_URL: ${{ vars.VITE_API_URL }}
+        run: |
+          curl -fsS -o /dev/null "$PAGE_URL"
+          status=$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS -H 'Origin: https://rafalmisiorski.github.io' -H 'Access-Control-Request-Method: POST' "$API_URL/analyze")
+          echo "API preflight from the Pages origin: $status"
+          test "$status" = "204"
