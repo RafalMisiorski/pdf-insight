@@ -1,10 +1,10 @@
 # ADR-0008: Długie dokumenty: jedno wywołanie czy dzielenie na fragmenty
 
-Status: przyjęta (2026-10-08); reguła decyzji zapisana przed pomiarem
+Status: przyjęta (2026-10-08); reguła decyzji zapisana przed pomiarem; podział na części, także stron skanu, rozszerza ADR-0012
 
 ## Kontekst
 
-Brief (SHOULD F-08): długie dokumenty dzielimy na fragmenty i łączymy wyniki. Model ma kontekst 1 mln tokenów, a nasz limit to 400 tys. znaków tekstu (około 100 tys. tokenów). Zmierzyliśmy dotąd tylko do 38 tys. znaków (T06: 7 s). Analiza ma budżet 27 s (ADR-0004), a do tego dochodzi odczyt PDF w przeglądarce. Dzielenie dodaje drugą rundę wywołań (scalanie) i ryzyko zgubienia faktów, więc ma sens tylko tam, gdzie jedno wywołanie przestaje mieścić się w czasie albo gubi fakty.
+Brief (SHOULD): długie dokumenty dzielimy na fragmenty i łączymy wyniki. Model ma kontekst 1 mln tokenów, a nasz limit to 400 tys. znaków tekstu (około 100 tys. tokenów). Zmierzyliśmy dotąd tylko do 38 tys. znaków (T06: 7 s). Analiza ma budżet 27 s (ADR-0004), a do tego dochodzi odczyt PDF w przeglądarce. Dzielenie dodaje drugą rundę wywołań (scalanie) i ryzyko zgubienia faktów, więc ma sens tylko tam, gdzie jedno wywołanie przestaje mieścić się w czasie albo gubi fakty.
 
 ## Pomiar (zaplanowany przed uruchomieniem)
 
@@ -55,3 +55,7 @@ Według reguły L = 398 tys. znaków, czyli cały obecny limit ścieżki tekstow
 | 1,197 mln znaków | 279   | 3          | 14,1 s i 18,6 s           | 9/9 i 9/9       |
 
 Pomiar: 2026-10-08, produkcja, 2 przebiegi. Kryterium jest spełnione, więc ścieżka zostaje. Zapas jest mniejszy niż przy jednym wywołaniu (najgorszy przebieg 23,2 s wobec 30 s), bo dochodzi runda scalania, a czas zależy od najwolniejszego fragmentu. Dane: `eval/longdoc/pdf_split/`.
+
+## Pochodzenie reguł (co da się sprawdzić w historii gita)
+
+Regułę dla jednego wywołania zapisałem przed pomiarem 98–398 tys. znaków, ale do gita trafiła razem z wynikiem (commit bb817ae), więc historia tej kolejności nie potwierdza. Kryterium ścieżki z podziałem jest w commicie 4aea2b0 (22:05), a pomiar na produkcji ruszył po wdrożeniu tego commitu; wyniki są w `eval/results/2026-10-08-dlugie-teksty/`.

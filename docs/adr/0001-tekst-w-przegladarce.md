@@ -1,6 +1,6 @@
 # ADR-0001: Tekst z PDF wyciąga przeglądarka, do backendu idzie tylko tekst
 
-Status: przyjęta (2026-10-08)
+Status: przyjęta (2026-10-08); obsługę skanów zastąpił ADR-0009 (OCR), a strony skanu w PDF-ie z tekstem obsługuje ADR-0012
 
 ## Kontekst
 
@@ -9,7 +9,7 @@ Frontend jest statyczny (GitHub Pages). Backend to Cloudflare Worker na planie d
 ## Decyzja
 
 - `pdfjs-dist` 6 w przeglądarce, tekst strona po stronie. Worker pdf.js importowany przez `?url`, żeby Vite dodał bazę `/pdf-insight/` i hash (pułapka GitHub Pages z briefu).
-- Mniej niż 20 czytelnych znaków na stronę oznacza skan bez warstwy tekstowej: komunikat zamiast wywołania AI.
+- Każda strona jest oceniana osobno: mniej niż 20 czytelnych znaków oznacza stronę bez tekstu. Gdy tekst ma mniej niż połowa stron, PDF idzie przez OCR (ADR-0009); w przeciwnym razie strony bez tekstu są wymienione przy wyniku (`meta.pagesWithoutText`), a nie pomijane po cichu.
 - pdf.js ładuje się dopiero przy pierwszym pliku: paczka startowa 318 kB (97 kB gzip) zamiast 748 kB.
 
 ## Rozważone i odrzucone

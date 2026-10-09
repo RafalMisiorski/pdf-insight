@@ -24,3 +24,7 @@ Produkcja po wdrożeniu (2026-10-08): żądania 1–10 dostają 400 (puste), 11�
 ## Koszt i ograniczenia
 
 Każde wywołanie API to jedno dodatkowe żądanie do Durable Object (plan darmowy: 100 tys. dziennie). Limit na IP nie zatrzyma rotacji adresów, dlatego ostatnią zaporą są limit dzienny i przedpłata.
+
+## Po ślepej recenzji (2026-10-09)
+
+Sam limit dzienny 50 dla całego demo był tanim sposobem na wyłączenie demo: jeden skrypt z jednego adresu wyczerpałby go w kilka minut, a „50 analiz” oznaczało w praktyce 50 zapytań do modelu (długi dokument to do 5). Teraz limity są dwa: 40 zapytań do modelu dziennie z jednego adresu i 200 dla całego demo. W najgorszym razie nadużycie kosztuje kilka złotych dziennie, a przedpłata zostaje ostatnią zaporą. Produkcja po wdrożeniu: 11. zapytanie w ciągu minuty dostaje 429 (`retryable: true`), obca domena 403, treść 2,1 MB w UTF-8 413.

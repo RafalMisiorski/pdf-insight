@@ -12,11 +12,14 @@ Jakość wyników AI to 20% oceny. Dokument od firmy jest jedynym dokumentem spo
 - Dokument firmy jest zamknięty (odcisk SHA-256, poza repozytorium) i uruchamiany raz, na końcu.
 - Pomiar przez prawdziwy interfejs: Playwright wgrywa plik jak użytkownik (`npm run eval`), a `eval/score.py` porównuje pobrany JSON z etykietą.
 - Etykietę poprawiamy tylko wtedy, gdy odpowiedź modelu jest poprawna co do intencji etykiety. Każdą taką zmianę zapisujemy w AI_LOG, a promptu nie dostrajamy pod etykietę.
-- Skrypt porównuje całe słowa z polskimi końcówkami, a liczby bez spacji. Ma 13 przypadków kontrolnych, w tym 6, które musi odrzucić.
+- Skrypt porównuje całe słowa z polskimi końcówkami, a liczby z granicami cyfr. Ma 13 przypadków kontrolnych, w tym 6, które musi odrzucić.
+- Precyzja: każda kwota, data, osoba i organizacja z wyniku musi być wydrukowana w PDF-ie (`eval/grounding.py`). Etykieta mówi, co trzeba znaleźć, ale nie wyklucza zmyśleń; to sprawdzenie je wyklucza.
+- Sprawdzenia gwarantowane przez walidację aplikacji (schemat, liczba zdań i punktów, strony) są raportowane osobno i nie podnoszą wyniku mierzonego. Brak pliku wynikowego liczy się jako porażka, a skrypt kończy się kodem 1 przy każdym błędzie.
+- Zapisane przebiegi są w `eval/results/`.
 
 ## Dowód (2026-10-08)
 
-114/114 sprawdzeń na tekście z pypdf, 139/139 przez interfejs lokalnie i 138/138 przez interfejs na produkcji (bez pliku 11 MB, którego nie ma w repozytorium). Po włączeniu OCR (ADR-0009) na produkcji: 156/156, łącznie ze skanem T08.
+Produkcja, 2026-10-08 (`eval/results/2026-10-08-produkcja`): 120/120 sprawdzeń według etykiet, 97/97 faktów obecnych w PDF-ie i osobno 36/36 sprawdzeń gwarantowanych walidacją. Wcześniejsze przebiegi liczyły te grupy razem (138–156 sprawdzeń); skrypt nie miał wtedy jeszcze sprawdzenia precyzji, które dodałem po ślepej recenzji.
 
 ## Kiedy wrócić do decyzji
 

@@ -27,3 +27,9 @@ Testy jednostkowe `worker/src/model.test.ts` (ponowienie, brak ponowienia przy m
 ## Po teście na dokumencie firmy (2026-10-08)
 
 Dokument testowy (12 stron, 47 kwot, 28 dat) zajął 25 s od wgrania do wyniku: w budżecie, ale z małym zapasem. Odpowiedź miała około 7,8 tys. znaków JSON, 4–8 razy więcej niż na treningu, a czas rośnie z długością odpowiedzi. Po teście nie zmieniałem modelu wejścia (test hasha), tylko komunikat o oczekiwanym czasie. Warunek powrotu do decyzji: jeśli dokumenty gęstsze w dane mają przekraczać budżet, wyciągamy grupy pól równolegle.
+
+## Po ślepej recenzji (2026-10-09)
+
+- Budżet 27 s dotyczy jednego zapytania. Długi dokument (fragmenty, potem scalanie) ma jeden budżet 28 s liczony od startu analizy: scalanie dostaje tylko czas, który został, a gdy zostaje mniej niż 5 s, aplikacja kończy z komunikatem zamiast czekać.
+- Regułę 3–5 zdań sprawdza też przeglądarka, nie tylko Worker. Licznik zna skróty prawne („art. 659”, „§ 9 ust. 2”, „pkt.”), a dla pism bez wielkich liter (np. japoński, arabski) używa reguł Unicode (`Intl.Segmenter`).
+- Każdy błąd Workera mówi, czy ponowienie może pomóc (`retryable`). Odmowa dostawcy (zły klucz, wyczerpany budżet) i blokada filtra bezpieczeństwa nie proponują ponowienia.

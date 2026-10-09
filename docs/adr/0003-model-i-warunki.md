@@ -18,7 +18,7 @@ Aplikacja jest publiczna, a jej użytkownicy są w EOG. Warunki Gemini API (wers
 
 ## Dowód
 
-Zbiór treningowy: 139/139 sprawdzeń lokalnie i 138/138 na produkcji, 4–10 s na dokument (ADR-0005).
+Zbiór treningowy na produkcji: 120/120 sprawdzeń według etykiet i 97/97 wyciągniętych faktów obecnych w PDF-ie, 4–10 s na dokument (ADR-0005).
 
 ## Kiedy wrócić do decyzji
 
