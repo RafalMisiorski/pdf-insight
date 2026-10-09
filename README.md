@@ -54,7 +54,7 @@ Każda decyzja z kontekstem, odrzuconymi opcjami i dowodem jest w [`docs/adr/`](
 - Klucz API jest wyłącznie w sekretach Workera ([ADR-0002](docs/adr/0002-worker-jako-posrednik.md)).
 - Gemini 3.8 Flash na planie płatnym, bo warunki Gemini API nie pozwalają udostępniać aplikacji użytkownikom w EOG na planie darmowym ([ADR-0003](docs/adr/0003-model-i-warunki.md)).
 - Walidacja w dwóch miejscach, jedno ponowienie i budżet czasu ([ADR-0004](docs/adr/0004-walidacja-ponowienie-czas.md)).
-- Jakość mierzę na własnym zbiorze treningowym, a dokument od firmy uruchomiłem raz, na końcu ([ADR-0005](docs/adr/0005-metoda-ewaluacji.md)).
+- Jakość mierzę na własnym zbiorze treningowym, a dokument od firmy uruchomiłem pierwszy raz na końcu, po zamrożeniu kodu analizy, a drugi raz tylko do obejrzenia wersji końcowej ([ADR-0005](docs/adr/0005-metoda-ewaluacji.md)).
 - Testy przeglądarkowe w trzech silnikach z zamockowanym API, uruchamiane w CI przed wdrożeniem ([ADR-0006](docs/adr/0006-strategia-testow.md)).
 - Dokładne limity zapytań w Durable Object, bo wbudowany limiter Cloudflare nie blokował na produkcji ([ADR-0007](docs/adr/0007-limity-zapytan.md)).
 - Próg dzielenia długich dokumentów z pomiaru ([ADR-0008](docs/adr/0008-dlugie-dokumenty.md)) i OCR skanów przez obrazy stron ([ADR-0009](docs/adr/0009-ocr-skanow.md)).
@@ -101,7 +101,7 @@ Zbiór treningowy ([`eval/`](eval/README.md)) jest syntetyczny i zaprojektowany 
 | PDF mieszany z README na produkcji, wersja końcowa (2026-10-09)                                                        | 14,7 s; 18 z 18 wstawionych faktów, 24 strony odczytane przez OCR                                     |
 | dokumenty gęste w kwoty i daty, 4 nowe syntetyczne, tryb równoległy (2026-10-09, lokalnie)                             | mediana 10,7 s, najdłużej 15,6 s, 16 z 16 bez błędu; jedno wywołanie: mediana 21,7 s, 15 z 16         |
 | ten tryb na produkcji, aneks i zestawienie faktur (2026-10-09)                                                         | 15–17 s w 3 z 4 zapytań; jedno przekroczenie czasu po 27,2 s, ponowienie trwało 17,4 s                |
-| dokument testowy od firmy (12 stron), jedno uruchomienie, wersja z jednym wywołaniem                                   | 9/10 w ręcznej ocenie, 25 s; wszystkie kwoty, daty i osoby z wyniku są w dokumencie                   |
+| dokument testowy od firmy (12 stron), pierwsze uruchomienie, wersja z jednym wywołaniem                                | 9/10 w ręcznej ocenie, 25 s; wszystkie kwoty, daty i osoby z wyniku są w dokumencie                   |
 | 20 trudnych skanów faktur (zdjęcia, uszkodzone skany) z mojego wcześniejszego benchmarku, lokalnie                     | 160 ze 160; danych nie ma w repozytorium, więc tego wyniku nie da się z niego odtworzyć               |
 
 ## Bezpieczeństwo
