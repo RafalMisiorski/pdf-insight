@@ -1,6 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { modelOutputJsonSchema, type ModelOutput } from '../../src/lib/schema'
-import { analyze, analyzeScan, BUDGET_MS, mergeSummaries, ModelError } from './model'
+import {
+  analyze,
+  analyzeParallel,
+  analyzeScan,
+  BUDGET_MS,
+  mergeSummaries,
+  ModelError,
+} from './model'
 import { MERGE_PROMPT, SCAN_PROMPT, SYSTEM_PROMPT, wrapDocument } from './prompt'
 
 // A model answer that passes the schema and the 3-5 sentence rule.
@@ -111,5 +118,51 @@ describe('scans', () => {
 
   it('keeps the text-path rules inside the scan prompt', () => {
     expect(SCAN_PROMPT.startsWith(SYSTEM_PROMPT)).toBe(true)
+  })
+})
+
+describe('provider refusals', () => {
+  it('maps HTTP 403 (bad key, spent budget) to rejected, without a retry', async () => {
+    const fetch = vi.fn().mockResolvedValue(geminiReply('', 403))
+    vi.stubGlobal('fetch', fetch)
+    await expect(analyze('key', 'model', 'tekst')).rejects.toMatchObject({ kind: 'rejected' })
+    expect(fetch).toHaveBeenCalledTimes(1)
+  })
+
+  it('maps a safety block to blocked, without a retry', async () => {
+    const blocked = new Response(JSON.stringify({ promptFeedback: { blockReason: 'SAFETY' } }))
+    const fetch = vi.fn().mockResolvedValue(blocked)
+    vi.stubGlobal('fetch', fetch)
+    await expect(analyze('key', 'model', 'tekst')).rejects.toMatchObject({ kind: 'blocked' })
+    expect(fetch).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('parallel field groups (experiment, docs/adr/0010)', () => {
+  it('asks three groups with the same system prompt and joins them', async () => {
+    const answers: Record<string, unknown> = {
+      'document, summary': {
+        document: VALID.document,
+        summary: VALID.summary,
+        keyPoints: VALID.keyPoints,
+        entities: VALID.entities,
+        keywords: VALID.keywords,
+      },
+      'all amounts': { amounts: [{ value: 100, currency: 'PLN', context: 'opłata' }] },
+      'all dates': { dates: [{ date: '2026-10-09', context: 'termin' }] },
+    }
+    const fetch = vi.fn(async (_url: string, init: RequestInit) => {
+      const body = JSON.parse(String(init.body))
+      expect(body.systemInstruction.parts[0].text).toBe(SYSTEM_PROMPT)
+      const message: string = body.contents[0].parts[0].text
+      const key = Object.keys(answers).find((k) => message.includes(k)) ?? ''
+      return geminiReply(JSON.stringify(answers[key]))
+    })
+    vi.stubGlobal('fetch', fetch)
+    const result = await analyzeParallel('key', 'model', 'tekst')
+    expect(fetch).toHaveBeenCalledTimes(3)
+    expect(result.summary).toBe(VALID.summary)
+    expect(result.amounts).toEqual([{ value: 100, currency: 'PLN', context: 'opłata' }])
+    expect(result.dates).toEqual([{ date: '2026-10-09', context: 'termin' }])
   })
 })

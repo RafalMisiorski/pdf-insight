@@ -10,10 +10,12 @@ workers_dev = true
 [vars]
 ALLOWED_ORIGIN = "https://rafalmisiorski.github.io"
 MODEL = "gemini-3.8-flash"
-# Analyses per UTC day for the whole demo: keeps the prepaid model budget for the review period.
-DAILY_LIMIT = "50"
+# Model calls per UTC day: for the whole demo (keeps the prepaid budget for the review period) and
+# from one IP address (one script or one office cannot use up the whole demo).
+DAILY_LIMIT = "200"
+IP_DAILY_LIMIT = "40"
 
-# Exact rate limits (10 per minute per IP, DAILY_LIMIT per day): one Durable Object per key.
+# Exact rate limits (10 per minute per IP, the daily limits above): one Durable Object per key.
 # Durable Objects on the Free plan must use the SQLite storage backend.
 [[durable_objects.bindings]]
 name = "RATE_LIMITER"
