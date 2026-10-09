@@ -1,0 +1,62 @@
+{
+  "document": {
+    "fileName": "T02_oferta_pl.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "oferta",
+    "title": "OFERTA HANDLOWA nr OF/112/2026",
+    "date": "2026-10-01"
+  },
+  "summary": "Dokument stanowi ofertę handlową szkoleń z zakresu cyberbezpieczeństwa dla pracowników recepcji i administracji, przygotowaną przez Akademię Bezpiecznego Biura s.c. dla firmy Hotele Morskie Pomorze S.A. Oferta obejmuje pakiet podstawowy w cenie 9 600,00 PLN netto oraz pakiet rozszerzony w cenie 2 450,00 EUR netto. Szkolenia mają odbywać się stacjonarnie w obiektach zamawiającego. Oferta zachowuje ważność do 31 października 2026 roku.",
+  "keyPoints": [
+    "Oferta szkoleń z cyberbezpieczeństwa dla pracowników recepcji i administracji",
+    "Pakiet podstawowy w cenie 9 600,00 zł netto dla maksymalnie 8 osób",
+    "Pakiet rozszerzony z ćwiczeniami symulacyjnymi za 2 450,00 EUR netto dla maksymalnie 12 osób",
+    "Rabat w wysokości 10% przy zamówieniu do 30 listopada 2026 r.",
+    "Ważność oferty do 31 października 2026 r."
+  ],
+  "entities": {
+    "organizations": [
+      "Akademia Bezpiecznego Biura s.c.",
+      "Hotele Morskie Pomorze S.A."
+    ],
+    "people": [
+      "Ewa Grabowska",
+      "Bartosz Malinowski"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 9600,
+      "currency": "PLN",
+      "context": "Pakiet podstawowy do 8 osób 1 dzień"
+    },
+    {
+      "value": 2450,
+      "currency": "EUR",
+      "context": "Pakiet rozszerzony (z ćwiczeniami symulacyjnymi) do 12 osób 2 dni"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-01",
+      "context": "data wystawienia oferty"
+    },
+    {
+      "date": "2026-11-30",
+      "context": "termin na zamówienie z rabatem 10%"
+    },
+    {
+      "date": "2026-10-31",
+      "context": "termin ważności oferty"
+    }
+  ],
+  "keywords": [
+    "oferta handlowa",
+    "cyberbezpieczeństwo",
+    "szkolenia",
+    "warsztaty",
+    "phishing",
+    "ochrona danych"
+  ]
+}

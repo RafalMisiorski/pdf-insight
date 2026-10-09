@@ -1,0 +1,95 @@
+{
+  "document": {
+    "fileName": "T09_faktura_sprzeczna_pl.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "faktura",
+    "title": "FAKTURA VAT nr FV/2026/10/0042",
+    "date": "2026-10-06"
+  },
+  "summary": "Dokument stanowi fakturę VAT nr FV/2026/10/0042 wystawioną w Kaliszu przez Kwiaciarnię Pod Różą sp. z o.o. dla nabywcy Hotel Nad Zalewem sp. j. Faktura dotyczy dekoracji kwiatowej sali oraz bukietów na stoły. Łączna kwota do zapłaty wynosi 4 403,40 zł brutto. Płatność przelewem ma nastąpić do dnia 20 października 2026 roku.",
+  "keyPoints": [
+    "Faktura VAT nr FV/2026/10/0042 z dnia 06.10.2026 r.",
+    "Sprzedawca: Kwiaciarnia Pod Różą sp. z o.o., Nabywca: Hotel Nad Zalewem sp. j.",
+    "Łączna kwota do zapłaty wynosi 4 403,40 PLN",
+    "Termin płatności upływa 20.10.2026 r., forma płatności: przelew",
+    "Fakturę wystawiła Ewa Nowicka"
+  ],
+  "entities": {
+    "organizations": [
+      "Kwiaciarnia Pod Różą sp. z o.o.",
+      "Hotel Nad Zalewem sp. j."
+    ],
+    "people": [
+      "Ewa Nowicka"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 2400,
+      "currency": "PLN",
+      "context": "Dekoracja kwiatowa sali - wartość netto"
+    },
+    {
+      "value": 552,
+      "currency": "PLN",
+      "context": "Dekoracja kwiatowa sali - VAT 23%"
+    },
+    {
+      "value": 2952,
+      "currency": "PLN",
+      "context": "Dekoracja kwiatowa sali - wartość brutto"
+    },
+    {
+      "value": 1080,
+      "currency": "PLN",
+      "context": "Bukiety na stoły - wartość netto"
+    },
+    {
+      "value": 248.4,
+      "currency": "PLN",
+      "context": "Bukiety na stoły - VAT 23%"
+    },
+    {
+      "value": 1328.4,
+      "currency": "PLN",
+      "context": "Bukiety na stoły - wartość brutto"
+    },
+    {
+      "value": 3580,
+      "currency": "PLN",
+      "context": "Razem netto"
+    },
+    {
+      "value": 823.4,
+      "currency": "PLN",
+      "context": "VAT 23%"
+    },
+    {
+      "value": 4403.4,
+      "currency": "PLN",
+      "context": "Do zapłaty"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-06",
+      "context": "Data wystawienia"
+    },
+    {
+      "date": "2026-10-05",
+      "context": "Data sprzedaży"
+    },
+    {
+      "date": "2026-10-20",
+      "context": "Termin płatności"
+    }
+  ],
+  "keywords": [
+    "faktura VAT",
+    "dekoracja kwiatowa",
+    "bukiety",
+    "przelew",
+    "sprzedaż"
+  ]
+}

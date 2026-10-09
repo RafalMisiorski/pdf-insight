@@ -1,0 +1,43 @@
+{
+  "T01_faktura_pl.pdf": {
+    "ok": true,
+    "ms": 7975
+  },
+  "T02_oferta_pl.pdf": {
+    "ok": true,
+    "ms": 5445
+  },
+  "T03_raport_en.pdf": {
+    "ok": true,
+    "ms": 7454
+  },
+  "T04_umowa_najmu_pl.pdf": {
+    "ok": true,
+    "ms": 5402
+  },
+  "T05_notatka_inne_pl.pdf": {
+    "ok": true,
+    "ms": 4928
+  },
+  "T06_regulamin_dlugi_pl.pdf": {
+    "ok": true,
+    "ms": 6947
+  },
+  "T07_injection_pl.pdf": {
+    "ok": true,
+    "ms": 5425
+  },
+  "T08_skan_bez_tekstu.pdf": {
+    "ok": true,
+    "ms": 8013
+  },
+  "T09_faktura_sprzeczna_pl.pdf": {
+    "ok": true,
+    "ms": 7964
+  },
+  "X01_to_nie_pdf.pdf": {
+    "ok": false,
+    "ms": 25,
+    "message": "Plik ma rozszerzenie PDF, ale nie jest poprawnym dokumentem PDF."
+  }
+}

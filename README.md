@@ -91,10 +91,12 @@ Zbiór treningowy ([`eval/`](eval/README.md)) jest syntetyczny i zaprojektowany 
 | ten sam przebieg: czy każdy wyciągnięty fakt (kwota, data, osoba, organizacja) jest w PDF-ie                           | 97 z 97, żadnego zmyślonego faktu                                                                     |
 | sprawdzenia gwarantowane przez walidację (schemat, liczba zdań i punktów, strony), raportowane osobno                  | 36 z 36                                                                                               |
 | czas analizy na zbiorze treningowym                                                                                    | 4–10 s na dokument                                                                                    |
+| ten sam zbiór na produkcji, wersja końcowa, 2 przebiegi (2026-10-09)                                                   | 120 ze 120 w obu; 95 z 95 i 97 z 97 faktów w PDF-ie; 4,9–10 s na dokument                             |
 | długie teksty, 98–398 tys. znaków (23–93 strony), jedno wywołanie                                                      | 7,5–9 s, 9 z 9 wstawionych faktów                                                                     |
 | bardzo długie teksty, 0,8–1,2 mln znaków (185–279 stron), fragmenty i scalenie                                         | 14–23 s, 9 z 9 wstawionych faktów                                                                     |
 | skany przez OCR: T08 (fakty jak w T01) i skany 4 i 8 stron                                                             | 6–9 s, T08: 18 z 18                                                                                   |
 | granica całego dokumentu: 7 dokumentów od skanu 16 stron do tekstu 2,32 mln znaków, 2 przebiegi (2026-10-09, lokalnie) | do 4 części: 15,7–27,4 s, wszystkie wstawione fakty; przy 6 częściach jeden przebieg przekroczył czas |
+| PDF mieszany z README na produkcji, wersja końcowa (2026-10-09)                                                        | 14,7 s; 18 z 18 wstawionych faktów, 24 strony odczytane przez OCR                                     |
 | dokumenty gęste w kwoty i daty, 4 nowe syntetyczne, tryb równoległy (2026-10-09, lokalnie)                             | mediana 10,7 s, najdłużej 15,6 s, 16 z 16 bez błędu; jedno wywołanie: mediana 21,7 s, 15 z 16         |
 | ten tryb na produkcji, aneks i zestawienie faktur (2026-10-09)                                                         | 15–17 s w 3 z 4 zapytań; jedno przekroczenie czasu po 27,2 s, ponowienie trwało 17,4 s                |
 | dokument testowy od firmy (12 stron), jedno uruchomienie, wersja z jednym wywołaniem                                   | 9/10 w ręcznej ocenie, 25 s; wszystkie kwoty, daty i osoby z wyniku są w dokumencie                   |
@@ -130,4 +132,4 @@ docs/adr         decyzje z dowodami
 
 ## Praca z AI
 
-Narzędzia, kluczowe prompty, miejsca, w których AI się pomyliło, ślepa recenzja przed oddaniem i ewaluacja: [`AI_LOG.md`](AI_LOG.md). Opis kodu plik po pliku: [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md).
+Narzędzia, kluczowe prompty, miejsca, w których AI się pomyliło, ślepa recenzja przed oddaniem i ewaluacja: [`AI_LOG.md`](AI_LOG.md).

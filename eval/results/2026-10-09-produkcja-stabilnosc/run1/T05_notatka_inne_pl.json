@@ -1,0 +1,34 @@
+{
+  "document": {
+    "fileName": "T05_notatka_inne_pl.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "inne",
+    "title": "Notatka ze spotkania zespołu projektowego",
+    "date": null
+  },
+  "summary": "Dokument stanowi notatkę ze spotkania zespołu projektowego z udziałem Karoliny Zając, Igora Pawlaka oraz zespołu wsparcia. Podczas spotkania przejrzano listę zgłoszeń z ostatniego sprintu i za priorytet uznano skrócenie czasu odpowiedzi na zgłoszenia klientów. Igor Pawlak ma przygotować propozycję nowego podziału dyżurów, a Karolina Zając zebrać uwagi od działu sprzedaży. Kolejne spotkanie zaplanowano na przyszły czwartek po zakończeniu przeglądu zgłoszeń.",
+  "keyPoints": [
+    "Przejrzenie listy zgłoszeń z ostatniego sprintu",
+    "Uznanie skrócenia czasu odpowiedzi na zgłoszenia klientów za priorytet",
+    "Przygotowanie przez Igora Pawlaka propozycji nowego podziału dyżurów",
+    "Zebranie uwag od działu sprzedaży przez Karolinę Zając",
+    "Zaplanowanie kolejnego spotkania po zakończeniu przeglądu zgłoszeń"
+  ],
+  "entities": {
+    "organizations": [],
+    "people": [
+      "Karolina Zając",
+      "Igor Pawlak"
+    ]
+  },
+  "amounts": [],
+  "dates": [],
+  "keywords": [
+    "spotkanie zespołu projektowego",
+    "zgłoszenia klientów",
+    "sprint",
+    "dyżury",
+    "dział sprzedaży"
+  ]
+}

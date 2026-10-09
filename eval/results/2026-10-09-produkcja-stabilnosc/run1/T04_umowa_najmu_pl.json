@@ -1,0 +1,61 @@
+{
+  "document": {
+    "fileName": "T04_umowa_najmu_pl.pdf",
+    "pages": 2,
+    "language": "pl",
+    "type": "umowa",
+    "title": "UMOWA NAJMU LOKALU UŻYTKOWEGO nr 3/2026",
+    "date": "2026-10-02"
+  },
+  "summary": "Dokument stanowi umowę najmu lokalu użytkowego zawartą w Poznaniu w dniu 2 października 2026 roku. Wynajmującym jest Kamienica pod Lipami sp. z o.o., a Najemcą Tomasz Wrona prowadzący firmę Kawiarnia Ziarno Tomasz Wrona. Przedmiotem umowy jest lokal o powierzchni 64 m² przeznaczony na kawiarnię, a umowa została zawarta na czas określony od 1 listopada 2026 roku do 31 października 2029 roku. Miesięczny czynsz wynosi 6 800,00 zł netto, a kaucja zabezpieczająca została ustalona na kwotę 20 400,00 zł.",
+  "keyPoints": [
+    "Przedmiotem najmu jest lokal o powierzchni 64 m² przy ul. Ogrodowej 3 w Poznaniu z przeznaczeniem na kawiarnię.",
+    "Umowa zawarta na czas określony od 1 listopada 2026 r. do 31 października 2029 r.",
+    "Miesięczny czynsz wynosi 6 800,00 zł netto plus VAT, płatny do 10. dnia miesiąca.",
+    "Kaucja zabezpieczająca wynosi 20 400,00 zł i jest płatna w terminie 7 dni od podpisania umowy."
+  ],
+  "entities": {
+    "organizations": [
+      "Kamienica pod Lipami sp. z o.o.",
+      "Kawiarnia Ziarno Tomasz Wrona"
+    ],
+    "people": [
+      "Alicja Borowska",
+      "Tomasz Wrona"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 6800,
+      "currency": "PLN",
+      "context": "czynsz miesięczny netto"
+    },
+    {
+      "value": 20400,
+      "currency": "PLN",
+      "context": "kaucja zabezpieczająca"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-02",
+      "context": "data zawarcia umowy"
+    },
+    {
+      "date": "2026-11-01",
+      "context": "początek okresu najmu"
+    },
+    {
+      "date": "2029-10-31",
+      "context": "koniec okresu najmu"
+    }
+  ],
+  "keywords": [
+    "umowa najmu",
+    "lokal użytkowy",
+    "kawiarnia",
+    "czynsz",
+    "kaucja",
+    "Poznań"
+  ]
+}

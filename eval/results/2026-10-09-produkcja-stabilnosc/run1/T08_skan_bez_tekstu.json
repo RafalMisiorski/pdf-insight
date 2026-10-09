@@ -1,0 +1,98 @@
+{
+  "document": {
+    "fileName": "T08_skan_bez_tekstu.pdf",
+    "pages": 1,
+    "language": "pl",
+    "type": "faktura",
+    "title": "FAKTURA VAT nr FV/2026/09/0117",
+    "date": "2026-09-15"
+  },
+  "summary": "Dokument to faktura VAT nr FV/2026/09/0117 wystawiona 15 września 2026 roku w Gdyni przez Bursztynową Drukarnię sp. z o.o. dla Pracowni Architektonicznej Lis i Wspólnicy sp.k. Przedmiotem sprzedaży jest druk katalogów A4 oraz projekt graficzny okładki na łączną kwotę 6 150,00 zł brutto. Płatność ma nastąpić przelewem bankowym w terminie do 29 września 2026 roku. Fakturę wystawiła Joanna Sikora.",
+  "keyPoints": [
+    "Sprzedawca: Bursztynowa Drukarnia sp. z o.o., Nabywca: Pracownia Architektoniczna Lis i Wspólnicy sp.k.",
+    "Przedmiot zamówienia obejmuje druk katalogów A4 oraz projekt graficzny okładki.",
+    "Łączna kwota do zapłaty wynosi 6 150,00 zł brutto (5 000,00 zł netto).",
+    "Termin płatności przelewem upływa 29.09.2026 r."
+  ],
+  "entities": {
+    "organizations": [
+      "Bursztynowa Drukarnia sp. z o.o.",
+      "Pracownia Architektoniczna Lis i Wspólnicy sp.k."
+    ],
+    "people": [
+      "Joanna Sikora"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 4200,
+      "currency": "PLN",
+      "context": "Druk katalogów A4, 48 stron - wartość netto"
+    },
+    {
+      "value": 966,
+      "currency": "PLN",
+      "context": "Druk katalogów A4, 48 stron - VAT 23%"
+    },
+    {
+      "value": 5166,
+      "currency": "PLN",
+      "context": "Druk katalogów A4, 48 stron - wartość brutto"
+    },
+    {
+      "value": 800,
+      "currency": "PLN",
+      "context": "Projekt graficzny okładki - wartość netto"
+    },
+    {
+      "value": 184,
+      "currency": "PLN",
+      "context": "Projekt graficzny okładki - VAT 23%"
+    },
+    {
+      "value": 984,
+      "currency": "PLN",
+      "context": "Projekt graficzny okładki - wartość brutto"
+    },
+    {
+      "value": 5000,
+      "currency": "PLN",
+      "context": "Razem netto"
+    },
+    {
+      "value": 1150,
+      "currency": "PLN",
+      "context": "Razem VAT 23%"
+    },
+    {
+      "value": 6150,
+      "currency": "PLN",
+      "context": "Razem brutto / Do zapłaty"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-09-15",
+      "context": "Data wystawienia"
+    },
+    {
+      "date": "2026-09-14",
+      "context": "Data sprzedaży"
+    },
+    {
+      "date": "2026-09-29",
+      "context": "Termin płatności"
+    }
+  ],
+  "keywords": [
+    "faktura VAT",
+    "druk katalogów",
+    "projekt graficzny",
+    "Bursztynowa Drukarnia",
+    "Pracownia Architektoniczna Lis i Wspólnicy",
+    "Gdynia"
+  ],
+  "meta": {
+    "source": "ocr"
+  }
+}

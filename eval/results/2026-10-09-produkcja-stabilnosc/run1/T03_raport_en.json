@@ -1,0 +1,72 @@
+{
+  "document": {
+    "fileName": "T03_raport_en.pdf",
+    "pages": 3,
+    "language": "en",
+    "type": "raport",
+    "title": "Q3 2026 Operations Report",
+    "date": "2026-10-05"
+  },
+  "summary": "This document is the Q3 2026 operations report for Baltic Fresh Foods Ltd., prepared by COO Helena Lindqvist. Revenue reached EUR 4,850,000 against operating costs of EUR 3,920,000, while capital expenditure was USD 310,000. Operational milestones included migrating route planning to a new telematics platform, retiring two legacy depots, and extending the framework agreement with Northern Cold Chain AB until 2028. The next operating review is planned for 15 December 2026.",
+  "keyPoints": [
+    "Q3 2026 revenue reached EUR 4,850,000 with operating costs of EUR 3,920,000.",
+    "Route planning migration to a new telematics platform was completed, and two legacy depots were retired.",
+    "Northern Cold Chain AB extended its warehousing framework agreement until 2028.",
+    "Capital expenditure amounted to USD 310,000 for temperature sensors and two electric vans.",
+    "The next operating review is scheduled for 15 December 2026."
+  ],
+  "entities": {
+    "organizations": [
+      "Baltic Fresh Foods Ltd.",
+      "Northern Cold Chain AB"
+    ],
+    "people": [
+      "Helena Lindqvist",
+      "Marek Nowicki"
+    ]
+  },
+  "amounts": [
+    {
+      "value": 4850000,
+      "currency": "EUR",
+      "context": "Revenue reached"
+    },
+    {
+      "value": 3920000,
+      "currency": "EUR",
+      "context": "operating costs"
+    },
+    {
+      "value": 310000,
+      "currency": "USD",
+      "context": "Capital expenditure in the quarter"
+    }
+  ],
+  "dates": [
+    {
+      "date": "2026-10-05",
+      "context": "Issued"
+    },
+    {
+      "date": "2026-07-01",
+      "context": "The reporting period runs from"
+    },
+    {
+      "date": "2026-09-30",
+      "context": "to"
+    },
+    {
+      "date": "2026-12-15",
+      "context": "The next operating review is scheduled for"
+    }
+  ],
+  "keywords": [
+    "operations report",
+    "cold-chain utilisation",
+    "telematics platform",
+    "depot consolidation",
+    "capital expenditure",
+    "electric vans",
+    "temperature sensors"
+  ]
+}
