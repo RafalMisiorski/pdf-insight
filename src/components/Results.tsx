@@ -1,4 +1,5 @@
-import { ScanMetaSchema, type Analysis } from '../lib/schema'
+import { useEffect, useRef } from 'react'
+import type { Analysis } from '../lib/schema'
 
 const TYPE_LABELS: Record<Analysis['document']['type'], string> = {
   faktura: 'Faktura',
@@ -38,12 +39,31 @@ function downloadJson(result: Analysis) {
   setTimeout(() => URL.revokeObjectURL(url), 10_000)
 }
 
+// [2, 3, 4, 7] -> "2–4, 7": the pages left out of the analysis, in short form.
+function formatPageList(pages: number[]): string {
+  const ranges: string[] = []
+  for (let i = 0; i < pages.length; i++) {
+    let end = i
+    while (end + 1 < pages.length && pages[end + 1] === pages[end] + 1) end++
+    ranges.push(end > i ? `${pages[i]}–${pages[end]}` : `${pages[i]}`)
+    i = end
+  }
+  return ranges.join(', ')
+}
+
 const Empty = () => <p className="muted">Brak w dokumencie.</p>
 
-function List({ items }: { items: string[] }) {
+// One sentence about a list of pages: `one` for a single page, `many` for more, {pages} for the list.
+function PagesNotice({ pages, one, many }: { pages?: number[]; one: string; many: string }) {
+  if (!pages || pages.length === 0) return null
+  const sentence = pages.length === 1 ? one : many
+  return <p className="scan-notice">{sentence.replace('{pages}', formatPageList(pages))}</p>
+}
+
+function List({ items, lang }: { items: string[]; lang?: string }) {
   if (items.length === 0) return <Empty />
   return (
-    <ul>
+    <ul lang={lang}>
       {items.map((item, index) => (
         <li key={index}>{item}</li>
       ))}
@@ -57,10 +77,12 @@ function FactTable({
   head,
   rows,
   numeric = false,
+  lang,
 }: {
   head: string
   rows: { value: string; context: string }[]
   numeric?: boolean
+  lang?: string
 }) {
   const valueClass = numeric ? 'value num' : 'value'
   if (rows.length === 0) return <Empty />
@@ -74,7 +96,7 @@ function FactTable({
           <th scope="col">Czego dotyczy</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody lang={lang}>
         {rows.map((row, index) => (
           <tr key={index}>
             <td className={valueClass}>{row.value}</td>
@@ -88,20 +110,46 @@ function FactTable({
 
 export function Results({ result }: { result: Analysis }) {
   const doc = result.document
-  const scan = ScanMetaSchema.safeParse(result.meta) // present only for results read by OCR
+  const meta = result.meta ?? {}
+  const lang = doc.language // labels stay Polish, the document's own text is marked with its language
+  const title = useRef<HTMLHeadingElement>(null)
+  // Keyboard and screen-reader users land on the result as soon as it appears.
+  useEffect(() => title.current?.focus(), [result])
   return (
     <section className="results" aria-labelledby="results-title">
-      <h2 id="results-title">{doc.title ?? doc.fileName}</h2>
+      <h2 id="results-title" ref={title} tabIndex={-1} lang={lang}>
+        {doc.title ?? doc.fileName}
+      </h2>
       <p className="subtitle">Plik: {doc.fileName}</p>
-      {scan.success && (
+      {meta.source === 'ocr' && (
         <p className="scan-notice">
           Ten PDF to skan bez warstwy tekstowej, więc treść odczytano z obrazów stron (OCR)
-          {scan.data.pagesAnalyzed < doc.pages
-            ? `: z pierwszych ${scan.data.pagesAnalyzed} z ${doc.pages} stron`
+          {meta.pagesAnalyzed !== undefined && meta.pagesAnalyzed < doc.pages
+            ? `: z pierwszych ${meta.pagesAnalyzed} z ${doc.pages} stron`
             : ''}
           . Pojedyncze znaki mogą być odczytane błędnie.
         </p>
       )}
+      <PagesNotice
+        pages={meta.pagesOcr}
+        one="Strona {pages} nie ma warstwy tekstowej, więc odczytano ją z obrazu (OCR). Pojedyncze znaki mogą być odczytane błędnie."
+        many="Strony {pages} nie mają warstwy tekstowej, więc odczytano je z obrazów (OCR). Pojedyncze znaki mogą być odczytane błędnie."
+      />
+      <PagesNotice
+        pages={meta.pagesSkipped}
+        one="Strona {pages} nie została przeanalizowana, bo dokument przekracza limit jednej analizy. Podsumowanie dotyczy pozostałych stron."
+        many="Strony {pages} nie zostały przeanalizowane, bo dokument przekracza limit jednej analizy. Podsumowanie dotyczy pozostałych stron."
+      />
+      <PagesNotice
+        pages={meta.pagesFailed}
+        one="Analiza strony {pages} nie powiodła się (błąd albo przekroczony czas). Podsumowanie dotyczy pozostałych stron."
+        many="Analiza stron {pages} nie powiodła się (błąd albo przekroczony czas). Podsumowanie dotyczy pozostałych stron."
+      />
+      <PagesNotice
+        pages={meta.pagesWithoutText}
+        one="Strona {pages} nie ma tekstu ani obrazu do odczytania (np. pusta strona), więc nie trafiła do analizy."
+        many="Strony {pages} nie mają tekstu ani obrazu do odczytania (np. puste strony), więc nie trafiły do analizy."
+      />
       <dl className="facts">
         <div>
           <dt>Typ</dt>
@@ -123,22 +171,22 @@ export function Results({ result }: { result: Analysis }) {
 
       <div className="card">
         <h3>Podsumowanie</h3>
-        <p>{result.summary}</p>
+        <p lang={lang}>{result.summary}</p>
       </div>
 
       <div className="card">
         <h3>Najważniejsze punkty</h3>
-        <List items={result.keyPoints} />
+        <List items={result.keyPoints} lang={lang} />
       </div>
 
       <div className="grid">
         <div className="card">
           <h3>Organizacje</h3>
-          <List items={result.entities.organizations} />
+          <List items={result.entities.organizations} lang={lang} />
         </div>
         <div className="card">
           <h3>Osoby</h3>
-          <List items={result.entities.people} />
+          <List items={result.entities.people} lang={lang} />
         </div>
       </div>
 
@@ -147,6 +195,7 @@ export function Results({ result }: { result: Analysis }) {
         <FactTable
           head="Kwota"
           numeric
+          lang={lang}
           rows={result.amounts.map((a) => ({
             value: formatMoney(a.value, a.currency),
             context: a.context,
@@ -159,6 +208,7 @@ export function Results({ result }: { result: Analysis }) {
           <h3>Daty</h3>
           <FactTable
             head="Data"
+            lang={lang}
             rows={result.dates.map((d) => ({ value: formatDate(d.date), context: d.context }))}
           />
         </div>
@@ -167,7 +217,7 @@ export function Results({ result }: { result: Analysis }) {
           {result.keywords.length === 0 ? (
             <p className="muted">Brak.</p>
           ) : (
-            <ul className="chips">
+            <ul className="chips" lang={lang}>
               {result.keywords.map((keyword, index) => (
                 <li key={index}>{keyword}</li>
               ))}

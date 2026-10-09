@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { ApiError, analyzeJob, type AnalysisJob } from './api/analyze'
+import { ApiError, analyzeJob, type AnalysisJob, type JobPart } from './api/analyze'
 import { DropZone } from './components/DropZone'
 import { History } from './components/History'
 import { Progress, type ProgressState } from './components/Progress'
 import { Results } from './components/Results'
-import { splitIntoParts } from './lib/chunks'
 import { checkPdfFile } from './lib/file'
 import { addToHistory, clearHistory, loadHistory, type HistoryEntry } from './lib/history'
 import type { ExtractedText } from './lib/pdf'
-import { MAX_PARTS, MAX_SCAN_PAGES, MAX_TEXT_CHARS, type Analysis } from './lib/schema'
+import { planDocument, type PlannedPart } from './lib/plan'
+import type { Analysis } from './lib/schema'
 import './App.css'
 
 // One state at a time, so the screen can never show a result and an error together.
@@ -27,8 +27,8 @@ export default function App() {
     setState({
       phase: 'analyzing',
       fileName: job.fileName,
-      parts: job.kind === 'text' ? job.parts.length : 1,
-      ocr: job.kind === 'scan',
+      parts: job.parts.length,
+      ocr: job.parts.every((part) => part.kind === 'scan'),
       partsDone: 0,
       startedAt: Date.now(),
     })
@@ -48,25 +48,30 @@ export default function App() {
     }
   }
 
-  // A scan without a text layer: its first pages go to the model as images (OCR, docs/adr/0009).
-  async function analyzeScanFile(file: File, pages: number) {
-    const count = Math.min(pages, MAX_SCAN_PAGES)
-    setState({ phase: 'reading', fileName: file.name, page: 0, pages: count, ocr: true })
-    let images: string[]
-    try {
+  // Pages that show only an image become JPEGs for the model (docs/adr/0009, 0012).
+  async function withImages(file: File, planned: PlannedPart[]): Promise<JobPart[]> {
+    const scanPages = planned.flatMap((part) => (part.kind === 'scan' ? part.pages : []))
+    let images: string[] = []
+    if (scanPages.length > 0) {
+      setState({
+        phase: 'reading',
+        fileName: file.name,
+        page: 0,
+        pages: scanPages.length,
+        ocr: true,
+      })
       const { renderPages } = await import('./lib/pdf')
-      images = await renderPages(file, count, (page, total) =>
+      images = await renderPages(file, scanPages, (page, total) =>
         setState({ phase: 'reading', fileName: file.name, page, pages: total, ocr: true }),
       )
-    } catch {
-      setState({
-        phase: 'error',
-        message: 'Nie udało się przygotować obrazów stron skanu.',
-        retry: null,
-      })
-      return
     }
-    await analyze({ kind: 'scan', fileName: file.name, pages, images })
+    let next = 0
+    return planned.map((part) => {
+      if (part.kind === 'text') return part
+      const start = next
+      next += part.pages.length
+      return { ...part, images: images.slice(start, next) }
+    })
   }
 
   async function handleFile(file: File) {
@@ -91,24 +96,26 @@ export default function App() {
       })
       return
     }
-    if (!extracted.hasTextLayer) {
-      await analyzeScanFile(file, extracted.pages)
-      return
-    }
-    // Text that fits one request is sent as it is; a longer one goes in fragments (docs/adr/0008).
-    const parts =
-      extracted.text.length <= MAX_TEXT_CHARS
-        ? [extracted.text]
-        : splitIntoParts(extracted.pageTexts, MAX_TEXT_CHARS)
-    if (parts.length > MAX_PARTS) {
+    // Text pages as text, scanned pages as images, within the limit of one analysis (docs/adr/0012).
+    const plan = planDocument(extracted)
+    let parts: JobPart[]
+    try {
+      parts = await withImages(file, plan.parts)
+    } catch {
       setState({
         phase: 'error',
-        message: 'Dokument jest za długi do analizy (limit to około 1,6 mln znaków tekstu).',
+        message: 'Nie udało się przygotować obrazów stron skanu.',
         retry: null,
       })
       return
     }
-    await analyze({ kind: 'text', fileName: file.name, pages: extracted.pages, parts })
+    await analyze({
+      fileName: file.name,
+      pages: extracted.pages,
+      parts,
+      skipped: plan.skipped,
+      blank: plan.blank,
+    })
   }
 
   return (
@@ -122,6 +129,11 @@ export default function App() {
 
       <div className="status" aria-live="polite">
         {state.phase === 'idle' && <p className="muted">Nie wybrano jeszcze pliku.</p>}
+        {state.phase === 'done' && (
+          <p className="sr-only">
+            Analiza gotowa: {state.result.document.title ?? state.result.document.fileName}
+          </p>
+        )}
       </div>
 
       {(state.phase === 'reading' || state.phase === 'analyzing') && <Progress state={state} />}

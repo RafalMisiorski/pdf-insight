@@ -32,7 +32,7 @@ function AnalysisDetail({ state }: { state: Extract<ProgressState, { phase: 'ana
   if (state.partsDone < state.parts) {
     return (
       <>
-        Długi dokument: gotowe fragmenty {state.partsDone} z {state.parts} · {seconds} s
+        Gotowe fragmenty dokumentu: {state.partsDone} z {state.parts} · {seconds} s
       </>
     )
   }
@@ -43,16 +43,15 @@ export function Progress({ state }: { state: ProgressState }) {
   const reading = state.phase === 'reading'
   const steps: Step[] = [
     {
-      label: state.ocr ? 'Skan bez warstwy tekstowej: obrazy stron do OCR' : 'Odczyt tekstu z PDF',
+      label: state.ocr ? 'Obrazy stron bez tekstu do OCR' : 'Odczyt tekstu z PDF',
       status: reading ? 'current' : 'done',
       detail: reading && state.pages > 0 ? `strona ${state.page} z ${state.pages}` : undefined,
     },
     {
-      label: 'Analiza treści przez AI',
+      label: 'Analiza treści przez AI i sprawdzenie wyniku ze schematem',
       status: reading ? 'pending' : 'current',
       detail: reading ? undefined : <AnalysisDetail state={state} />,
     },
-    { label: 'Sprawdzenie wyniku ze schematem', status: 'pending' },
   ]
   const current = steps.find((step) => step.status === 'current')
 

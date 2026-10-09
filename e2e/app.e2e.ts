@@ -40,6 +40,32 @@ async function mockApi(page: Page, reply: Reply): Promise<AnalyzeRequest[]> {
 }
 
 // Mirrors the Worker: the model's analysis plus fileName and pages taken from the request.
+// The scan and merge endpoints answered the way the Worker would; every request is recorded.
+async function mockScans(page: Page): Promise<ScanRequest[]> {
+  const scans: ScanRequest[] = []
+  await page.route(SCAN_API, async (route) => {
+    if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers: CORS })
+    const request = route.request().postDataJSON() as ScanRequest
+    scans.push(request)
+    const document = { ...analysis.document, fileName: request.fileName, pages: request.pages }
+    const meta = { source: 'ocr', pagesAnalyzed: request.images.length }
+    await route.fulfill({ headers: CORS, json: { result: { ...analysis, document, meta } } })
+  })
+  return scans
+}
+
+async function mockMerges(page: Page): Promise<MergeRequest[]> {
+  const merges: MergeRequest[] = []
+  await page.route(MERGE_API, async (route) => {
+    if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers: CORS })
+    const request = route.request().postDataJSON() as MergeRequest
+    merges.push(request)
+    const document = { ...analysis.document, fileName: request.fileName, pages: request.pages }
+    await route.fulfill({ headers: CORS, json: { result: { ...analysis, document } } })
+  })
+  return merges
+}
+
 const success: Reply = (route, request) =>
   route.fulfill({
     headers: CORS,
@@ -105,8 +131,8 @@ test('postęp: kroki, licznik czasu i zablokowana strefa do końca analizy', asy
   const progress = page.getByRole('region', { name: 'Przetwarzam plik faktura.pdf' })
   const step = (label: string) => progress.getByRole('listitem').filter({ hasText: label })
   await expect(step('Analiza treści przez AI')).toHaveAttribute('aria-current', 'step')
+  await expect(progress.getByRole('listitem')).toHaveCount(2)
   await expect(step('Odczyt tekstu z PDF')).toHaveClass(/done/)
-  await expect(step('Sprawdzenie wyniku ze schematem')).toHaveClass(/pending/)
   await expect(progress).toContainText(
     /\d+ s · zwykle 5–15 s, przy wielu kwotach i datach do około 30 s/,
   )
@@ -263,6 +289,7 @@ test('ekran 360 px: wynik bez poziomego przewijania strony', async ({ page }) =>
 test('dostępność: axe bez naruszeń w stanie pustym, błędu i wyniku, w obu motywach', async ({
   page,
 }) => {
+  test.setTimeout(60_000) // axe runs six times; WebKit on a busy machine needs more than 30 s
   const violations = async () =>
     (await new AxeBuilder({ page }).analyze()).violations.map((v) => `${v.id}: ${v.help}`)
   await mockApi(page, success)
@@ -374,7 +401,7 @@ test('treść od modelu jest wyświetlana jako tekst, a nie wykonywana (XSS)', a
       json: {
         result: {
           ...analysis,
-          summary: `${payload} Drugie zdanie. Trzecie zdanie.`,
+          summary: `${payload}. Drugie zdanie. Trzecie zdanie.`, // 3 sentences: passes the rule
           keywords: [payload],
           document: {
             ...analysis.document,
@@ -433,4 +460,69 @@ test('długi dokument (ponad 400 tys. znaków): fragmenty równolegle, potem jed
   expect(fragments[0].text.startsWith('Warunki współpracy')).toBe(true) // the title page leads
   expect(merges).toHaveLength(1)
   expect(merges[0].parts).toHaveLength(2)
+  // One time budget for the whole document: the merge gets only the time left (at most 27 s).
+  expect(fragments.every((fragment) => fragment.budgetMs === 27_000)).toBe(true)
+  expect(merges[0].budgetMs).toBeGreaterThan(0)
+  expect(merges[0].budgetMs).toBeLessThanOrEqual(27_000)
+})
+
+test('PDF z tekstem i stroną skanu: tekst i OCR strony skanu, potem jedno scalenie', async ({
+  page,
+}) => {
+  const texts = await mockApi(page, success)
+  const scans = await mockScans(page)
+  const merges = await mockMerges(page)
+  await fileInput(page).setInputFiles(fixture('mieszany.pdf')) // page 1: text, page 2: image only
+  await expect(resultTitle(page)).toBeVisible()
+  expect(texts).toHaveLength(1)
+  expect(scans).toHaveLength(1)
+  expect(scans[0].images).toHaveLength(1)
+  expect(merges).toHaveLength(1)
+  expect(merges[0].parts).toHaveLength(2)
+  await expect(
+    page.getByText(/Strona 2 nie ma warstwy tekstowej, więc odczytano ją z obrazu/),
+  ).toBeVisible()
+
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Pobierz JSON' }).click()
+  const saved = JSON.parse(readFileSync(await (await downloadPromise).path(), 'utf8'))
+  expect(saved.meta).toEqual({ pagesOcr: [2] })
+})
+
+test('skan 12 stron: dwie paczki obrazów równolegle, potem jedno scalenie', async ({ page }) => {
+  const texts = await mockApi(page, success)
+  const scans = await mockScans(page)
+  const merges = await mockMerges(page)
+  await fileInput(page).setInputFiles(fixture('skan12.pdf'))
+  // Twelve pages are rendered to JPEG first, which takes longer than the default wait on a busy machine.
+  await expect(resultTitle(page)).toBeVisible({ timeout: 20_000 })
+  expect(texts).toHaveLength(0)
+  expect(scans.map((scan) => scan.images.length).sort()).toEqual([4, 8])
+  expect(merges).toHaveLength(1)
+  await expect(page.getByText(/odczytano z obrazów stron \(OCR\)/)).toBeVisible()
+})
+
+test('dostępność wyniku: fokus na tytule, ogłoszenie dla czytnika i język treści', async ({
+  page,
+}) => {
+  await mockApi(page, success)
+  await fileInput(page).setInputFiles(fixture('faktura.pdf'))
+  await expect(resultTitle(page)).toBeFocused()
+  await expect(page.locator('.status')).toContainText(
+    'Analiza gotowa: FAKTURA VAT nr FV/2026/09/0117',
+  )
+  await expect(page.locator('.results p[lang="pl"]')).toContainText('Bursztynowa Drukarnia')
+  await expect(page.getByRole('heading', { name: 'Podsumowanie' })).not.toHaveAttribute('lang')
+})
+
+test('plik upuszczony obok strefy nie otwiera się w karcie przeglądarki', async ({ page }) => {
+  // The browser would navigate to a dropped file; a cancelled drop event means it stays in the app.
+  // React attaches the guard in an effect after the first paint, so the check waits for it.
+  const dropIsCancelled = () =>
+    page.evaluate(() => {
+      const event = new DragEvent('drop', { bubbles: true, cancelable: true })
+      document.body.dispatchEvent(event)
+      return event.defaultPrevented
+    })
+  await expect.poll(dropIsCancelled).toBe(true)
 })

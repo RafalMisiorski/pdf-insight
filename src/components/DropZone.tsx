@@ -1,5 +1,5 @@
-import { useState, type DragEvent } from 'react'
-import { MAX_SCAN_PAGES } from '../lib/schema'
+import { useEffect, useState, type DragEvent } from 'react'
+import { MAX_PARTS, MAX_SCAN_PAGES } from '../lib/schema'
 
 type Props = {
   disabled: boolean
@@ -10,6 +10,17 @@ type Props = {
 // access (Tab, then Enter or Space), and drag & drop is handled on the same element.
 export function DropZone({ disabled, onFile }: Props) {
   const [dragging, setDragging] = useState(false)
+
+  // A file dropped next to the zone would make the browser open it and leave the app.
+  useEffect(() => {
+    const keepInApp = (event: globalThis.DragEvent) => event.preventDefault()
+    window.addEventListener('dragover', keepInApp)
+    window.addEventListener('drop', keepInApp)
+    return () => {
+      window.removeEventListener('dragover', keepInApp)
+      window.removeEventListener('drop', keepInApp)
+    }
+  }, [])
 
   function take(files: FileList | null) {
     const file = files?.[0]
@@ -48,7 +59,8 @@ export function DropZone({ disabled, onFile }: Props) {
           Przeciągnij plik PDF tutaj albo kliknij, aby go wybrać
         </span>
         <span className="dropzone-hint">
-          PDF do 10 MB. Skan bez warstwy tekstowej odczyta OCR (do {MAX_SCAN_PAGES} str.)
+          PDF do 10 MB. Strony bez warstwy tekstowej odczyta OCR (do {MAX_PARTS * MAX_SCAN_PAGES}{' '}
+          stron).
         </span>
       </label>
       <p className="notice">
