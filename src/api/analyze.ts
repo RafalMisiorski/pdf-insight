@@ -146,6 +146,10 @@ export async function analyzeJob(
     }
   })
   if (results.length === 0) throw firstError
+  // A result from a minority of the pages would pass for an analysis of the whole document, so the
+  // user gets the error and a retry instead (docs/adr/0012).
+  const analysedPages = analysed.reduce((sum, part) => sum + part.pages.length, 0)
+  if (failed.length >= analysedPages) throw firstError
   if (results.length === 1) return withMeta(job, results[0], analysed, failed)
   if (left() < MIN_MERGE_MS) {
     throw new ApiError('Analiza dokumentu nie zmieściła się w czasie. Spróbuj ponownie.', true)
@@ -168,7 +172,8 @@ function withMeta(
   failed: number[],
 ): Analysis {
   const ocr = analysed.flatMap((part) => (part.kind === 'scan' ? part.pages : []))
-  const allImages = analysed.every((part) => part.kind === 'scan')
+  // "This PDF is a scan" only when the plan had no text at all, not when only the text part failed.
+  const allImages = job.parts.every((part) => part.kind === 'scan')
   const meta: Meta = {}
   if (allImages) meta.source = 'ocr'
   if (!allImages && ocr.length > 0) meta.pagesOcr = ocr

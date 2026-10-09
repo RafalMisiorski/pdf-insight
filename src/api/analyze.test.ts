@@ -121,6 +121,15 @@ describe('analyzeJob (docs/adr/0012)', () => {
     expect(result.meta).toEqual({ pagesOcr: [3], pagesFailed: [2] })
   })
 
+  it('shows the error instead of a result built from a minority of the pages', async () => {
+    worker((request) => request.path === '/analyze')
+    const parts: AnalysisJob['parts'] = [
+      { kind: 'text', pages: [1, 2, 3], text: 'tekst' },
+      { kind: 'scan', pages: [4], images: ['obraz'] },
+    ]
+    await expect(analyzeJob(job(parts))).rejects.toMatchObject({ retryable: true })
+  })
+
   it('fails only when no part could be analysed', async () => {
     worker(() => true)
     const parts: AnalysisJob['parts'] = [
