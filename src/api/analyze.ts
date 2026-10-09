@@ -1,9 +1,11 @@
 import { z } from 'zod'
+import { countSentences } from '../lib/sentences'
 import {
   AnalysisSchema,
   type Analysis,
   type AnalyzeRequest,
   type MergeRequest,
+  type Meta,
   type ScanRequest,
 } from '../lib/schema'
 
@@ -16,14 +18,21 @@ export class ApiError extends Error {
   }
 }
 
-// A document to analyse: its text in one part (or in fragments when it is longer than one request),
-// or, for a scan without a text layer, its page images.
-export type AnalysisJob =
-  | { kind: 'text'; fileName: string; pages: number; parts: string[] }
-  | { kind: 'scan'; fileName: string; pages: number; images: string[] }
+// A document to analyse, as the plan made it (docs/adr/0012-planer-dokumentu.md): text fragments and
+// batches of page images, with the pages the plan left out and the pages that had nothing to read.
+export type JobPart =
+  | { kind: 'text'; pages: number[]; text: string }
+  | { kind: 'scan'; pages: number[]; images: string[] }
+export type AnalysisJob = {
+  fileName: string
+  pages: number
+  parts: JobPart[]
+  skipped: number[]
+  blank: number[]
+}
 
 const SuccessSchema = z.object({ result: AnalysisSchema })
-const FailureSchema = z.object({ error: z.string() })
+const FailureSchema = z.object({ error: z.string(), retryable: z.boolean().optional() })
 
 // The Worker answers within its own 27 s budget; this guard covers a stalled network on top of it.
 export const CLIENT_TIMEOUT_MS = 35_000
@@ -55,13 +64,18 @@ async function post(path: string, payload: unknown, timeoutMs: number): Promise<
     const message = failure.success
       ? failure.data.error
       : `Serwer analizy zwrócił błąd ${res.status}.`
-    throw new ApiError(message, RETRYABLE_STATUSES.has(res.status))
+    // The Worker says whether a retry can help; for other errors (e.g. a proxy) the status decides.
+    const retryable = failure.success ? failure.data.retryable : undefined
+    throw new ApiError(message, retryable ?? RETRYABLE_STATUSES.has(res.status))
   }
   const success = SuccessSchema.safeParse(body)
-  if (!success.success) {
+  // The same checks as in the Worker, again here: the schema and the 3-5 sentence rule.
+  const result = success.success ? success.data.result : undefined
+  const sentences = result ? countSentences(result.summary, result.document.language) : 0
+  if (!result || sentences < 3 || sentences > 5) {
     throw new ApiError('Wynik analizy ma niepoprawny format. Spróbuj ponownie.', true)
   }
-  return success.data.result
+  return result
 }
 
 export function analyzeDocument(
@@ -78,7 +92,6 @@ export function mergeAnalyses(
   return post('/merge', request, timeoutMs)
 }
 
-// onPartDone reports how many fragments of a long document are done, for the progress steps.
 export function analyzeScan(
   request: ScanRequest,
   timeoutMs = CLIENT_TIMEOUT_MS,
@@ -86,22 +99,83 @@ export function analyzeScan(
   return post('/analyze-scan', request, timeoutMs)
 }
 
+// The time a document in parts may use from the start of its analysis: under the brief's 30 s, with a
+// margin for the browser. The parts and the merge share it (docs/adr/0004).
+const JOB_BUDGET_MS = 28_000
+const MIN_MERGE_MS = 5_000 // with less time left the merge would only end in a timeout
+
+function send(job: AnalysisJob, part: JobPart, budgetMs?: number): Promise<Analysis> {
+  const { fileName, pages } = job
+  return part.kind === 'text'
+    ? analyzeDocument({ fileName, pages, text: part.text, budgetMs })
+    : analyzeScan({ fileName, pages, images: part.images, budgetMs })
+}
+
+// onPartDone reports how many parts are done, for the progress steps.
 export async function analyzeJob(
   job: AnalysisJob,
   onPartDone?: (done: number) => void,
 ): Promise<Analysis> {
-  if (job.kind === 'scan')
-    return analyzeScan({ fileName: job.fileName, pages: job.pages, images: job.images })
-  const { fileName, pages, parts } = job
-  if (parts.length === 1) return analyzeDocument({ fileName, pages, text: parts[0] })
-  // Fragments are analysed in parallel, then the Worker merges their facts and writes one summary.
+  if (job.parts.length === 1) {
+    // One part: the same request as before the plan, without a shared budget.
+    return withMeta(job, await send(job, job.parts[0]), job.parts, [])
+  }
+  // Parts run in parallel, then the Worker merges their facts and writes one summary, all within one
+  // budget. A part that fails does not stop the others: its pages are listed with the result.
+  const started = Date.now()
+  const left = () => JOB_BUDGET_MS - (Date.now() - started)
   let done = 0
-  const results = await Promise.all(
-    parts.map(async (text) => {
-      const result = await analyzeDocument({ fileName, pages, text })
+  const settled = await Promise.allSettled(
+    job.parts.map(async (part) => {
+      const result = await send(job, part, 27_000)
       onPartDone?.((done += 1))
       return result
     }),
   )
-  return mergeAnalyses({ fileName, pages, parts: results })
+  const analysed: JobPart[] = []
+  const results: Analysis[] = []
+  const failed: number[] = []
+  let firstError: unknown
+  settled.forEach((outcome, index) => {
+    if (outcome.status === 'fulfilled') {
+      analysed.push(job.parts[index])
+      results.push(outcome.value)
+    } else {
+      failed.push(...job.parts[index].pages)
+      firstError ??= outcome.reason
+    }
+  })
+  if (results.length === 0) throw firstError
+  if (results.length === 1) return withMeta(job, results[0], analysed, failed)
+  if (left() < MIN_MERGE_MS) {
+    throw new ApiError('Analiza dokumentu nie zmieściła się w czasie. Spróbuj ponownie.', true)
+  }
+  const budgetMs = Math.min(27_000, Math.floor(left()))
+  const { fileName, pages } = job
+  const merged = await mergeAnalyses(
+    { fileName, pages, parts: results, budgetMs },
+    budgetMs + 5_000,
+  )
+  return withMeta(job, merged, analysed, failed)
+}
+
+// What the result says about its pages (app-added meta): which were read from images, which the
+// limit left out, which failed and which had nothing to read. Empty lists are left out.
+function withMeta(
+  job: AnalysisJob,
+  result: Analysis,
+  analysed: JobPart[],
+  failed: number[],
+): Analysis {
+  const ocr = analysed.flatMap((part) => (part.kind === 'scan' ? part.pages : []))
+  const allImages = analysed.every((part) => part.kind === 'scan')
+  const meta: Meta = {}
+  if (allImages) meta.source = 'ocr'
+  if (!allImages && ocr.length > 0) meta.pagesOcr = ocr
+  if (job.skipped.length > 0) meta.pagesSkipped = job.skipped
+  if (failed.length > 0) meta.pagesFailed = [...failed].sort((a, b) => a - b)
+  if (job.blank.length > 0) meta.pagesWithoutText = job.blank
+  const rest: Analysis = { ...result }
+  delete rest.meta // the Worker's own scan meta is replaced by the lists above
+  return Object.keys(meta).length > 0 ? { ...rest, meta } : rest
 }

@@ -48,6 +48,36 @@ describe('countSentences', () => {
     expect(countSentences('Faktura dla firmy B. Termin płatności to 14 dni.')).toBe(1)
   })
 
+  it('does not end a sentence at legal and reference abbreviations before a number', () => {
+    expect(
+      countSentences(
+        'Umowa podlega przepisom art. 659 Kodeksu cywilnego. Kary określa § 9 ust. 2 umowy. ' +
+          'Wynagrodzenie opisuje pkt. 3 załącznika.',
+      ),
+    ).toBe(3)
+    expect(
+      countSentences('Zgodnie z poz. 4 cennika i zał. 2 opłata rośnie. Termin to 14 dni.'),
+    ).toBe(2)
+  })
+
+  it('accepts Spanish sentences that start with ¿ or ¡', () => {
+    expect(countSentences('El contrato termina en 2027. ¿Quién paga? ¡El cliente paga todo!')).toBe(
+      3,
+    )
+  })
+
+  it('counts sentences in scripts without letter case (Japanese, Arabic)', () => {
+    expect(
+      countSentences(
+        '契約は二年間有効です。料金は毎月払います。解約は三か月前に通知します。',
+        'ja',
+      ),
+    ).toBe(3)
+    expect(
+      countSentences('العقد ساري لمدة سنتين. يدفع العميل شهريا. يمكن الإنهاء بإشعار مسبق.', 'ar'),
+    ).toBe(3)
+  })
+
   it('returns 0 for empty text', () => {
     expect(countSentences('   ')).toBe(0)
   })
