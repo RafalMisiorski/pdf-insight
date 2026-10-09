@@ -27,8 +27,8 @@ export interface Env {
   GEMINI_API_KEY: string // secret: `wrangler secret put GEMINI_API_KEY`, locally from .dev.vars
   ALLOWED_ORIGIN: string // the only browser origin allowed to call this API
   MODEL: string
-  DAILY_LIMIT: string // model calls per UTC day for the whole demo
-  IP_DAILY_LIMIT: string // model calls per UTC day from one IP address
+  DAILY_LIMIT: string // analysed requests per UTC day for the whole demo (one makes up to 6 model calls)
+  IP_DAILY_LIMIT: string // analysed requests per UTC day from one client (see clientKey)
   ALLOW_EXPERIMENTS?: string // '1' only in local runs: lets `mode` force one path for an A/B
   RATE_LIMITER: DurableObjectNamespace<RateLimiter>
 }
@@ -136,6 +136,21 @@ async function respond(work: () => Promise<Analysis>, cors: Record<string, strin
   }
 }
 
+// The client the limits count: an IPv4 address, or the /64 network of an IPv6 address, because one user
+// usually gets a whole /64 and could otherwise pass the limits by changing the last part of the address.
+export function clientKey(ip: string | null): string {
+  if (!ip) return 'unknown'
+  if (!ip.includes(':')) return ip
+  const last = ip.split(':').at(-1) ?? ''
+  if (last.includes('.')) return last // an IPv4 address written as IPv6 (::ffff:1.2.3.4)
+  const [head, tail = ''] = ip.split('::')
+  const left = head ? head.split(':') : []
+  const right = tail ? tail.split(':') : []
+  const zeros = Array<string>(Math.max(0, 8 - left.length - right.length)).fill('0')
+  const groups = [...left, ...zeros, ...right].slice(0, 4)
+  return `${groups.map((group) => group.toLowerCase().replace(/^0+(?=.)/, '')).join(':')}::/64`
+}
+
 // The time a request may use: the budget the app passed (time left for a long document), at most 27 s.
 const deadlineFor = (budgetMs: number | undefined) =>
   Date.now() + Math.min(BUDGET_MS, budgetMs ?? BUDGET_MS)
@@ -155,7 +170,7 @@ export default {
       return fail('Nie znaleziono.', 404, false, cors)
 
     // Per-IP limit before anything else is read, so a flood costs almost nothing.
-    const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
+    const ip = clientKey(request.headers.get('CF-Connecting-IP'))
     if (!(await take(env, `ip:${ip}`, PER_IP_PER_MINUTE, MINUTE_MS))) {
       return fail('Za dużo zapytań. Spróbuj ponownie za minutę.', 429, true, cors)
     }

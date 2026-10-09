@@ -36,7 +36,7 @@ export const ModelOutputSchema = z.looseObject({
 // Our own fields, added by code (never by the model): how a result was obtained and what it misses.
 export const MetaSchema = z.object({
   source: z.literal('ocr').optional(), // read from page images of a scan
-  pagesAnalyzed: z.number().int().positive().optional(), // scans: how many first pages the model saw
+  pagesAnalyzed: z.number().int().positive().optional(), // Worker: images in one scan request (the app replaces it)
   pagesWithoutText: z.array(z.number().int().positive()).optional(), // no text and no image to read
   pagesOcr: z.array(z.number().int().positive()).optional(), // read from page images (docs/adr/0012)
   pagesSkipped: z.array(z.number().int().positive()).optional(), // over the limit of one analysis
@@ -97,11 +97,18 @@ export const AnalyzeRequestSchema = z.object({
 })
 export type AnalyzeRequest = z.infer<typeof AnalyzeRequestSchema>
 
-// What the app sends to merge the analysed fragments of one long document.
+// A part's summary and key points go to the model again when merging, so their length is bounded:
+// without it a client could send megabytes of "summary" through /merge.
+const MergePartSchema = ModelOutputSchema.extend({
+  summary: z.string().min(1).max(3_000),
+  keyPoints: z.array(z.string().min(1).max(1_000)).min(3).max(7),
+})
+
+// What the app sends to merge the analysed parts of one document.
 export const MergeRequestSchema = z.object({
   fileName: z.string().min(1).max(255),
   pages: z.number().int().min(1).max(5000),
-  parts: z.array(ModelOutputSchema).min(2).max(MAX_PARTS),
+  parts: z.array(MergePartSchema).min(2).max(MAX_PARTS),
   budgetMs: RequestBudgetSchema,
 })
 export type MergeRequest = z.infer<typeof MergeRequestSchema>

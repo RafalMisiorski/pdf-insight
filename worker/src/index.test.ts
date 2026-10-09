@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import worker, { type Env } from './index'
+import worker, { clientKey, type Env } from './index'
 
 const ORIGIN = 'https://app.test'
 const VALID_OUTPUT = {
@@ -177,5 +177,21 @@ describe('Worker HTTP layer', () => {
     const dense = JSON.stringify({ fileName: 'a.pdf', pages: 1, text: DENSE_TEXT, mode: 'single' })
     expect((await call('/analyze', { body: dense })).status).toBe(200)
     expect(model).toHaveBeenCalledTimes(4) // and a dense one still gets three
+  })
+})
+
+describe('limits', () => {
+  it('count an IPv4 address alone and IPv6 addresses by their /64 network', () => {
+    expect(clientKey('1.2.3.4')).toBe('1.2.3.4')
+    expect(clientKey('2001:db8:1:2::1')).toBe(clientKey('2001:0db8:1:2:ffff:0:0:9'))
+    expect(clientKey('2001:db8:1:2::1')).not.toBe(clientKey('2001:db8:1:3::1'))
+    expect(clientKey('::ffff:1.2.3.4')).toBe('1.2.3.4')
+    expect(clientKey(null)).toBe('unknown')
+  })
+
+  it('refuse a merge whose parts carry an oversized summary', async () => {
+    const part = { ...VALID_OUTPUT, summary: 'Zdanie. '.repeat(500) } // 4000 characters
+    const body = JSON.stringify({ fileName: 'a.pdf', pages: 2, parts: [part, part] })
+    expect((await call('/merge', { body })).status).toBe(400)
   })
 })

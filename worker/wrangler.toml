@@ -10,7 +10,7 @@ workers_dev = true
 [vars]
 ALLOWED_ORIGIN = "https://rafalmisiorski.github.io"
 MODEL = "gemini-3.8-flash"
-# Model calls per UTC day: for the whole demo (keeps the prepaid budget for the review period) and
+# Analysed requests per UTC day (one makes up to 6 model calls): for the whole demo (keeps the prepaid budget for the review period) and
 # from one IP address (one script or one office cannot use up the whole demo).
 DAILY_LIMIT = "200"
 IP_DAILY_LIMIT = "40"

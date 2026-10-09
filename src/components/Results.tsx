@@ -123,11 +123,8 @@ export function Results({ result }: { result: Analysis }) {
       <p className="subtitle">Plik: {doc.fileName}</p>
       {meta.source === 'ocr' && (
         <p className="scan-notice">
-          Ten PDF to skan bez warstwy tekstowej, więc treść odczytano z obrazów stron (OCR)
-          {meta.pagesAnalyzed !== undefined && meta.pagesAnalyzed < doc.pages
-            ? `: z pierwszych ${meta.pagesAnalyzed} z ${doc.pages} stron`
-            : ''}
-          . Pojedyncze znaki mogą być odczytane błędnie.
+          Ten PDF to skan bez warstwy tekstowej, więc treść odczytano z obrazów stron (OCR).
+          Pojedyncze znaki mogą być odczytane błędnie.
         </p>
       )}
       <PagesNotice
@@ -137,8 +134,8 @@ export function Results({ result }: { result: Analysis }) {
       />
       <PagesNotice
         pages={meta.pagesSkipped}
-        one="Strona {pages} nie została przeanalizowana, bo dokument przekracza limit jednej analizy. Podsumowanie dotyczy pozostałych stron."
-        many="Strony {pages} nie zostały przeanalizowane, bo dokument przekracza limit jednej analizy. Podsumowanie dotyczy pozostałych stron."
+        one="Strona {pages} nie została w całości przeanalizowana, bo dokument przekracza limit jednej analizy. Podsumowanie dotyczy pozostałych stron."
+        many="Strony {pages} nie zostały w całości przeanalizowane, bo dokument przekracza limit jednej analizy. Podsumowanie dotyczy pozostałych stron."
       />
       <PagesNotice
         pages={meta.pagesFailed}

@@ -56,7 +56,7 @@ export function scanMessage(imageCount: number, totalPages: number): string {
   return `Analyze this scanned document (${range}, one image per page) and return the JSON object.`
 }
 
-// Experiment (docs/adr/0010): what each parallel call returns. Only the first line of the frozen
+// Parallel field groups (docs/adr/0010, 0011): what each call returns. Only the first line of the frozen
 // document message changes; the system prompt and the document wrapping stay the same.
 const GROUP_TASKS = {
   core: 'Analyze this document and return the JSON object with document, summary, keyPoints, entities and keywords.',

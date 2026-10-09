@@ -233,7 +233,7 @@ export function analyzeScan(
   )
 }
 
-// Experiment (docs/adr/0010): three parallel calls with the same document, one per group of fields,
+// Parallel field groups (docs/adr/0010, 0011): three calls with the same document, one per group of fields,
 // joined by code. The time depends on the longest group instead of on the whole answer.
 export async function analyzeParallel(
   apiKey: string,

@@ -40,7 +40,7 @@ describe('mergeFacts', () => {
     expect(merged.keywords).toEqual(['umowa', 'kara'])
   })
 
-  it('takes the document data from the first fragment and fills a missing title or date', () => {
+  it('takes the document data only from the first fragment, even when its date is missing', () => {
     const merged = mergeFacts([
       part({ document: { language: 'pl', type: 'umowa', title: 'Umowa 7/2026', date: null } }),
       part({ document: { language: 'pl', type: 'inne', title: 'Załącznik', date: '2026-10-01' } }),
@@ -49,7 +49,7 @@ describe('mergeFacts', () => {
       language: 'pl',
       type: 'umowa',
       title: 'Umowa 7/2026',
-      date: '2026-10-01',
+      date: null, // the annex date is not the date of the contract
     })
   })
 })

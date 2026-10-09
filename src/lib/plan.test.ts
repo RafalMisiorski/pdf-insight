@@ -71,3 +71,19 @@ describe('planDocument (docs/adr/0012)', () => {
     expect(plan.blank).toEqual([])
   })
 })
+
+describe('planDocument page lists (docs/adr/0012)', () => {
+  it('sends a page with a few characters as text and does not call it blank', () => {
+    const doc = read(['text', 'blank'])
+    doc.pageTexts[1] = 'Strona 2'
+    doc.text = doc.pageTexts.join('\n\n')
+    expect(planDocument(doc).blank).toEqual([])
+  })
+
+  it('lists a page as skipped when only a piece of it was sent', () => {
+    const huge = 'słowo '.repeat(Math.ceil(((MAX_PARTS + 1) * MAX_TEXT_CHARS) / 6))
+    const plan = planDocument(read(['text'], huge))
+    expect(plan.parts).toHaveLength(MAX_PARTS)
+    expect(plan.skipped).toEqual([1])
+  })
+})

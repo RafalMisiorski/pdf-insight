@@ -41,7 +41,9 @@ export default function App() {
       setState({ phase: 'done', result })
       setHistory(addToHistory(result, history))
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Nieznany błąd.'
+      // The API client's messages are Polish; anything else is a bug and gets a general message.
+      const message =
+        error instanceof ApiError ? error.message : 'Wystąpił nieoczekiwany błąd. Spróbuj ponownie.'
       // A retry re-sends the same text; it is not offered when it cannot help (e.g. a document too long).
       const retryable = !(error instanceof ApiError) || error.retryable
       setState({ phase: 'error', message, retry: retryable ? job : null })

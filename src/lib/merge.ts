@@ -23,12 +23,9 @@ function unique<T>(items: T[], keyOf: (item: T) => string): T[] {
 export function mergeFacts(parts: ModelOutput[]): MergedFacts {
   const [first] = parts
   return {
-    // The first fragment holds the title page; a later fragment only fills a missing title or date.
-    document: {
-      ...first.document,
-      title: first.document.title ?? parts.find((p) => p.document.title)?.document.title ?? null,
-      date: first.document.date ?? parts.find((p) => p.document.date)?.document.date ?? null,
-    },
+    // The first part holds the title page, so the document's own data comes only from it: a later
+    // part's date or title may belong to an annex, not to the document.
+    document: first.document,
     entities: {
       organizations: unique(
         parts.flatMap((p) => p.entities.organizations),

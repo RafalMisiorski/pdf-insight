@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { modelOutputJsonSchema } from '../../src/lib/schema'
-import { SYSTEM_PROMPT, retryMessage, wrapDocument } from './prompt'
+import {
+  amountsJsonSchema,
+  coreJsonSchema,
+  datesJsonSchema,
+  modelOutputJsonSchema,
+} from '../../src/lib/schema'
+import { SYSTEM_PROMPT, retryMessage, wrapDocument, wrapDocumentFor } from './prompt'
 
 // The company test document is run once against this exact model input (2026-10-08): system prompt,
 // document wrapper, retry message and output schema. Any change makes this test fail on purpose:
@@ -22,5 +27,23 @@ describe('frozen model input for the text path', () => {
       JSON.stringify(modelOutputJsonSchema),
     ].join('\n')
     expect(await sha256(modelInput)).toBe(FROZEN_SHA256)
+  })
+})
+
+// The parallel path for dense documents (docs/adr/0011) was added after the test-set run, so its own
+// model input is frozen separately: the three group messages and the three group schemas.
+const FROZEN_PARALLEL_SHA256 = '72a99114946bcb5dbf2c644612ecca6ebadc2904e47661bf55d5e00abb6edba7'
+
+describe('frozen model input for the parallel path', () => {
+  it('group messages and group schemas are unchanged since ADR-0011', async () => {
+    const modelInput = [
+      wrapDocumentFor('core', 'przykładowy tekst'),
+      wrapDocumentFor('amounts', 'przykładowy tekst'),
+      wrapDocumentFor('dates', 'przykładowy tekst'),
+      JSON.stringify(coreJsonSchema),
+      JSON.stringify(amountsJsonSchema),
+      JSON.stringify(datesJsonSchema),
+    ].join('\n')
+    expect(await sha256(modelInput)).toBe(FROZEN_PARALLEL_SHA256)
   })
 })

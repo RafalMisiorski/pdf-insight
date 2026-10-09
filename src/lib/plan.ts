@@ -25,7 +25,8 @@ export function planDocument({ text, pageTexts, pagesWithoutText, imagePages }: 
   // A document without scanned pages that fits one request is sent exactly as before.
   if (imagePages.length === 0 && text.trim() && text.length <= MAX_TEXT_CHARS) {
     const pages = pageTexts.map((_, index) => index + 1)
-    return { parts: [{ kind: 'text', pages, text }], skipped: [], blank: pagesWithoutText }
+    const blank = pagesWithoutText.filter((page) => !pageTexts[page - 1].trim())
+    return { parts: [{ kind: 'text', pages, text }], skipped: [], blank }
   }
   const scanned = new Set(imagePages)
   const textPages = pageTexts.flatMap((pageText, index) =>
@@ -49,10 +50,16 @@ export function planDocument({ text, pageTexts, pagesWithoutText, imagePages }: 
   const parts = [...spread(texts, textCount), ...spread(scans, scanCount)].sort(
     (a, b) => a.pages[0] - b.pages[0],
   )
-  const blank = pagesWithoutText.filter((page) => !scanPages.includes(page))
-  const sent = new Set(parts.flatMap((part) => part.pages))
-  const planned = new Set([...texts, ...scans].flatMap((part) => part.pages))
-  const skipped = [...planned].filter((page) => !sent.has(page) && !blank.includes(page))
+  // Blank: no text at all and no image. A page with a few characters (a page number, a signature)
+  // is part of a text fragment, so it is sent.
+  const blank = pagesWithoutText.filter(
+    (page) => !scanPages.includes(page) && !pageTexts[page - 1].trim(),
+  )
+  // A page counts as skipped when any piece of it was dropped, also when another piece was sent.
+  const dropped = [...texts, ...scans].filter((part) => !parts.includes(part))
+  const skipped = [...new Set(dropped.flatMap((part) => part.pages))].filter(
+    (page) => !blank.includes(page),
+  )
   return { parts, skipped: skipped.sort((a, b) => a - b), blank }
 }
 

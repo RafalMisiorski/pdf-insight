@@ -73,7 +73,7 @@ header p {
   margin: 16px 0;
 }
 
-/* Progress: three steps; the current one has a spinning ring around its number. */
+/* Progress: two steps; the current one has a spinning ring around its number. */
 .progress {
   margin: 16px 0;
   padding: 14px 16px;

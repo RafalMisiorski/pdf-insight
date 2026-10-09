@@ -267,6 +267,7 @@ test('przeciągnij i upuść działa tak samo jak wybór pliku', async ({ page }
 
 test('klawiatura: Tab przenosi fokus do strefy, spacja otwiera wybór pliku', async ({ page }) => {
   await mockApi(page, success)
+  await expect(fileInput(page)).toBeAttached() // Tab before React renders the input would focus nothing
   await page.keyboard.press('Tab')
   await expect(fileInput(page)).toBeFocused()
   const chooserPromise = page.waitForEvent('filechooser')
