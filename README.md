@@ -58,6 +58,7 @@ Każda decyzja z kontekstem, odrzuconymi opcjami i dowodem jest w [`docs/adr/`](
 - Testy przeglądarkowe w trzech silnikach z zamockowanym API, uruchamiane w CI przed wdrożeniem ([ADR-0006](docs/adr/0006-strategia-testow.md)).
 - Dokładne limity zapytań w Durable Object, bo wbudowany limiter Cloudflare nie blokował na produkcji ([ADR-0007](docs/adr/0007-limity-zapytan.md)).
 - Próg dzielenia długich dokumentów z pomiaru ([ADR-0008](docs/adr/0008-dlugie-dokumenty.md)) i OCR skanów przez obrazy stron ([ADR-0009](docs/adr/0009-ocr-skanow.md)).
+- Worker na planie Workers Paid (limit 30 s CPU zamiast 10 ms): najcięższe zapytanie, gęsty tekst w trzech grupach pól, zużywało na produkcji 11–19 ms CPU i bywało przerywane.
 - Planer dokumentu: tekst jako tekst, strony skanu przez OCR, najwyżej 4 części na dokument; granicę całego dokumentu wyznaczył pomiar ([ADR-0012](docs/adr/0012-planer-dokumentu.md)).
 - Trzy równoległe grupy pól tylko dla dokumentów z wieloma kwotami i datami: pierwszy pomiar odrzucił ten tryb dla wszystkich dokumentów gęstych ([ADR-0010](docs/adr/0010-rownolegle-grupy-pol.md)), drugi, na nowych dokumentach, przyjął go z bramką liczącą kwoty i daty ([ADR-0011](docs/adr/0011-tryb-rownolegly-dla-gestych.md)).
 

@@ -64,3 +64,5 @@ Planer jest w aplikacji z limitem 4 części. Cały dokument do 10 MB jest anali
 - dokument mieszany do 4 części łącznie, na przykład do 400 tys. znaków tekstu i 24 stron skanu.
 
 Najdłuższy zmierzony czas w tych granicach to 27,4 s, więc zapas jest mały. Większy dokument jest analizowany częściowo: aplikacja wybiera 4 części równomiernie z całego dokumentu, zawsze z pierwszą, a wynik wymienia pominięte strony. Cztery części i scalenie to 5 zapytań, w limicie 10 zapytań na minutę z jednego adresu. Tekst i skan z 6 częściami zmieściły się w czasie w obu przebiegach, ale reguła wymaga zaliczenia wszystkich szczebli, a dokument mieszany z 6 częściami raz przekroczył czas.
+
+Incydent (2026-10-09, 13:44–14:06): na dokumencie firmy raz nie udała się część tekstowa, a aplikacja pokazała wynik z jednej strony skanu. Logi Workera pokazały 11–19 ms CPU na tej części (ścieżka równoległa z ADR-0011) przy limicie 10 ms planu darmowego. Worker jest teraz na planie płatnym (30 s CPU), a wynik częściowy powstaje tylko z większości stron (wyżej). Po zmianie dwa przebiegi tej części na produkcji przeszły.
